@@ -1,3 +1,28 @@
 // Place all the styles related to the enterprises controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html,body
+{
+  height: 100%;
+}
+
+.row {
+  height: 100%;
+}
+
+.enterprise-profile {
+  height: 100%;
+}
+
+.enterprise-center {
+  height: 100%;
+}
+
+.enterprise-indicators {
+  height: 100%;
+}
+
+.border-column {
+  border: solid 1px black;
+}
