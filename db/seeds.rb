@@ -50,7 +50,16 @@ enterprises = [
   {
     name: "Tamayo Inc.",
     game_session_id: 3
+  },
+  {
+    name: "Rafa Inc.",
+    game_session_id: 3
+  },
+  {
+    name: "PE Inc.",
+    game_session_id: 3
   }
+
 ]
 
 enterprises.each { |enterprise| Enterprise.create(enterprise) }
