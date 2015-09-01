@@ -19,4 +19,22 @@ contracts = [
   }
 ]
 
+gamesessions = [
+  {
+    virtual_duration: 100,
+    real_duration: 10,
+    initial_amount_of_cash: 1000,
+    initial_number_of_employees: 1,
+    salary_per_employee: 100,
+    hiring_cost: 200,
+    firing_cost: 500,
+    productivity_per_employee: 5,
+    material_cost: 10,
+    name: "Difficulty: Easy",
+  }
+]
+
+
+
 contracts.each { |contract| Contract.create(contract) }
+gamesessions.each { |gamesession| GameSession.create(gamesession) }
