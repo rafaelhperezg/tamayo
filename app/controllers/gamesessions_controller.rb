@@ -1,4 +1,4 @@
-class GamesessionsController < ApplicationController
+class GameSessionsController < ApplicationController
   def index
   end
 
