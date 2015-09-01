@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'contracts/index'
+
+  get 'contracts/show'
+
+  get 'contracts/new'
+
+  get 'contracts/edit'
+
+  get 'contracts/destroy'
+
   get 'gamesessions/index'
 
   get 'gamesessions/show'
