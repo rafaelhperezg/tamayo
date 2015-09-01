@@ -5,3 +5,18 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+contracts = [
+  {
+    timeframe: 1,
+    name: "court",
+    price: 75
+  },
+  {
+    timeframe: 4,
+    name: "long",
+    price: 40,
+  }
+]
+
+contracts.each { |contract| Contract.create(contract) }
