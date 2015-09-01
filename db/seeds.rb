@@ -21,7 +21,7 @@ contracts = [
     price: 40,
   }
 ]
-# contracts.each { |contract| Contract.create(contract) }
+contracts.each { |contract| Contract.create(contract) }
 
 
 
@@ -40,7 +40,7 @@ gamesessions = [
     name: "Difficulty: Easy"
   }
 ]
-#gamesessions.each { |gamesession| GameSession.create(gamesession) }
+# gamesessions.each { |gamesession| GameSession.create(gamesession) }
 
 
 
@@ -49,7 +49,7 @@ Enterprise.destroy_all
 enterprises = [
   {
     name: "Tamayo Inc.",
-    game_session_id: 3
+    game_session_id: 1
   }
 ]
 

@@ -21,9 +21,54 @@ html,body
 
 .enterprise-indicators {
   height: 100%;
-  background-color: #A1D0F6;
+  padding: 2%;
+  background-color: #DBEFFF;
 }
 
 .border-column {
   border: solid 1px black;
 }
+
+
+.white {
+  background-color: white;
+}
+
+.margin-center {
+  margin: 0 auto;
+}
+
+.card-indicator {
+  // background-color: gray;
+  width: 80%;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.card-item {
+  height: 40px;
+  padding: 5px;
+  border-radius: 3%;
+
+}
+
+.card-title {
+  background-color: #D2CECE;
+  margin-bottom: 0;
+}
+.card-value {
+  background-color: white;
+  margin-top: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
