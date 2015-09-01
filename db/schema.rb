@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901105252) do
+ActiveRecord::Schema.define(version: 20150901123633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,30 +40,32 @@ ActiveRecord::Schema.define(version: 20150901105252) do
     t.datetime "decision_timestamp"
     t.integer  "current_game_day"
     t.integer  "employees_variation"
-    t.integer  "contract_change"
     t.integer  "enterprise_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "new_contract_id"
   end
 
   add_index "game_decisions", ["enterprise_id"], name: "index_game_decisions_on_enterprise_id", using: :btree
+  add_index "game_decisions", ["new_contract_id"], name: "index_game_decisions_on_new_contract_id", using: :btree
 
   create_table "game_sessions", force: :cascade do |t|
     t.integer  "virtual_duration"
     t.integer  "real_duration"
-    t.integer  "start_cash"
-    t.integer  "start_amount_of_employees"
+    t.integer  "initial_amount_of_cash"
+    t.integer  "initial_number_of_employees"
     t.integer  "salary_per_employee"
     t.integer  "hiring_cost"
     t.integer  "firing_cost"
     t.integer  "productivity_per_employee"
     t.integer  "material_cost"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "name"
   end
 
   add_foreign_key "contracts", "game_sessions"
   add_foreign_key "enterprises", "game_sessions"
+  add_foreign_key "game_decisions", "contracts", column: "new_contract_id"
   add_foreign_key "game_decisions", "enterprises"
 end
