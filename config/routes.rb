@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'game_decisions/index'
+
+  get 'game_decisions/show'
+
+  get 'game_decisions/new'
+
+  get 'game_decisions/edit'
+
+  get 'game_decisions/destroy'
+
   get 'contracts/index'
 
   get 'contracts/show'
