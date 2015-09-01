@@ -19,15 +19,15 @@ Rails.application.routes.draw do
 
   get 'contracts/destroy'
 
-  get 'gamesessions/index'
+  get 'game_sessions/index'
 
-  get 'gamesessions/show'
+  get 'game_sessions/show'
 
-  get 'gamesessions/new'
+  get 'game_sessions/new'
 
-  get 'gamesessions/edit'
+  get 'game_sessions/edit'
 
-  get 'gamesessions/destroy'
+  get 'game_sessions/destroy'
 
   root to: 'pages#home'
   # The priority is based upon order of creation: first created -> highest priority.
