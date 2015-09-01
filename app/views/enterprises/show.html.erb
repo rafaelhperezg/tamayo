@@ -1,6 +1,23 @@
 <div class="row">
-  <div class="col-md-2 enterprise-profile border-column">
+  <div class="col-md-2 enterprise-profile border-column text-center">
     <%= @enterprise.name %>
+    <hr>
+
+  <h4>Here's how you're doing:</h4>
+    <div class="flexcontainer">
+      <%  @others.each do |other| %>
+        <div class="flexuser">
+          <div id="avatar"></div>
+          <div id="otherenterprises">
+            <%= other.name %>
+          </div>
+          <div id="playerscore">
+            <p>5 points</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
 <!--     Voir les performances des autres entreprises (seulement leurs liquidités)
     Calcul des gains
       du jour (+/-)
