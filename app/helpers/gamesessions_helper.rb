@@ -1,0 +1,2 @@
+module GamesessionsHelper
+end
