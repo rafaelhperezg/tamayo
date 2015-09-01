@@ -30,11 +30,17 @@ gamesessions = [
     firing_cost: 500,
     productivity_per_employee: 5,
     material_cost: 10,
-    name: "Difficulty: Easy",
+    name: "Difficulty: Easy"
   }
 ]
 
+enterprises = [
+  {
+    name: "Tamayo Inc.",
+    game_session_id: 1
+  }
+]
 
-
+enterprises.each { |enterprise| Enterprise.create(enterprise) }
 contracts.each { |contract| Contract.create(contract) }
 gamesessions.each { |gamesession| GameSession.create(gamesession) }
