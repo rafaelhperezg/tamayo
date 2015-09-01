@@ -6,6 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
+
+# Contract.destroy_all
 contracts = [
   {
     timeframe: 1,
@@ -18,7 +21,11 @@ contracts = [
     price: 40,
   }
 ]
+# contracts.each { |contract| Contract.create(contract) }
 
+
+
+#GameSession.destroy_all
 gamesessions = [
   {
     virtual_duration: 100,
@@ -33,14 +40,17 @@ gamesessions = [
     name: "Difficulty: Easy"
   }
 ]
+#gamesessions.each { |gamesession| GameSession.create(gamesession) }
 
+
+
+
+Enterprise.destroy_all
 enterprises = [
   {
     name: "Tamayo Inc.",
-    game_session_id: 1
+    game_session_id: 3
   }
 ]
 
 enterprises.each { |enterprise| Enterprise.create(enterprise) }
-contracts.each { |contract| Contract.create(contract) }
-gamesessions.each { |gamesession| GameSession.create(gamesession) }
