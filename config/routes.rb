@@ -1,4 +1,34 @@
 Rails.application.routes.draw do
+  get 'game_decisions/index'
+
+  get 'game_decisions/show'
+
+  get 'game_decisions/new'
+
+  get 'game_decisions/edit'
+
+  get 'game_decisions/destroy'
+
+  get 'contracts/index'
+
+  get 'contracts/show'
+
+  get 'contracts/new'
+
+  get 'contracts/edit'
+
+  get 'contracts/destroy'
+
+  get 'game_sessions/index'
+
+  get 'game_sessions/show'
+
+  get 'game_sessions/new'
+
+  get 'game_sessions/edit'
+
+  get 'game_sessions/destroy'
+
   root to: 'pages#home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
