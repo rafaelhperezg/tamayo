@@ -38,6 +38,13 @@ html,body
   margin: 0 auto;
 }
 
+.inline-block {
+  display: inline-block;
+}
+.block {
+  display: block;
+}
+
 .padding-top-bottom {
   padding-top: 2%;
   padding-bottom: 2%;

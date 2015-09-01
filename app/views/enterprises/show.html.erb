@@ -9,11 +9,31 @@
 
   </div>
 
-  <div class="col-md-7 enterprise-center border-column">
+  <div class="col-md-7 enterprise-center border-column text-center">
     <h1 class="text-center">Entreprise</h1>
-    <%= image_tag "arrow-right.png", width:"50" %>
-    <%= image_tag "orders.png", width:"100" %>
-    <%= image_tag "workshop.png", width:"200" %>
+    <hr>
+    <hr>
+    <div class="enterprise-component inline-block">
+      <%= image_tag "arrow-right.png", width:"50" %>
+    </div>
+    <div class="enterprise-component inline-block">
+      <%= image_tag "orders.png", width:"100" %>
+      <%= image_tag "contract.png", width:"100", class:"block" %>
+      <%= link_to 'Contrat', '#',class:"btn btn-primary block" %>
+    </div>
+    <div class="enterprise-component inline-block">
+      <%= image_tag "workshop.png", width:"200" %>
+      <%= link_to 'Embaucher', '#',class:"btn btn-primary block"%>
+      <%= link_to 'Licencier', '#',class:"btn btn-primary block"%>
+    </div>
+    <div class="enterprise-component inline-block">
+      <%= image_tag "arrow-right.png", width:"50" %>
+    </div>
+    <div class="enterprise-component inline-block">
+      <%= image_tag "customer.png", width:"200" %>
+    </div>
+
+
 <!--     Embaucher un/des employés
     Renvoyer un/des employés
     Choisir contrat lent ou rapide
