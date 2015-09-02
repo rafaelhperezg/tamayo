@@ -7,20 +7,34 @@ html,body
   height: 100%;
 }
 
+.container {
+  width:100%;
+  height: 100%;
+}
+
 .row {
   height: 100%;
 }
 
-.enterprise-profile {
-  height: 100%;
+.enterprise-design {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.enterprise-center {
+.enterprise-profile {
   height: 100%;
+  // width: 15%;
+}
+
+.enterprise-midle {
+  height: 100%;
+  // width: 65%;
 }
 
 .enterprise-indicators {
   height: 100%;
+  // width: 20%;
   padding: 2%;
   background-color: #DBEFFF;
 }
@@ -31,6 +45,8 @@ html,body
 
 
 // RAFA'S CODE
+// center
+
 .white {
   background-color: white;
 }
