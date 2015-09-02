@@ -104,11 +104,11 @@
         <h2>Etat de mon entreprise</h2>
         <div class="card-indicator text-center">
           <p class="card-title card-item"><i class="fa fa-users"></i> <strong>Nb employés</strong></p>
-          <p class="card-value card-item"><strong> 1 </strong></p>
+          <p class="card-value card-item"><strong> <%= @employees %> </strong></p>
         </div>
         <div class="card-indicator text-center">
           <p class="card-title card-item"><i class="fa fa-sign-out"></i> </i><strong>Capacité de production</strong></p>
-          <p class="card-value card-item"><strong> 5 (p/jour)</strong></p>
+          <p class="card-value card-item"><strong><%= @gamesession.productivity_per_employee %> (p/jour)</strong></p>
         </div>
         <div class="card-indicator text-center">
           <p class="card-title card-item"><i class="fa fa-hourglass-half"> </i><strong>File d'attente</strong></p>
