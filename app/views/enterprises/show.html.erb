@@ -75,14 +75,14 @@
   $("#buttonsplus").click(function(){
       counter ++;
       $("#_employees_variation").val(counter);
-      salaries = counter * 200;
+      salaries = counter * <%= @gamesession.hiring_cost %>;
       $(".totalcost").text(salaries + "€");
   });
 
   $("#buttonsminus").click(function(){
       counter --;
       $("#_employees_variation").val(counter);
-      salaries = counter * 500;
+      salaries = counter * <%= @gamesession.firing_cost %>;
       $(".totalcost").text(salaries + "€");
   });
   </script>
