@@ -48,9 +48,10 @@
           <%= image_tag "workshop.png", width:"200" %>
           <%= simple_form_for '#' do |f| %>
             <%= f.input :employees_variation, placeholder: "Number of people"%>
-            <button id="buttonsplus" type="button">++</button>
-            <button id="buttonsminus">--</button>
-            <%= f.button :submit, "Embaucher/Licencier", class: "btn btn-success" %>
+              <div class="totalcost"><h1></h1></div>
+            <div id="buttonsplus" class="btn btn-success">Embaucher</div>
+            <div id="buttonsminus" class="btn btn-danger">Licencier</div></br>
+            <%= f.button :submit, "Valider", class: "btn btn-primary" %>
           <% end %>
         </div>
         <div class="enterprise-arrow">
@@ -67,19 +68,23 @@
         </div>
       </div>
   </div>
+
   <script type="text/javascript">
   var counter = 0;
 
   $("#buttonsplus").click(function(){
       counter ++;
       $("#_employees_variation").val(counter);
+      salaries = counter * <%= @gamesession.hiring_cost %>;
+      $(".totalcost").text(salaries + "€");
   });
 
   $("#buttonsminus").click(function(){
       counter --;
       $("#_employees_variation").val(counter);
+      salaries = counter * <%= @gamesession.firing_cost %>;
+      $(".totalcost").text(salaries + "€");
   });
-
   </script>
 
 
