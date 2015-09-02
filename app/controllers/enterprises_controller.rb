@@ -5,9 +5,8 @@ class EnterprisesController < ApplicationController
     @enterprise = Enterprise.find(params[:id])
     @others = Enterprise.all
     @gamesession = GameSession.find(@enterprise.game_session_id)
-    @employees = current_amount_of_employees
+    #@employees = current_amount_of_employees
     @gamedecisions = GameDecision.where(enterprise_id: @enterprise)
-    raise
   end
 
   def array_of_employee_variations
