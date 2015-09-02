@@ -1,3 +1,5 @@
+require './lib/tamayo/tamayocompute.rb'
+
 class EnterprisesController < ApplicationController
   def show
     @enterprise = Enterprise.find(params[:id])

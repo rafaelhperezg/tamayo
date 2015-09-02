@@ -1,2 +1,9 @@
-<h1>GameDecisions#new</h1>
-<p>Find me in app/views/game_decisions/new.html.erb</p>
+<h1><%= @previous_day %></h1>
+
+
+<%= simple_form_for [@enterprise,@game_decision] do |f| %>
+  <%= f.input :current_game_day %>
+  <%= f.input :employees_variation %>
+  <%= f.input :new_contract_id %>
+  <%= f.button :submit %>
+<% end %>
