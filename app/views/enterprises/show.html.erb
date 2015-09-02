@@ -26,21 +26,58 @@
 
   </div>
 
-  <div class="col-md-7 enterprise-center border-column">
-    <h1>Center Column</h1>
+  <div class="col-md-7 enterprise-center border-column text-center">
+    <h1 class="text-center">Entreprise</h1>
+    <hr>
+    <hr>
+    <div class="enterprise-component inline-block">
+      <%= image_tag "arrow-right.png", width:"50" %>
+    </div>
+    <div class="enterprise-component inline-block">
+      <%= image_tag "orders.png", width:"100" %>
+      <%= image_tag "contract.png", width:"100", class:"block" %>
+      <%= link_to 'Contrat', '#',class:"btn btn-primary block" %>
+    </div>
+    <div class="enterprise-component inline-block">
+      <%= image_tag "workshop.png", width:"200" %>
+      <%= link_to 'Embaucher', '#',class:"btn btn-primary block"%>
+      <%= link_to 'Licencier', '#',class:"btn btn-primary block"%>
+    </div>
+    <div class="enterprise-component inline-block">
+      <%= image_tag "arrow-right.png", width:"50" %>
+    </div>
+    <div class="enterprise-component inline-block">
+      <%= image_tag "customer.png", width:"200" %>
+    </div>
+
+
 <!--     Embaucher un/des employés
     Renvoyer un/des employés
     Choisir contrat lent ou rapide
  -->
   </div>
 
-  <div class="col-md-3 enterprise-indicators border-column">
-    <h1>Indicators</h1>
-    <h2></h2>
-    <h2></h2>
-    <h2></h2>
-    <h2></h2>
-
+  <div class="col-md-3 enterprise-indicators border-column text-center">
+    <div class="white text-center margin-center padding-top-bottom">
+      <h2>L''etat de mon entreprise</h2>
+      <div class="card-indicator text-center">
+        <p class="card-title card-item"><i class="fa fa-users"></i> <strong>Nb employés</strong></p>
+        <p class="card-value card-item"><strong> 1 </strong></p>
+      </div>
+      <div class="card-indicator text-center">
+        <p class="card-title card-item"><i class="fa fa-sign-out"></i> </i><strong>Capacité de production</strong></p>
+        <p class="card-value card-item"><strong> 5 (p/jour)</strong></p>
+      </div>
+      <div class="card-indicator text-center">
+        <p class="card-title card-item"><i class="fa fa-hourglass-half"> </i><strong>File d'attente</strong></p>
+        <p class="card-value card-item"><strong> 10 </strong></p>
+      </div>
+      <div class="card-indicator text-center">
+        <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Cash disponible</strong></p>
+        <p class="card-value card-item"><strong> 1000.000 Euros </strong></p>
+      </div>
+    </div>
+<!-- TODO : add links to graphics with history -->
 
 <!--     Accéder aux indicateurs
     Nombre d'employés
