@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :enterprises, only: :show do
-    resources :game_decisions, only: :create
+    resources :game_decisions, only: [:new, :create]
   end
 
   root to: 'pages#home'
