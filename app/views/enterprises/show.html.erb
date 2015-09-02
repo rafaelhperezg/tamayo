@@ -3,21 +3,23 @@
     <div class="col-md-2 enterprise-profile border-column text-center">
       <%= @enterprise.name %>
       <hr>
-
     <h4>Here's how you're doing:</h4>
-      <div class="flexcontainer">
-        <%  @others.each do |other| %>
-          <div class="flexuser">
-            <div id="avatar"></div>
-            <div id="otherenterprises">
-              <%= other.name %>
-            </div>
-            <div id="playerscore">
-              <p>5 points</p>
-            </div>
+
+    <div class="flexcontainer">
+      <%  @others.each do |other| %>
+        <div class="flexuser">
+          <div id="otherenterprises">
+            <h3><%= other.name %></h3>
           </div>
-        <% end %>
-      </div>
+          <div>
+            <div id="avatar"></div>
+          </div>
+          <div id="playerscore">
+            <h5>5 points</h5>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
   <!--     Voir les performances des autres entreprises (seulement leurs liquidités)
       Calcul des gains
