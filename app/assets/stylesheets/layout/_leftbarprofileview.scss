@@ -1,6 +1,7 @@
 // PE'S CODE
 .enterprise-profile {
   overflow: scroll;
+  background-color: $color5;
 }
 #profilepic {
   width: 30%;
@@ -35,12 +36,13 @@
 .flexuser {
   border: solid 1px black;
   margin-bottom: 10px;
+  background-color: $color4;
 }
 
 #otherenterprises {
     align-self: flex-start;
     align-content: stretch;
-    background-color: grey;
+    background-color: $color3;
     width: 100%;
     height: 30%;
     text-align: center;
@@ -53,7 +55,7 @@
 #playerscore {
     align-self: flex-end;
     align-content: stretch;
-    background-color: beige;
+    background-color: $color2;
     text-align: center;
     width: 70%;
     height: 70%;
