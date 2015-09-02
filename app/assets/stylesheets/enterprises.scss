@@ -30,6 +30,7 @@ html,body
 }
 
 
+// RAFA'S CODE
 .white {
   background-color: white;
 }
@@ -74,13 +75,34 @@ html,body
 }
 
 
+ // PE'S CODE
+#avatar {
+    background-image: url(https://www.schmidtlaw.com/wp-content/uploads/factory-worker.jpeg);
+    background-size: cover;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    align-self: center;
+}
 
+.flexcontainer {
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: column;
+   flex-direction: column;
+}
 
+.flexuser {
+  border: solid 1px black;
+}
 
+#otherenterprises {
+  align-self: flex-start;
+  width: 100%;
+}
 
-
-
-
-
-
+#playerscore {
+  align-self: flex-end;
+}
 
