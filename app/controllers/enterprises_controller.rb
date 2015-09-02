@@ -34,6 +34,13 @@ class EnterprisesController < ApplicationController
   # end
 end
 
+# -  def current_amount_of_employees    +  def array_of_employee_variations
+# -    gamesession_params = GameSession.find(3)   +    @gamedecisions.pluck(:employees_variation)
+# -    initial_amount_of_employees = gamesession_params.initial_number_of_employees
+# -    employee_variation = GameDecision.pluck(:employees_variation)
+# -    return employee_variation.reduce(:+) + initial_amount_of_employees
+#    end
+
 
 # Calcul du cash disponible
 
