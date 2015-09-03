@@ -1,19 +1,25 @@
 #require './lib/tamayo/tamayocompute.rb'
+
+ORDERS = [20, 20, 20, 20, 20, 10, 20, 10, 20, 30, 30, 10, 30, 20, 10, 30, 10, 10, 10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10]
+
 class EnterprisesController < ApplicationController
 
   before_action :find_enterprise, :find_game_session, :get_game_decisions
   # todo gamedecisions, current_day
   def show
     @others = Enterprise.all
-    @preview_game_day = GameDecision.where(enterprise_id: @enterprise).last
+    @previous_game_decision = GameDecision.where(enterprise_id: @enterprise).last
+    @current_game_day = @previous_game_decision.current_game_day + 1
     @gamedecision = GameDecision.where(enterprise_id: @enterprise).last
     @employees = current_number_of_employees
+    @workshop_capacity = @employees * @gamesession.productivity_per_employee
+    @today_orders = ORDERS[@current_game_day]
   end
 
 # ------------RP: Costs calcul----------------------
   def current_number_of_employees
     @initial_number_of_employees = @gamesession.initial_number_of_employees
-    return (@initial_number_of_employees - @gamedecisions.map {|gd| gd.employees_variation}.reduce(:+))
+    return (@initial_number_of_employees + @gamedecisions.map {|gd| gd.employees_variation}.reduce(:+))
   end
 
 # ------------RP: Costs calcul----------------------

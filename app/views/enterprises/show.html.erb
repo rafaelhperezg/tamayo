@@ -34,6 +34,7 @@
       <div class="col-md-7 enterprise-middle border-column text-center total-height">
         <h1 class="text-center">Entreprise</h1>
         <h1> Jour <%= @current_game_day %></h1>
+        <h3> Orders today: <%= @today_orders %> items</h3>
         <hr>
         <hr>
 
@@ -106,22 +107,22 @@
 
       <div class="col-md-3 enterprise-indicators border-column text-center total-height">
         <div class="bg-white text-center margin-center padding-top-bottom">
-          <h2>Etat de mon entreprise</h2>
+          <h2>Company stats</h2>
           <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-users"></i> <strong>Nb employés</strong></p>
+            <p class="card-title card-item"><i class="fa fa-users"></i> <strong>Employees</strong></p>
             <p class="card-value card-item"><strong> <%= @employees %> </strong></p>
           </div>
           <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-sign-out"></i><strong>Capacité de production</strong></p>
-            <p class="card-value card-item"><strong><%= @gamesession.productivity_per_employee %> (p/jour)</strong></p>
+            <p class="card-title card-item"><i class="fa fa-sign-out"></i><strong>Production capacity</strong></p>
+            <p class="card-value card-item"><strong><%= @workshop_capacity %> items/day</strong></p>
           </div>
           <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-hourglass-half"> </i><strong>File d'attente</strong></p>
+            <p class="card-title card-item"><i class="fa fa-hourglass-half"> </i><strong>Production queue</strong></p>
             <p class="card-value card-item"><strong> 10 </strong></p>
           </div>
           <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Cash disponible</strong></p>
-            <p class="card-value card-item"><strong> 1000 Euros </strong></p>
+            <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Treasury</strong></p>
+            <p class="card-value card-item"><strong> 1000€ </strong></p>
           </div>
         </div>
       </div>
