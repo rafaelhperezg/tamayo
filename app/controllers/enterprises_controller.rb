@@ -1,14 +1,14 @@
 #require './lib/tamayo/tamayocompute.rb'
 class EnterprisesController < ApplicationController
-
   before_action :find_enterprise, :find_game_session, :get_game_decisions
   # todo gamedecisions, current_day
+
   def show
     @others = Enterprise.all
     @preview_game_day = GameDecision.where(enterprise_id: @enterprise).last
     @gamedecision = GameDecision.where(enterprise_id: @enterprise).last
     @employees = current_number_of_employees
-    raise
+    @workshop_capacity = @employees * @gamesession.productivity_per_employee
   end
 
 # ------------RP: Costs calcul----------------------
