@@ -2,6 +2,7 @@
 class EnterprisesController < ApplicationController
 
   before_action :find_game_session, :find_enterprise
+  # todo gamedecisions
   def show
 
     @others = Enterprise.all
@@ -32,15 +33,19 @@ class EnterprisesController < ApplicationController
 
 
 # ------------RP: Costs calcul----------------------
-  def current_number_of_employees
-    @initial_number_of_employees = GameSession.initial_number_of_employees
-    return @initial_number_of_employees - @gamedecisions.employees_variation.reduce(:+)
-  end
+    def current_number_of_employees
+      @gamedecisions = tout les cdecision
+      @initial_number_of_employees = @gamesession.initial_number_of_employees
+      return (@initial_number_of_employees - @gamedecisions.map {|gd| gd.employees_variation}.reduce(:+))
+
+    end
+
+# ------------RP: Costs calcul----------------------
 
   def compute_salaries
-    @current_number_of_employees =
+    current_number_of_employees * @gamesession.salary_per_employee
   end
-
+  # /end costs calcul ----------------------
 
 
   # ------Methodes for before action---------
@@ -51,7 +56,7 @@ class EnterprisesController < ApplicationController
   def find_enterprise
     @enterprise = Enterprise.find(params[:id])
   end
-  # /-----------
+  # /----------------------------------------
 
 end
 
