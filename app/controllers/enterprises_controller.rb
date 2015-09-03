@@ -10,7 +10,7 @@ class EnterprisesController < ApplicationController
   def show
     @others = Enterprise.all
     @previous_game_decision = GameDecision.where(enterprise_id: @enterprise).last
-    @current_game_day = @previous_game_decision.current_game_day + 1
+    @current_game_day = @gamesession.current_day
     @gamedecision = GameDecision.where(enterprise_id: @enterprise).last
     @employees = current_number_of_employees
     @workshop_capacity = @employees * @gamesession.productivity_per_employee
@@ -22,7 +22,7 @@ class EnterprisesController < ApplicationController
 
     # pe code
     @today_orders = ORDERS[@current_game_day]
-
+    raise
   end
 
 # ------------RP: Costs calcul----------------------
