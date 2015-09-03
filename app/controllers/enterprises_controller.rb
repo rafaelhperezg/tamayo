@@ -5,11 +5,10 @@ class EnterprisesController < ApplicationController
     @enterprise = Enterprise.find(params[:id])
     @others = Enterprise.all
     @gamesession = GameSession.find(@enterprise.game_session_id)
-    # @employees = current_amount_of_employees
-    @current_game_day = GameDecision.where(enterprise_id: @enterprise).last.current_game_day
+    @preview_game_day = GameDecision.where(enterprise_id: @enterprise).last
     @gamedecision = GameDecision.where(enterprise_id: @enterprise).last
     @gamedecisions = GameDecision.where(enterprise_id: @enterprise)
-    @array_of_employee_variations = @gamedecisions.pluck(:employees_variation).reduce(:+)
+    @employees = @gamedecisions.pluck(:employees_variation).reduce(:+)
   end
 
   # def array_of_employee_variations

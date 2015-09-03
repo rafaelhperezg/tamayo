@@ -50,8 +50,6 @@
 
           <div class="enterprise-workshop">
             <%= image_tag "workshop.png", width:"200" %>
-            <div id="buttonsplus" class="btn btn-success">Hire</div>
-            <div id="buttonsminus" class="btn btn-danger">Fire</div></br>
             <%= f.input :employees_variation %>
             <div class="displaycost">
               <span id="totalcosttext">
@@ -59,6 +57,8 @@
               </span>
               <span id="totalcost">0€</span>
             </div>
+            <div id="buttonsplus" class="btn btn-success">Hire</div>
+            <div id="buttonsminus" class="btn btn-danger">Fire</div></br>
             <%= f.button :submit, class: "btn btn-success" %>
           </div>
 
@@ -77,7 +77,6 @@
           <div class="enterprise-customer">
             <%= image_tag "customer.png", width:"100" %>
           </div>
-
         </div>
     </div>
 
@@ -110,7 +109,7 @@
           <h2>Etat de mon entreprise</h2>
           <div class="card-indicator text-center">
             <p class="card-title card-item"><i class="fa fa-users"></i> <strong>Nb employés</strong></p>
-            <p class="card-value card-item"><strong> <%= @array_of_employee_variations %> </strong></p>
+            <p class="card-value card-item"><strong> <%= @employees %> </strong></p>
           </div>
           <div class="card-indicator text-center">
             <p class="card-title card-item"><i class="fa fa-sign-out"></i><strong>Capacité de production</strong></p>
