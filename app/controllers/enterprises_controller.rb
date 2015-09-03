@@ -1,25 +1,14 @@
 #require './lib/tamayo/tamayocompute.rb'
 class EnterprisesController < ApplicationController
 
-  before_action :find_enterprise, :find_game_session, :get_game_desicions
+  before_action :find_enterprise, :find_game_session, :get_game_decisions
   # todo gamedecisions, current_day
   def show
     @others = Enterprise.all
-    @gamedecisions = GameDecision.where(enterprise_id: @enterprise)
+    @preview_game_day = GameDecision.where(enterprise_id: @enterprise).last
+    @gamedecision = GameDecision.where(enterprise_id: @enterprise).last
+    @employees = current_number_of_employees
   end
-
-  def array_of_employee_variations
-    @gamedecisions.pluck(:employees_variation)
-  end
-
-  # def array_of_contract_changes
-  #   @gamedecisions.pluck(:new_contract_id)
-  # end
-
-  def initial_number_of_employees
-    @gamesession.initial_number_of_employees
-  end
-
 
 # ------------RP: Costs calcul----------------------
   def current_number_of_employees
@@ -55,7 +44,7 @@ class EnterprisesController < ApplicationController
     @gamesession = GameSession.find(@enterprise.game_session_id)
   end
 
-  def get_game_desicions
+  def get_game_decisions
     @gamedecisions = GameDecision.where(enterprise_id: @enterprise)
   end
   # /----------------------------------------

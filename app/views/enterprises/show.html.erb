@@ -1,25 +1,25 @@
-<%= simple_form_for [@enterprise, @gamedecisions], url: enterprise_game_decisions_path(@enterprise), method: :post do |f| %>
+<%= simple_form_for [@enterprise, @gamedecision], url: enterprise_game_decisions_path(@enterprise), method: :post do |f| %>
   <div class="container-fluid padding-none total-height">
     <div class="row margin-none total-height">
       <div class="col-md-2 enterprise-profile border-column text-center total-height">
         <%= @enterprise.name %>
         <hr>
-      <h4>Here's how you're doing:</h4>
-
-      <div class="flexcontainer">
-        <%  @others.each do |other| %>
-          <div class="flexuser">
-            <div id="otherenterprises">
-              <h3><%= other.name %></h3>
+        <h4>Here's how you're doing:</h4>
+        <div class="flexcontainer">
+          <%  @others.each do |other| %>
+            <div class="flexuser">
+              <div id="otherenterprises">
+                <h3><%= other.name %></h3>
+              </div>
+              <div>
+                <div id="avatar"></div>
+              </div>
+              <div id="playerscore">
+                <h5>5€</h5>
+              </div>
             </div>
-            <div>
-              <div id="avatar"></div>
-            </div>
-            <div id="playerscore">
-              <h5>5 points</h5>
-            </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
 
     <!--     Voir les performances des autres entreprises (seulement leurs liquidités)
@@ -28,27 +28,28 @@
           depuis le début de la session
      -->
 
-      </div>
 
 
   <!-- MIDDLE OF THE PAGE (ENTERPRISE) -->
       <div class="col-md-7 enterprise-middle border-column text-center total-height">
         <h1 class="text-center">Entreprise</h1>
+        <h1> Jour <%= @current_game_day %></h1>
         <hr>
         <hr>
+
         <div class="enterprise-design">
           <div class="enterprise-arrow">
             <%= image_tag "arrow-right.png", width:"50" %>
           </div>
+
           <div class="enterprise-orders">
             <%= image_tag "orders.png", width:"100" %>
             <%= image_tag "contract.png", width:"100", class:"block" %>
             <%= f.select :new_contract_id, [["long", Contract.find_by(name: "long").id], ["court", Contract.find_by(name: "court").id]] %>
           </div>
+
           <div class="enterprise-workshop">
             <%= image_tag "workshop.png", width:"200" %>
-            <div id="buttonsplus" class="btn btn-success">Hire</div>
-            <div id="buttonsminus" class="btn btn-danger">Fire</div></br>
             <%= f.input :employees_variation %>
             <div class="displaycost">
               <span id="totalcosttext">
@@ -56,17 +57,23 @@
               </span>
               <span id="totalcost">0€</span>
             </div>
+            <div id="buttonsplus" class="btn btn-success">Hire</div>
+            <div id="buttonsminus" class="btn btn-danger">Fire</div></br>
             <%= f.button :submit, class: "btn btn-success" %>
           </div>
+
           <div class="enterprise-arrow">
             <%= image_tag "arrow-right.png", width:"50" %>
           </div>
+
           <div class="enterprise-box">
             <%= image_tag "box.png", width:"80" %>
           </div>
+
           <div class="enterprise-arrow">
             <%= image_tag "arrow-right.png", width:"50" %>
           </div>
+
           <div class="enterprise-customer">
             <%= image_tag "customer.png", width:"100" %>
           </div>
@@ -105,7 +112,7 @@
             <p class="card-value card-item"><strong> <%= @employees %> </strong></p>
           </div>
           <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-sign-out"></i> </i><strong>Capacité de production</strong></p>
+            <p class="card-title card-item"><i class="fa fa-sign-out"></i><strong>Capacité de production</strong></p>
             <p class="card-value card-item"><strong><%= @gamesession.productivity_per_employee %> (p/jour)</strong></p>
           </div>
           <div class="card-indicator text-center">
@@ -117,6 +124,7 @@
             <p class="card-value card-item"><strong> 1000 Euros </strong></p>
           </div>
         </div>
+      </div>
     <!-- TODO : add links to graphics with history -->
 
     <!--     Accéder aux indicateurs
@@ -129,7 +137,6 @@
           du jour (+/-)
           depuis le début de la session
      -->
-      </div>
     </div>
 
 
