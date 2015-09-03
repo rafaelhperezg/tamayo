@@ -1,14 +1,14 @@
-# # This file should contain all the record creation needed to seed the database with its default values.
-# # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-# #
-# # Examples:
-# #
-# #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-# #   Mayor.create(name: 'Emanuel', city: cities.first)
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+#
+# Examples:
+#
+#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
 
-# # Contract.destroy_all
+# Contract.destroy_all
 # contracts = [
 #   {
 #     timeframe: 1,
@@ -25,7 +25,7 @@
 
 
 
-# #GameSession.destroy_all
+# GameSession.destroy_all
 # gamesessions = [
 #   {
 #     virtual_duration: 100,
@@ -40,7 +40,7 @@
 #     name: "Difficulty: Easy"
 #   }
 # ]
-# # gamesessions.each { |gamesession| GameSession.create(gamesession) }
+# gamesessions.each { |gamesession| GameSession.create(gamesession) }
 
 
 
@@ -49,15 +49,15 @@
 # enterprises = [
 #   {
 #     name: "Tamayo Inc.",
-#     game_session_id: 3
+#     game_session_id: 1
 #   },
 #   {
 #     name: "Rafa Inc.",
-#     game_session_id: 3
+#     game_session_id: 1
 #   },
 #   {
 #     name: "PE Inc.",
-#     game_session_id: 3
+#     game_session_id: 1
 #   }
 
 # ]
