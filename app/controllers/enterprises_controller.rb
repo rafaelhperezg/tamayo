@@ -1,3 +1,5 @@
+
+ORDERS=[10,15,20,25]
 #require './lib/tamayo/tamayocompute.rb'
 class EnterprisesController < ApplicationController
   before_action :find_enterprise, :find_game_session, :get_game_decisions
@@ -9,6 +11,11 @@ class EnterprisesController < ApplicationController
     @gamedecision = GameDecision.where(enterprise_id: @enterprise).last
     @employees = current_number_of_employees
     @workshop_capacity = @employees * @gamesession.productivity_per_employee
+
+    @current_day = @gamesession.current_day
+    @today_salary = compute_salaries_cost
+    @today_material_costs= compute_raw_materials_cost
+
   end
 
 # ------------RP: Costs calcul----------------------
@@ -24,7 +31,7 @@ class EnterprisesController < ApplicationController
   end
 
   def compute_raw_materials_cost
-    orders[current_day] * @gamesession.material_cost
+    ORDERS[@current_day] * @gamesession.material_cost
   end
 
   def compute_hiring_firing_cost
