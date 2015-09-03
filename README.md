@@ -1,1 +1,1 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates)
+Learn logistics and supply chain with an interactive, one-page game

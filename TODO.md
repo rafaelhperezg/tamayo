@@ -1,0 +1,1 @@
+- Cannot have a negative amount of employees
