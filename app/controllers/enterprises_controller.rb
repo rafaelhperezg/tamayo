@@ -8,12 +8,13 @@ class EnterprisesController < ApplicationController
     @preview_game_day = GameDecision.where(enterprise_id: @enterprise).last
     @gamedecision = GameDecision.where(enterprise_id: @enterprise).last
     @employees = current_number_of_employees
+    raise
   end
 
 # ------------RP: Costs calcul----------------------
   def current_number_of_employees
     @initial_number_of_employees = @gamesession.initial_number_of_employees
-    return (@initial_number_of_employees - @gamedecisions.map {|gd| gd.employees_variation}.reduce(:+))
+    return (@initial_number_of_employees + @gamedecisions.map {|gd| gd.employees_variation}.reduce(:+))
   end
 
 # ------------RP: Costs calcul----------------------
