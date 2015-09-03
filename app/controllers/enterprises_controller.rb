@@ -1,8 +1,8 @@
 #require './lib/tamayo/tamayocompute.rb'
 class EnterprisesController < ApplicationController
 
-  before_action :find_game_session, :find_enterprise
-  # todo gamedecisions
+  before_action :find_enterprise, :find_game_session
+  # todo gamedecisions, current_day
   def show
 
     @others = Enterprise.all
@@ -22,15 +22,6 @@ class EnterprisesController < ApplicationController
     @gamesession.initial_number_of_employees
   end
 
-  # def initial_amount_of_cash
-  #   @gamesession.initial_amount_of_cash
-  # end
-
-
-
-  # def current_amount_of_cash
-  # end
-
 
 # ------------RP: Costs calcul----------------------
     def current_number_of_employees
@@ -42,21 +33,29 @@ class EnterprisesController < ApplicationController
 
 # ------------RP: Costs calcul----------------------
 
-  def compute_salaries
+  def compute_salaries_cost
     current_number_of_employees * @gamesession.salary_per_employee
+  end
+
+  def compute_raw_materials_cost
+    orders[current_day] * @gamesession.material_cost
   end
   # /end costs calcul ----------------------
 
-
   # ------Methodes for before action---------
+  def find_enterprise
+    @enterprise = Enterprise.find(params[:id])
+  end
+
   def find_game_session
     @gamesession = GameSession.find(@enterprise.game_session_id)
   end
 
-  def find_enterprise
-    @enterprise = Enterprise.find(params[:id])
+  def get_game_desicions
+    @gamedecisions = GameDecision.where(enterprise_id: @enterprise)
   end
   # /----------------------------------------
+
 
 end
 
