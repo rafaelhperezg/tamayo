@@ -1,12 +1,10 @@
 #require './lib/tamayo/tamayocompute.rb'
 class EnterprisesController < ApplicationController
 
-  before_action :find_enterprise, :find_game_session
+  before_action :find_enterprise, :find_game_session, :get_game_desicions
   # todo gamedecisions, current_day
   def show
-
     @others = Enterprise.all
-    #@employees = current_amount_of_employees
     @gamedecisions = GameDecision.where(enterprise_id: @enterprise)
   end
 
@@ -24,12 +22,10 @@ class EnterprisesController < ApplicationController
 
 
 # ------------RP: Costs calcul----------------------
-    def current_number_of_employees
-      @gamedecisions = tout les cdecision
-      @initial_number_of_employees = @gamesession.initial_number_of_employees
-      return (@initial_number_of_employees - @gamedecisions.map {|gd| gd.employees_variation}.reduce(:+))
-
-    end
+  def current_number_of_employees
+    @initial_number_of_employees = @gamesession.initial_number_of_employees
+    return (@initial_number_of_employees - @gamedecisions.map {|gd| gd.employees_variation}.reduce(:+))
+  end
 
 # ------------RP: Costs calcul----------------------
 
@@ -39,6 +35,14 @@ class EnterprisesController < ApplicationController
 
   def compute_raw_materials_cost
     orders[current_day] * @gamesession.material_cost
+  end
+
+  def compute_hiring_firing_cost
+    # should be equal to the employes variation of current day * x(if hiring) or y(if firing)
+  end
+
+  def total_costs
+    return (compute_salaries_cost + compute_raw_materials_cost + compute_hiring_firing_cost)
   end
   # /end costs calcul ----------------------
 
@@ -58,6 +62,19 @@ class EnterprisesController < ApplicationController
 
 
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # -  def current_amount_of_employees    +  def array_of_employee_variations
 # -    gamesession_params = GameSession.find(3)   +    @gamedecisions.pluck(:employees_variation)
