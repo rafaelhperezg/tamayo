@@ -11,6 +11,7 @@ class GameDecisionsController < ApplicationController
     @game_decision = GameDecision.new(game_decision_params)
     @game_decision.enterprise = @enterprise
     @game_decision.current_game_day = @enterprise.game_session.current_day
+    raise
     if @game_decision.save
       redirect_to enterprise_path(@enterprise)
     else
