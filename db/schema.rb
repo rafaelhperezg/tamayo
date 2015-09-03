@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150902160827) do
+ActiveRecord::Schema.define(version: 20150903164922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 20150902160827) do
   add_index "enterprises", ["game_session_id"], name: "index_enterprises_on_game_session_id", using: :btree
 
   create_table "game_decisions", force: :cascade do |t|
-    t.datetime "decision_timestamp"
     t.integer  "current_game_day"
     t.integer  "employees_variation"
     t.integer  "enterprise_id"
