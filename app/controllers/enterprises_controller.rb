@@ -1,10 +1,10 @@
 #require './lib/tamayo/tamayocompute.rb'
-
 class EnterprisesController < ApplicationController
+
+  before_action :find_game_session, :find_enterprise
   def show
-    @enterprise = Enterprise.find(params[:id])
+
     @others = Enterprise.all
-    @gamesession = GameSession.find(@enterprise.game_session_id)
     #@employees = current_amount_of_employees
     @gamedecisions = GameDecision.where(enterprise_id: @enterprise)
   end
@@ -43,10 +43,15 @@ class EnterprisesController < ApplicationController
 
 
 
+  # ------Methodes for before action---------
+  def find_game_session
+    @gamesession = GameSession.find(@enterprise.game_session_id)
+  end
 
-
-
-
+  def find_enterprise
+    @enterprise = Enterprise.find(params[:id])
+  end
+  # /-----------
 
 end
 
