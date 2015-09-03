@@ -4,23 +4,22 @@
       <div class="col-md-2 enterprise-profile border-column text-center total-height">
         <%= @enterprise.name %>
         <hr>
-
-      <h4>Here's how you're doing:</h4>
-
-      <div class="flexcontainer">
-        <%  @others.each do |other| %>
-          <div class="flexuser">
-            <div id="otherenterprises">
-              <h3><%= other.name %></h3>
+        <h4>Here's how you're doing:</h4>
+        <div class="flexcontainer">
+          <%  @others.each do |other| %>
+            <div class="flexuser">
+              <div id="otherenterprises">
+                <h3><%= other.name %></h3>
+              </div>
+              <div>
+                <div id="avatar"></div>
+              </div>
+              <div id="playerscore">
+                <h5>5€</h5>
+              </div>
             </div>
-            <div>
-              <div id="avatar"></div>
-            </div>
-            <div id="playerscore">
-              <h5>5€</h5>
-            </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
 
     <!--     Voir les performances des autres entreprises (seulement leurs liquidités)
@@ -29,12 +28,12 @@
           depuis le début de la session
      -->
 
-      </div>
 
 
   <!-- MIDDLE OF THE PAGE (ENTERPRISE) -->
       <div class="col-md-7 enterprise-middle border-column text-center total-height">
         <h1 class="text-center">Entreprise</h1>
+        <h1> Jour <%= @current_game_day %></h1>
         <hr>
         <hr>
 
@@ -111,10 +110,10 @@
           <h2>Etat de mon entreprise</h2>
           <div class="card-indicator text-center">
             <p class="card-title card-item"><i class="fa fa-users"></i> <strong>Nb employés</strong></p>
-            <p class="card-value card-item"><strong> <%= @employees %> </strong></p>
+            <p class="card-value card-item"><strong> <%= @array_of_employee_variations %> </strong></p>
           </div>
           <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-sign-out"></i> </i><strong>Capacité de production</strong></p>
+            <p class="card-title card-item"><i class="fa fa-sign-out"></i><strong>Capacité de production</strong></p>
             <p class="card-value card-item"><strong><%= @gamesession.productivity_per_employee %> (p/jour)</strong></p>
           </div>
           <div class="card-indicator text-center">
@@ -126,6 +125,7 @@
             <p class="card-value card-item"><strong> 1000 Euros </strong></p>
           </div>
         </div>
+      </div>
     <!-- TODO : add links to graphics with history -->
 
     <!--     Accéder aux indicateurs
@@ -138,7 +138,6 @@
           du jour (+/-)
           depuis le début de la session
      -->
-      </div>
     </div>
 
 
