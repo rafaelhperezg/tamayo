@@ -25,12 +25,29 @@ class EnterprisesController < ApplicationController
   #   @gamesession.initial_amount_of_cash
   # end
 
-  # def current_amount_of_employees
-  #   array_of_employee_variations << initial_number_of_employees
-  # end
+
 
   # def current_amount_of_cash
   # end
+
+
+# ------------RP: Costs calcul----------------------
+  def current_number_of_employees
+    @initial_number_of_employees = GameSession.initial_number_of_employees
+    return @initial_number_of_employees - @gamedecisions.employees_variation.reduce(:+)
+  end
+
+  def compute_salaries
+    @current_number_of_employees =
+  end
+
+
+
+
+
+
+
+
 end
 
 # -  def current_amount_of_employees    +  def array_of_employee_variations
