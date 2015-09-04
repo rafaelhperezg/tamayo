@@ -30,7 +30,7 @@ class Enterprise < ActiveRecord::Base
 
 # -------------COSTS METHODS-------------
   def cost_of_raw_materials_for_today(today_orders_received)
-    today_orders_received * gamesession.material_cost
+    today_orders_received * game_session.material_cost
     # today_orders_received * cost_of_raw_materials_per_item
   end
 

@@ -112,27 +112,27 @@
           <h2>Company stats</h2>
           <div class="card-indicator text-center">
             <p class="card-title card-item"><i class="fa fa-users"></i> <strong>Employees</strong></p>
-            <p class="card-value card-item"><strong> <%= @employees %> </strong></p>
+            <p class="card-value card-item"><strong> <%= @current_number_of_employees %> </strong></p>
           </div>
           <div class="card-indicator text-center">
             <p class="card-title card-item"><i class="fa fa-sign-out"></i><strong>Production capacity</strong></p>
-            <p class="card-value card-item"><strong><%= @workshop_capacity %> items/day</strong></p>
+            <p class="card-value card-item"><strong><%= @today_workshop_production_capacity %> items/day</strong></p>
           </div>
           <div class="card-indicator text-center">
             <p class="card-title card-item"><i class="fa fa-hourglass-half"> </i><strong>Production queue</strong></p>
-            <p class="card-value card-item"><strong> 10 </strong></p>
+            <p class="card-value card-item"><strong> TODO </strong></p>
           </div>
           <div class="card-indicator text-center">
             <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Treasury</strong></p>
-            <p class="card-value card-item"><strong> 1000€ </strong></p>
+            <p class="card-value card-item"><strong> TODO€ </strong></p>
           </div>
           <div class="card-indicator text-center">
             <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Salaries costs</strong></p>
-            <p class="card-value card-item"><strong> <%= @today_salary %> </strong></p>
+            <p class="card-value card-item"><strong> <%= @cost_of_salaries_for_today %>€</strong></p>
           </div>
           <div class="card-indicator text-center">
             <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Today materials cost</strong></p>
-            <p class="card-value card-item"><strong> <%= @today_material_costs %> </strong></p>
+            <p class="card-value card-item"><strong> <%= @cost_of_raw_materials_for_today %>€</strong></p>
           </div>
         </div>
       </div>
