@@ -11,23 +11,28 @@ class EnterprisesController < ApplicationController
     @all_enterprises = Enterprise.all
     @previous_game_decision = GameDecision.where(enterprise_id: @enterprise).last
     @current_day = @gamesession.current_day
-    @gamedecision = GameDecision.where(enterprise_id: @enterprise).last
-    @employees = Enterprise.current_number_of_employees
-    @workshop_capacity = @employees * @gamesession.productivity_per_employee
+
+    # Costs variables
+    @today_salary = @enterprise.compute_salaries_cost
+
+
+    # Production variables
+    @current_number_of_employees = @enterprise.current_number_of_employees
+    @today_workshop_production_capacity = @enterprise.current_number_of_employees * @gamesession.productivity_per_employee
+    @today_orders = ORDERS[@current_day]
+
+    # Treasury variables
+
+
+    # Sales variables
+
+
 
     # rp code tests
-    @current_day = @gamesession.current_day
-    @today_salary = compute_salaries_cost
     @today_material_costs= compute_raw_materials_cost
 
     # pe code
-    @today_orders = ORDERS[@current_day]
-    raise
   end
-
-# ------------RP: Costs calcul----------------------
-
-# ------------RP: Costs calcul----------------------
 
   def compute_raw_materials_cost
     ORDERS[@current_day] * @gamesession.material_cost
@@ -40,7 +45,6 @@ class EnterprisesController < ApplicationController
   def total_costs
     return (compute_salaries_cost + compute_raw_materials_cost + compute_hiring_firing_cost)
   end
-  # /end costs calcul ----------------------
 
   # ------Methodes for before action---------
   def find_enterprise
@@ -58,13 +62,6 @@ class EnterprisesController < ApplicationController
 
 
 end
-
-
-
-
-
-
-
 
 
 
