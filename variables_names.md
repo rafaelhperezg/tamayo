@@ -1,4 +1,0 @@
-compute salaries
-compute hiring_firing_costs
-compute raw_materials_costs
-compute total_costs
