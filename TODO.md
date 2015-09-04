@@ -8,6 +8,8 @@ Afficher la commande du jour
 --> hardcore algorithm!
 
 
+--> Keep previous contract as default for subsequent decisions
+
 Worker:
 
 When a player saves decisions for current day, day_of_decision is incremented to +1
