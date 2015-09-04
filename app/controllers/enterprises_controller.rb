@@ -11,21 +11,27 @@ class EnterprisesController < ApplicationController
     @all_enterprises = Enterprise.all
     @previous_game_decision = GameDecision.where(enterprise_id: @enterprise).last
     @current_day = @gamesession.current_day
-    @gamedecision = GameDecision.where(enterprise_id: @enterprise).last
-    @employees = Enterprise.current_number_of_employees
-    @workshop_capacity = @employees * @gamesession.productivity_per_employee
+
+# COSTS VARIABLES
+    @today_salary = @enterprise.compute_salaries_cost
+
+
+# PRODUCTION VARIABLES
+    @current_number_of_employees = @enterprise.current_number_of_employees
+    @today_workshop_production_capacity = @enterprise.current_number_of_employees * @gamesession.productivity_per_employee
+    @today_orders = ORDERS[@current_day]
+
+# TREASURY VARIABLES
+
+
+# SALES VARIABLES
 
     # rp code tests
-    @current_day = @gamesession.current_day
-    @today_salary = compute_salaries_cost
     @today_material_costs= compute_raw_materials_cost
 
-    # pe code
-    @today_orders = ORDERS[@current_day]
-    raise
   end
 
-  # ------Methodes for before action---------
+  # ------Methods for before action---------
   def find_enterprise
     @enterprise = Enterprise.find(params[:id])
   end
@@ -39,15 +45,7 @@ class EnterprisesController < ApplicationController
   end
   # /----------------------------------------
 
-
 end
-
-
-
-
-
-
-
 
 
 
