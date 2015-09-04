@@ -5,7 +5,7 @@
         <hr>
         <h4>Here's how you're doing:</h4>
         <div class="flexcontainer">
-          <%  @others.each do |other| %>
+          <%  @all_enterprises.each do |other| %>
             <div class="flexuser">
               <div id="otherenterprises">
                 <h3><%= other.name %></h3>
@@ -33,8 +33,8 @@
       <div class="col-md-7 enterprise-middle border-column text-center total-height">
         <%= simple_form_for [@enterprise, @gamedecision], url: enterprise_game_decisions_path(@enterprise), method: :post do |f| %>
 
-          <h1 class="text-center">Entreprise</h1>
-          <h1> Jour <%= @current_day %></h1>
+          <h1 class="text-center">Company</h1>
+          <h1> Day # <%= @current_day %></h1>
           <h3> Orders today: <%= @today_orders %> items</h3>
           <hr>
           <hr>
@@ -127,7 +127,7 @@
             <p class="card-value card-item"><strong> 1000€ </strong></p>
           </div>
           <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Today salary</strong></p>
+            <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Salaries costs</strong></p>
             <p class="card-value card-item"><strong> <%= @today_salary %> </strong></p>
           </div>
           <div class="card-indicator text-center">

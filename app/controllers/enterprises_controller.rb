@@ -8,11 +8,11 @@ class EnterprisesController < ApplicationController
   # todo gamedecisions, current_day
 
   def show
-    @others = Enterprise.all
+    @all_enterprises = Enterprise.all
     @previous_game_decision = GameDecision.where(enterprise_id: @enterprise).last
     @current_day = @gamesession.current_day
     @gamedecision = GameDecision.where(enterprise_id: @enterprise).last
-    @employees = current_number_of_employees
+    @employees = Enterprise.current_number_of_employees
     @workshop_capacity = @employees * @gamesession.productivity_per_employee
 
     # rp code tests
@@ -22,20 +22,12 @@ class EnterprisesController < ApplicationController
 
     # pe code
     @today_orders = ORDERS[@current_day]
-    # raise
-  end
-
-# ------------RP: Costs calcul----------------------
-  def current_number_of_employees
-    @initial_number_of_employees = @gamesession.initial_number_of_employees
-    return (@initial_number_of_employees + @gamedecisions.map {|gd| gd.employees_variation}.reduce(:+))
+    raise
   end
 
 # ------------RP: Costs calcul----------------------
 
-  def compute_salaries_cost
-    current_number_of_employees * @gamesession.salary_per_employee
-  end
+# ------------RP: Costs calcul----------------------
 
   def compute_raw_materials_cost
     ORDERS[@current_day] * @gamesession.material_cost
