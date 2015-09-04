@@ -29,4 +29,14 @@ class Enterprise < ActiveRecord::Base
     end
   end
 
+  def cost_of_salaries_for_today
+    current_number_of_employees * game_session.salary_per_employee
+    # (current_number_of_employees) * (constant_salary_per_employee)
+  end
+
+  def total_money_spent_today
+      (cost_of_raw_materials_for_today) + (cost_of_hiring_and_firing_for_today) + (cost_of_salaries_for_today)
+  def total_costs
+    # return (compute_salaries_cost + compute_raw_materials_cost + compute_hiring_firing_cost)
+  end
 end
