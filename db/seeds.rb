@@ -7,59 +7,58 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-
-# Contract.destroy_all
-# contracts = [
-#   {
-#     timeframe: 1,
-#     name: "court",
-#     price: 75
-#   },
-#   {
-#     timeframe: 4,
-#     name: "long",
-#     price: 40,
-#   }
-# ]
-# contracts.each { |contract| Contract.create(contract) }
+GameSession.destroy_all
+Contract.destroy_all
+Enterprise.destroy_all
 
 
+gamesessions = [
+  {
+    virtual_duration: 100,
+    real_duration: 10,
+    initial_amount_of_cash: 1000,
+    initial_number_of_employees: 1,
+    salary_per_employee: 100,
+    hiring_cost: 200,
+    firing_cost: 500,
+    productivity_per_employee: 5,
+    material_cost: 10,
+    name: "Difficulty: Easy",
+    current_day: 1,
+  }
+]
 
-# GameSession.destroy_all
-# gamesessions = [
-#   {
-#     virtual_duration: 100,
-#     real_duration: 10,
-#     initial_amount_of_cash: 1000,
-#     initial_number_of_employees: 1,
-#     salary_per_employee: 100,
-#     hiring_cost: 200,
-#     firing_cost: 500,
-#     productivity_per_employee: 5,
-#     material_cost: 10,
-#     name: "Difficulty: Easy"
-#   }
-# ]
-# gamesessions.each { |gamesession| GameSession.create(gamesession) }
+contracts = [
+  {
+    timeframe: 1,
+    name: "court",
+    price: 75,
+    game_session_id: 1
+  },
+  {
+    timeframe: 4,
+    name: "long",
+    price: 40,
+    game_session_id: 1
+  }
+]
 
+enterprises = [
+  {
+    name: "Tamayo Inc.",
+    game_session_id: 1
+  },
+  {
+    name: "Rafa Inc.",
+    game_session_id: 1
+  },
+  {
+    name: "PE Inc.",
+    game_session_id: 1
+  }
 
+]
 
-
-# Enterprise.destroy_all
-# enterprises = [
-#   {
-#     name: "Tamayo Inc.",
-#     game_session_id: 1
-#   },
-#   {
-#     name: "Rafa Inc.",
-#     game_session_id: 1
-#   },
-#   {
-#     name: "PE Inc.",
-#     game_session_id: 1
-#   }
-
-# ]
-
-# enterprises.each { |enterprise| Enterprise.create(enterprise) }
+gamesessions.each { |gamesession| GameSession.create(gamesession) }
+contracts.each { |contract| Contract.create(contract) }
+enterprises.each { |enterprise| Enterprise.create(enterprise) }
