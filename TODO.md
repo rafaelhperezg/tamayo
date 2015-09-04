@@ -1,4 +1,5 @@
-- Cannot have a negative amount of employees
+-DONE=> Cannot have a negative amount of employees
+-display an error message if firing too much people
 
 Dans l'interface: présentation de l'entreprise la veille
 Afficher la commande du jour
