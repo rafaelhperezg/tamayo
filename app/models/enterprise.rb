@@ -72,17 +72,25 @@ class Enterprise < ActiveRecord::Base
 
 # --------------SALES METHODS--------------------
   def profit_per_item_in_order_received_today
+    if contractual_maximum_number_of_days_to_deliver_order <= when_can_todays_orders_be_delivered
+      contractual_price_of_item_if_delivered_within_maximum_number_of_days_allowed
+    else
+      0
+    end
   end
 
   def total_sales_for_today
+    products_manufactured_today * profit_per_item_in_order_received_today
   end
 # /--------------end SALES METHODS--------------
 
 # --------------TREASURY METHODS---------------
   def net_result_today
+    total_sales_for_today - total_money_spent_today
   end
 
   def total_treasury_today
+    treasury_from_yesterday + net_result_today
   end
 # /--------------end TREASURY METHODS---------------
 end

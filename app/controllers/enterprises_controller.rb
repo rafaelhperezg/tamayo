@@ -32,7 +32,6 @@ class EnterprisesController < ApplicationController
 
     # rp code tests
     @cost_of_raw_materials_for_today = @enterprise.cost_of_raw_materials_for_today(@today_orders_received)
-
   end
 
   # ------Methods for before action---------
