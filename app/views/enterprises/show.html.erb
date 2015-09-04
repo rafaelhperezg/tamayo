@@ -45,6 +45,7 @@
             <div class="enterprise-orders">
               <%= image_tag "orders.png", width:"100" %>
               <%= image_tag "contract.png", width:"100", class:"block" %>
+              <p>Type de contrat:</p>
               <%= f.select :new_contract_id, [["long", Contract.find_by(name: "long").id], ["court", Contract.find_by(name: "court").id]] %>
             </div>
 
