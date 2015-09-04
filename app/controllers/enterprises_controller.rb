@@ -16,7 +16,7 @@ class EnterprisesController < ApplicationController
     @today_salary = @enterprise.compute_salaries_cost
 
 
-# PRODUCTION METHODS
+# PRODUCTION VARIABLES
     @current_number_of_employees = @enterprise.current_number_of_employees
     @today_workshop_production_capacity = @enterprise.current_number_of_employees * @gamesession.productivity_per_employee
     @today_orders = ORDERS[@current_day]
@@ -26,27 +26,12 @@ class EnterprisesController < ApplicationController
 
 # SALES VARIABLES
 
-
-
     # rp code tests
     @today_material_costs= compute_raw_materials_cost
 
-    # pe code
   end
 
-  def compute_raw_materials_cost
-    ORDERS[@current_day] * @gamesession.material_cost
-  end
-
-  def compute_hiring_firing_cost
-    # should be equal to the employes variation of current day * x(if hiring) or y(if firing)
-  end
-
-  def total_costs
-    return (compute_salaries_cost + compute_raw_materials_cost + compute_hiring_firing_cost)
-  end
-
-  # ------Methodes for before action---------
+  # ------Methods for before action---------
   def find_enterprise
     @enterprise = Enterprise.find(params[:id])
   end
@@ -59,7 +44,6 @@ class EnterprisesController < ApplicationController
     @gamedecisions = GameDecision.where(enterprise_id: @enterprise)
   end
   # /----------------------------------------
-
 
 end
 
