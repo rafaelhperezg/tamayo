@@ -9,17 +9,18 @@ class EnterprisesController < ApplicationController
 
   def show
     @all_enterprises = Enterprise.all
+    @gamedecision = GameDecision.new
     @previous_game_decision = GameDecision.where(enterprise_id: @enterprise).last
     @current_day = @gamesession.current_day
 
 # COSTS VARIABLES
-    @today_salary = @enterprise.compute_salaries_cost
+    @cost_of_salaries_for_today = @enterprise.cost_of_salaries_for_today
 
 
 # PRODUCTION VARIABLES
     @current_number_of_employees = @enterprise.current_number_of_employees
     @today_workshop_production_capacity = @enterprise.current_number_of_employees * @gamesession.productivity_per_employee
-    @today_orders = ORDERS[@current_day]
+    @today_orders_received = ORDERS[@current_day]
 
 # TREASURY VARIABLES
 
@@ -27,7 +28,7 @@ class EnterprisesController < ApplicationController
 # SALES VARIABLES
 
     # rp code tests
-    @today_material_costs= compute_raw_materials_cost
+    @cost_of_raw_materials_for_today = @enterprise.cost_of_raw_materials_for_today(@today_orders_received)
 
   end
 
