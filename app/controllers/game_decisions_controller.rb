@@ -12,6 +12,9 @@ class GameDecisionsController < ApplicationController
     @game_decision.enterprise = @enterprise
     @game_decision.day_of_decision = @enterprise.game_session.current_day
     if @game_decision.save
+      r = GameDecision.where(enterprise_id: @enterprise.id).last
+      r.day_of_decision += 1
+      r.save
       redirect_to enterprise_path(@enterprise)
     else
       redirect_to enterprise_path(@enterprise)
