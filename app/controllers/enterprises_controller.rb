@@ -12,19 +12,19 @@ class EnterprisesController < ApplicationController
     @previous_game_decision = GameDecision.where(enterprise_id: @enterprise).last
     @current_day = @gamesession.current_day
 
-    # Costs variables
+# COSTS VARIABLES
     @today_salary = @enterprise.compute_salaries_cost
 
 
-    # Production variables
+# PRODUCTION METHODS
     @current_number_of_employees = @enterprise.current_number_of_employees
     @today_workshop_production_capacity = @enterprise.current_number_of_employees * @gamesession.productivity_per_employee
     @today_orders = ORDERS[@current_day]
 
-    # Treasury variables
+# TREASURY VARIABLES
 
 
-    # Sales variables
+# SALES VARIABLES
 
 
 
