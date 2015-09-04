@@ -9,9 +9,14 @@ class Enterprise < ActiveRecord::Base
   end
 
   def today_workshop_production_capacity
+    current_number_of_employees * game_session.productivity_per_employee
   end
 
-  def total_to_produce_today
+  def backlog_from_previous_day(previous_game_decision)
+  end
+
+  def total_to_produce_today(backlog_from_previous_day, today_orders_received)
+    today_orders_received + 1
   end
 
   def backlog_at_the_end_of_current_day
@@ -21,10 +26,6 @@ class Enterprise < ActiveRecord::Base
   end
 
   def when_can_todays_orders_be_delivered
-  end
-
-  def compute_salaries_cost
-    current_number_of_employees * game_session.salary_per_employee
   end
 # /--------------end PRODUCTION METHODS----------
 
