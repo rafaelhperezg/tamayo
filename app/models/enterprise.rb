@@ -3,7 +3,7 @@ class Enterprise < ActiveRecord::Base
   has_many :game_decisions
 
 
-# PRODUCTIVITY METHODS
+# PRODUCTION METHODS
   def current_number_of_employees
     game_session.initial_number_of_employees + game_decisions.sum(:employees_variation)
   end
@@ -27,17 +27,17 @@ class Enterprise < ActiveRecord::Base
     current_number_of_employees * game_session.salary_per_employee
   end
 
-# COSTS VARIABLES
+# COSTS METHODS
 
 
-# SALES VARIABLES
+# SALES METHODS
   def profit_per_item_in_order_received_today
   end
 
   def total_sales_for_today
   end
 
-# TREASURY VARIABLES
+# TREASURY METHODS
   def net_result_today
   end
 
