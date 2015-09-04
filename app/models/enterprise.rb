@@ -38,4 +38,5 @@ class Enterprise < ActiveRecord::Base
     cost_of_raw_materials_for_today(current_day) + cost_of_hiring_and_firing_for_today(employee_variation_from_game_decisions_for_today) + cost_of_salaries_for_today
     # (cost_of_raw_materials_for_today) + (cost_of_hiring_and_firing_for_today) + (cost_of_salaries_for_today)
   end
+  # /end costs calcul ----------------------
 end
