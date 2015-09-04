@@ -15,49 +15,64 @@ if it does, it saves the day's decision with employee_variation = 0 and the same
 THEN increments to next day
 
 
-PRODUCTIVITY
-  number_of_employees
-    ( initial_number_of_employees + employees_variation.reduce(:+) )
-  workshop_capacity
-    (number_of_employees) * (productivity_per_employee)
-  total_to_produce
-    (backlog) + (today_orders)
-  production_queue
-    (total_to_produce) - (workshop_capacity)
-  products_manufactured
-    if (workshop_capacity) >= (total_to_produce)
-      (total_to_produce)
-    else
-      (workshop_capacity)
-  delivery_time
-    (total_to_produce) / (workshop_capacity)
 
-COSTS
-  compute_raw_materials_cost
-    (orders) * (material_cost)
-  compute_hiring_firing_cost
-    if (employee_variation) > 0
-      (hiring_cost) * (employee_variation)
-    elsif (employee_variation) < 0
-      (firing_cost) * (employee_variation)
-    else
-      0
-  compute_salaries_cost
-    (current_number_of_employees) * (salary_per_employee)
-  total_costs
-    (compute_raw_materials_cost) + (compute_hiring_firing_cost) + (compute_salaries_cost)
+#PRODUCTIVITY
 
-SALES
-  profit_per_item
-    if (timeframe) =< (delivery_time)
-      (price)
-    else
-      0
-  total_sales
-    (products_manufactured) * (profit_per_item)
+    - current_number_of_employees
+        ( initial_number_of_employees + employees_variation_from_game_decisions.reduce(:+) )
 
-  TREASURY
-    net_results
-      (total_sales) - (total_costs)
-    treasury
-      (treasury) - (net_results)
+    - today_workshop_production_capacity
+        (current_number_of_employees) * (productivity_per_employee)
+
+    - total_to_produce_today
+        (backlog_from_previous_day) + (today_orders_received)
+
+    - backlog_at_the_end_of_current_day
+        (total_to_produce_today) - (today_workshop_production_capacity)
+
+    - products_manufactured_today
+        if (today_workshop_production_capacity) >= (total_to_produce_today)
+          (total_to_produce_today)
+        else
+          (today_workshop_production_capacity)
+
+    - when_can_todays_orders_be_delivered
+        (total_to_produce_today) / (today_workshop_production_capacity)
+
+#COSTS
+
+    - cost_of_raw_materials_for_today
+        (today_orders_received) * (cost_of_raw_materials_per_item)
+
+    - cost_of_hiring_and_firing_for_today
+        if (employee_variation_from_game_decisions_for_today) > 0
+            (constant_employee_hiring_cost) * (employee_variation_from_game_decisions_for_today)
+        elsif (employee_variation_from_game_decisions_for_today) < 0
+            (constant_employee_firing_cost) * (employee_variation_from_game_decisions_for_today)
+        else
+            0
+
+    - cost_of_salaries_for_today
+        (current_number_of_employees) * (constant_salary_per_employee)
+
+    - total_money_spent_today
+        (cost_of_raw_materials_for_today) + (cost_of_hiring_and_firing_for_today) + (cost_of_salaries_for_today)
+
+#SALES
+
+    - profit_per_item_in_order_received_today
+        if (contractual_maximum_number_of_days_to_deliver_order) <= (when_can_todays_orders_be_delivered)
+            (contractual_price_of_item_if_delivered_within_maximum_number_of_days_allowed)
+        else
+            0
+
+    - total_sales_for_today
+        (products_manufactured_today) * (profit_per_item_in_order_received_today)
+
+#TREASURY
+
+    - net_result_today
+        (total_sales_for_today) - (total_money_spent_today)
+
+    - total_treasury_today
+        (treasury_from_yesterday) + (net_result_today)
