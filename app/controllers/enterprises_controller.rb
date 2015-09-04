@@ -26,11 +26,13 @@ class EnterprisesController < ApplicationController
 # TREASURY VARIABLES
 
 
+
 # SALES VARIABLES
+
 
     # rp code tests
     @cost_of_raw_materials_for_today = @enterprise.cost_of_raw_materials_for_today(@today_orders_received)
-
+    raise
   end
 
   # ------Methods for before action---------
@@ -46,5 +48,4 @@ class EnterprisesController < ApplicationController
     @gamedecisions = GameDecision.where(enterprise_id: @enterprise)
   end
   # /----------------------------------------
-
 end

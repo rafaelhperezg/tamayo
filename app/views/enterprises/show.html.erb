@@ -10,11 +10,11 @@
               <div id="otherenterprises">
                 <h3><%= other.name %></h3>
               </div>
-              <div>
-                <div id="avatar"></div>
-              </div>
               <div id="playerscore">
                 <h5>5€</h5>
+              </div>
+              <div>
+                <div id="avatar"></div>
               </div>
             </div>
           <% end %>
@@ -50,7 +50,7 @@
 
             <div class="enterprise-workshop">
               <%= image_tag "workshop.png", width:"200" %>
-              <%= f.input :employees_variation %>
+              <%= f.input :employees_variation, input_html: {value: f.object.employees_variation || '0'} %>
               <div class="displaycost">
                 <span id="totalcosttext">
                   Total cost:
@@ -121,16 +121,16 @@
             <p class="card-value card-item"><strong> TODO </strong></p>
           </div>
           <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Treasury</strong></p>
-            <p class="card-value card-item"><strong> TODO€ </strong></p>
-          </div>
-          <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Salaries costs</strong></p>
+            <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Today's salaries costs</strong></p>
             <p class="card-value card-item"><strong> <%= @cost_of_salaries_for_today %>€</strong></p>
           </div>
           <div class="card-indicator text-center">
             <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Today materials cost</strong></p>
             <p class="card-value card-item"><strong> <%= @cost_of_raw_materials_for_today %>€</strong></p>
+          </div>
+          <div class="card-indicator text-center">
+            <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Treasury</strong></p>
+            <p class="card-value card-item"><strong> TODO€ </strong></p>
           </div>
         </div>
       </div>
