@@ -33,9 +33,9 @@
       <div class="col-md-7 enterprise-middle border-column text-center total-height">
         <%= simple_form_for [@enterprise, @gamedecision], url: enterprise_game_decisions_path(@enterprise), method: :post do |f| %>
 
-          <h1 class="text-center">Company</h1>
+          <h1 class="text-center"><%= @enterprise.name %></h1>
           <h1> Day # <%= @current_day %></h1>
-          <h3> Orders today: <%= @today_orders %> items</h3>
+          <h3> Today you have an order for <strong><%= @today_orders_received %></strong> items</h3>
           <hr>
           <hr>
 
