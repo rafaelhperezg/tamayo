@@ -15,13 +15,17 @@ class Enterprise < ActiveRecord::Base
   end
 
 #****TODO****
-  def total_to_produce_today(today_orders_received, current_backlog)
-    today_orders_received + current_backlog
+  def total_to_produce_today(today_orders_received, backlog)
+    prev_backlog = self.current_backlog
+    self.current_backlog = backlog(today_orders_received, backlog)
+    self.save
+    today_orders_received + prev_backlog
 
   end
 
-  def backlog
-    prov_calcul = total_to_produce_today - today_workshop_production_capacity
+  def backlog(today_orders_received, actual_backlog)
+    # prov_calcul = to_produce_today - today_workshop_production_capacity
+    prov_calcul = today_orders_received + actual_backlog - today_workshop_production_capacity
     if prov_calcul > 0
       prov_calcul
     else

@@ -14,12 +14,15 @@ class EnterprisesController < ApplicationController
     @current_day = @gamesession.current_day
 
 # PRODUCTION VARIABLES
-    @today_orders_received = ORDERS[@current_day]
-    @current_number_of_employees = @enterprise.current_number_of_employees
+    @today_orders_received              = ORDERS[@current_day]
+    @current_number_of_employees        = @enterprise.current_number_of_employees
     @today_workshop_production_capacity = @enterprise.today_workshop_production_capacity
     # @backlog_from_previous_day = @enterprise.backlog_from_previous_day(@previous_game_decision)
-    @current_backlog = @enterprise.current_backlog
-    @total_to_produce_today = @enterprise.total_to_produce_today(@today_orders_received, @current_backlog)
+    @total_to_produce_today             = @enterprise.total_to_produce_today(@today_orders_received, @enterprise.current_backlog)
+    # x                                   = @enterprise.current_backlog
+    # @enterprise.current_backlog         = @enterprise.backlog(@today_orders_received, x)
+
+    # @current_backlog = @enterprise.backlog(@total_to_produce_today)
 
 # COSTS VARIABLES =>Test for the 4 variables: OK
     @cost_of_salaries_for_today = @enterprise.cost_of_salaries_for_today

@@ -118,6 +118,10 @@
             <p class="card-value card-item"><strong><%= @today_workshop_production_capacity %> items/day</strong></p>
           </div>
           <div class="card-indicator text-center">
+            <p class="card-title card-item"><i class="fa fa-sign-out"></i><strong>Backlog tonight</strong></p>
+            <p class="card-value card-item"><strong><%= @enterprise.current_backlog%> items</strong></p>
+          </div>
+          <div class="card-indicator text-center">
             <p class="card-title card-item"><i class="fa fa-sign-out"></i><strong>Total to produce today</strong></p>
             <p class="card-value card-item"><strong><%= @total_to_produce_today%> items/day</strong></p>
           </div>
