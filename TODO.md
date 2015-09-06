@@ -1,11 +1,6 @@
--DONE=> Cannot have a negative amount of employees
 -display an error message if firing too much people
 
-Dans l'interface: présentation de l'entreprise la veille
-Afficher la commande du jour
 
-- Compute the best possible score (had the player known upcoming orders)
---> hardcore algorithm!
 
 
 --> Keep previous contract as default for subsequent decisions
@@ -18,6 +13,8 @@ if it does, it saves the day's decision with employee_variation = 0 and the same
 THEN increments to next day
 
 
+- Compute the best possible score (had the player known upcoming orders)
+--> hardcore algorithm!
 
 #PRODUCTIVITY
 
