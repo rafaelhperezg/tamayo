@@ -1,7 +1,7 @@
 
 #require './lib/tamayo/tamayocompute.rb'
 
-ORDERS = [20, 20, 20, 20, 20, 10, 20, 10, 20, 30, 30, 10, 30, 20, 10, 30, 10, 10, 10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30 , 50, 20]
+ORDERS = [20, 20, 20, 20, 20, 10, 20, 10, 20, 30, 30, 10, 30, 20, 10, 30, 10, 10, 10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30, 20,10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30 , 50]
 
 class EnterprisesController < ApplicationController
   before_action :find_enterprise, :find_game_session, :get_game_decisions
@@ -32,10 +32,10 @@ class EnterprisesController < ApplicationController
     @contract                            = Contract.find(@current_contract_id)
     @total_sales_for_today               = @enterprise.total_sales_for_today( @products_manufactured_today, @contract.timeframe, @when_can_todays_orders_be_delivered, @contract.price )
 
-# TREASURY VARIABLES
+# TREASURY VARIABLES =>Test for the 2 variables: OK
 
-    @net_result_today = @total_sales_for_today - @total_money_spent_today
-
+    @net_result_today                   = @total_sales_for_today - @total_money_spent_today
+    @current_cash                       = @enterprise.total_treasury_today(@net_result_today)
 
   end
 
