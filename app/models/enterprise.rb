@@ -15,17 +15,22 @@ class Enterprise < ActiveRecord::Base
   end
 
 #****TODO****
-  def total_to_produce_today(today_orders_received)
-    today_orders_received + backlog_at_the_end_of_previous_day
+  def total_to_produce_today(today_orders_received, backlog)
+    today_orders_received + backlog
   end
 
-  def backlog_at_the_end_of_previous_day
-    10
+  def backlog
+    prov_calcul = total_to_produce_today - today_workshop_production_capacity
+    if prov_calcul > 0
+      prov_calcul
+    else
+      0
+    end
   end
 
-  def backlog_at_the_end_of_current_day
-    total_to_produce_today - today_workshop_production_capacity
-  end
+  # def backlog_at_the_end_of_current_day
+  #   total_to_produce_today - today_workshop_production_capacity
+  # end
 
   def products_manufactured_today
     if today_workshop_production_capacity >= total_to_produce_today
@@ -38,6 +43,29 @@ class Enterprise < ActiveRecord::Base
   def when_can_todays_orders_be_delivered
     total_to_produce_today / today_workshop_production_capacity
   end
+  # def total_to_produce_today(today_orders_received)
+  #   today_orders_received + backlog_at_the_end_of_previous_day
+  # end
+
+  # def backlog_at_the_end_of_previous_day
+  #   10
+  # end
+
+  # def backlog_at_the_end_of_current_day
+  #   total_to_produce_today - today_workshop_production_capacity
+  # end
+
+  # def products_manufactured_today
+  #   if today_workshop_production_capacity >= total_to_produce_today
+  #     total_to_produce_today
+  #   else
+  #     today_workshop_production_capacity
+  #   end
+  # end
+
+  # def when_can_todays_orders_be_delivered
+  #   total_to_produce_today / today_workshop_production_capacity
+  # end
 # /--------------end PRODUCTION METHODS----------
 
 # -------------COSTS METHODS-------------
