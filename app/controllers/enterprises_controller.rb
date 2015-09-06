@@ -23,7 +23,7 @@ class EnterprisesController < ApplicationController
     @cost_of_salaries_for_today = @enterprise.cost_of_salaries_for_today
     @cost_of_raw_materials_for_today = @enterprise.cost_of_raw_materials_for_today(@today_orders_received)
     @cost_of_hiring_and_firing_for_today = @enterprise.cost_of_hiring_and_firing_for_today(@gamedecisions.last.employees_variation)
-
+    @total_money_spent_today = @cost_of_salaries_for_today + @cost_of_raw_materials_for_today + @cost_of_hiring_and_firing_for_today
 # TREASURY VARIABLES
 
 
