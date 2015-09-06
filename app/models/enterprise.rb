@@ -15,8 +15,9 @@ class Enterprise < ActiveRecord::Base
   end
 
 #****TODO****
-  def total_to_produce_today(today_orders_received, backlog)
-    today_orders_received + backlog
+  def total_to_produce_today(today_orders_received, current_backlog)
+    today_orders_received + current_backlog
+
   end
 
   def backlog
