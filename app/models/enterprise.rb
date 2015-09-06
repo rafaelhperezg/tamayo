@@ -6,7 +6,7 @@ class Enterprise < ActiveRecord::Base
 # --------------PRODUCTION METHODS----------
 
 #****DONE****
-  def current_number_of_employees
+  def current_number_of_employees # operateur
     game_session.initial_number_of_employees + game_decisions.sum(:employees_variation)
   end
 
