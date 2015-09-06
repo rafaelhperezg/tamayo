@@ -1,6 +1,8 @@
 class Enterprise < ActiveRecord::Base
   belongs_to :game_session
   has_many :game_decisions
+  # has_one :contract, through: :game_decisions
+  # upline: attempt sales methods sunday night rp
 
 
 # --------------PRODUCTION METHODS----------
@@ -79,6 +81,10 @@ class Enterprise < ActiveRecord::Base
 
 
 # --------------SALES METHODS--------------------
+  def current_contract_id #attempt sunday night rp
+    game_decisions.last.new_contract_id
+  end
+
   def profit_per_item_in_order_received_today
     if contractual_maximum_number_of_days_to_deliver_order <= when_can_todays_orders_be_delivered
       contractual_price_of_item_if_delivered_within_maximum_number_of_days_allowed
@@ -88,7 +94,7 @@ class Enterprise < ActiveRecord::Base
   end
 
   def total_sales_for_today
-    products_manufactured_today * profit_per_item_in_order_received_today
+    # products_manufactured_today * profit_per_item_in_order_received_today ()
   end
 # /--------------end SALES METHODS--------------
 
