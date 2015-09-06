@@ -126,9 +126,15 @@
             <p class="card-value card-item"><strong><%= @total_to_produce_today%> items/day</strong></p>
           </div>
           <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-hourglass-half"> </i><strong>Production queue</strong></p>
-            <p class="card-value card-item"><strong> 35 items </strong></p>
+            <p class="card-title card-item"><i class="fa fa-sign-out"></i><strong>Items Manufactured today</strong></p>
+            <p class="card-value card-item"><strong><%= @products_manufactured_today %> items</strong></p>
           </div>
+          <div class="card-indicator text-center">
+            <p class="card-title card-item"><i class="fa fa-sign-out"></i><strong>Delivery time for today orders</strong></p>
+            <p class="card-value card-item"><strong><%= @when_can_todays_orders_be_delivered %> days</strong></p>
+          </div>
+
+          <!-- costs -->
           <div class="card-indicator text-center">
             <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Today's salaries costs</strong></p>
             <p class="card-value card-item"><strong> <%= @cost_of_salaries_for_today %>€</strong></p>
