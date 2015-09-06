@@ -1,7 +1,6 @@
 // Place all the styles related to the enterprises controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 html,body
 {
   height: 100%;
@@ -47,5 +46,6 @@ html,body
   // width: 20%;
   padding: 2%;
   background-color: #DBEFFF;
+  overflow: scroll;
 }
 

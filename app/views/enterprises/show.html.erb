@@ -1,85 +1,79 @@
-  <div class="container-fluid padding-none total-height">
-    <div class="row margin-none total-height">
-      <div class="col-md-2 enterprise-profile border-column text-center total-height">
-        What's up <h3><%= @enterprise.name %></h3>
-        <hr>
-        <h4>Here's how you're doing:</h4>
-        <div class="flexcontainer">
-          <%  @all_enterprises.each do |other| %>
-            <div class="flexuser">
-              <div id="otherenterprises">
-                <h3><%= other.name %></h3>
-              </div>
-              <div id="playerscore">
-                <h5>5000€</h5>
-              </div>
-              <div>
-                <div id="avatar"></div>
-              </div>
+<div class="container-fluid padding-none total-height">
+  <div class="row margin-none total-height">
+    <div class="col-md-2 enterprise-profile border-column text-center total-height">
+      What's up <h3><%= @enterprise.name %></h3>
+      <hr>
+      <h4>Here's how you're doing:</h4>
+      <div class="flexcontainer">
+        <%  @all_enterprises.each do |other| %>
+          <div class="flexuser">
+            <div id="otherenterprises">
+              <h3><%= other.name %></h3>
             </div>
-          <% end %>
-        </div>
+            <div id="playerscore">
+              <h5>5000€</h5>
+            </div>
+            <div>
+              <div id="avatar"></div>
+            </div>
+          </div>
+        <% end %>
       </div>
-
-    <!--     Voir les performances des autres entreprises (seulement leurs liquidités)
-        Calcul des gains
-          du jour (+/-)
-          depuis le début de la session
-     -->
+    </div>
 
 
 
   <!-- MIDDLE OF THE PAGE (ENTERPRISE) -->
-      <div class="col-md-7 enterprise-middle border-column text-center total-height">
-        <%= simple_form_for [@enterprise, @gamedecision], url: enterprise_game_decisions_path(@enterprise), method: :post do |f| %>
-          <h1> Day # <%= @current_day %></h1>
-          <h3> Today you have an order for <strong><%= @today_orders_received %></strong> items</h3>
-          <hr>
-          <hr>
+    <div class="col-md-7 enterprise-middle border-column text-center total-height">
+      <%= simple_form_for [@enterprise, @gamedecision], url: enterprise_game_decisions_path(@enterprise), method: :post do |f| %>
+        <h1> Day # <%= @current_day %> (<%= @gamesession.virtual_duration - @current_day %> days left!) </h1>
+        <h3> Today you have an order for <strong><%= @today_orders_received %></strong> items</h3>
+        <hr>
+        <hr>
 
-          <div class="enterprise-design">
-            <div class="enterprise-arrow">
-              <%= image_tag "arrow-right.png", width:"50" %>
-            </div>
-
-            <div class="enterprise-orders">
-              <%= image_tag "orders.png", width:"100" %>
-              <%= image_tag "contract.png", width:"100", class:"block" %>
-              <p>Contract type:</p>
-              <%= f.select :new_contract_id, [["long", Contract.find_by(name: "long").id], ["court", Contract.find_by(name: "court").id]] %>
-            </div>
-
-            <div class="enterprise-workshop">
-              <%= image_tag "workshop.png", width:"200" %>
-              <%= f.input :employees_variation, input_html: {value: f.object.employees_variation || '0'} %>
-              <div class="displaycost">
-                <span id="totalcosttext">
-                  Total cost:
-                </span>
-                <span id="totalcost">0€</span>
-              </div>
-              <div id="buttonsplus" class="btn btn-success">Hire</div>
-              <div id="buttonsminus" class="btn btn-danger">Fire</div></br>
-              <%= f.button :submit, class: "btn btn-success margined" %>
-            </div>
-
-            <div class="enterprise-arrow">
-              <%= image_tag "arrow-right.png", width:"50" %>
-            </div>
-
-            <div class="enterprise-box">
-              <%= image_tag "box.png", width:"80" %>
-            </div>
-
-            <div class="enterprise-arrow">
-              <%= image_tag "arrow-right.png", width:"50" %>
-            </div>
-
-            <div class="enterprise-customer">
-              <%= image_tag "customer.png", width:"100" %>
-            </div>
+        <div class="enterprise-design">
+          <div class="enterprise-arrow">
+            <%= image_tag "arrow-right.png", width:"50" %>
           </div>
-        <% end %>
+
+          <div class="enterprise-orders">
+            <%= image_tag "orders.png", width:"100" %>
+            <%= image_tag "contract.png", width:"100", class:"block" %>
+            <p>Contract type:</p>
+            <%= f.input :new_contract_id, collection: [["Long", Contract.find_by(name: "long").id], ["Court", Contract.find_by(name: "court").id]], as: :radio_buttons %>
+          </div>
+
+          <div class="enterprise-workshop">
+            <%= image_tag "workshop.png", width:"200" %>
+            <%= f.input :employees_variation, input_html: {value: f.object.employees_variation || '0'} %>
+            <div class="displaycost">
+              <span id="totalcosttext">
+                Total cost:
+              </span>
+              <span id="totalcost">0€</span>
+            </div>
+            <div id="buttonsplus" class="btn btn-success">Hire</div>
+            <div id="buttonsminus" class="btn btn-danger">Fire</div><br>
+            <%= f.button :submit, class: "btn btn-success margined" %>
+          </div>
+
+          <div class="enterprise-arrow">
+            <%= image_tag "arrow-right.png", width:"50" %>
+          </div>
+
+          <div class="enterprise-box">
+            <%= image_tag "box.png", width:"80" %>
+          </div>
+
+          <div class="enterprise-arrow">
+            <%= image_tag "arrow-right.png", width:"50" %>
+          </div>
+
+          <div class="enterprise-customer">
+            <%= image_tag "customer.png", width:"100" %>
+          </div>
+        </div>
+      <% end %>
     </div>
 
     <script type="text/javascript">
@@ -101,76 +95,175 @@
     </script>
 
 
+
+
   <!-- /END MIDDLE OF THE PAGE (ENTERPRISE) -->
+    <div class="col-md-3 enterprise-indicators border-column text-center total-height">
+      <div class="bg-white text-center margin-center padding-top-bottom">
+        <h2>Company stats</h2>
 
-
-
-
-      <div class="col-md-3 enterprise-indicators border-column text-center total-height">
-        <div class="bg-white text-center margin-center padding-top-bottom">
-          <h2>Company stats</h2>
-          <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-users"></i> <strong>Employees</strong></p>
-            <p class="card-value card-item"><strong> <%= @current_number_of_employees %> </strong></p>
-          </div>
-          <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-sign-out"></i><strong>Production capacity</strong></p>
-            <p class="card-value card-item"><strong><%= @today_workshop_production_capacity %> items/day</strong></p>
-          </div>
-          <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-sign-out"></i><strong>Backlog tonight</strong></p>
-            <p class="card-value card-item"><strong><%= @enterprise.current_backlog%> items</strong></p>
-          </div>
-          <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-sign-out"></i><strong>Total to produce today</strong></p>
-            <p class="card-value card-item"><strong><%= @total_to_produce_today%> items/day</strong></p>
-          </div>
-          <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-sign-out"></i><strong>Items Manufactured today</strong></p>
-            <p class="card-value card-item"><strong><%= @products_manufactured_today %> items</strong></p>
-          </div>
-          <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-sign-out"></i><strong>Delivery time for today orders</strong></p>
-            <p class="card-value card-item"><strong><%= @when_can_todays_orders_be_delivered %> days</strong></p>
-          </div>
-
-          <!-- costs -->
-          <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Today's salaries costs</strong></p>
-            <p class="card-value card-item"><strong> <%= @cost_of_salaries_for_today %>€</strong></p>
-          </div>
-          <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Today materials cost</strong></p>
-            <p class="card-value card-item"><strong> <%= @cost_of_raw_materials_for_today %>€</strong></p>
-          </div>
-          <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Cost Hiring Firing Today</strong></p>
-            <p class="card-value card-item"><strong> <%= @cost_of_hiring_and_firing_for_today %>€</strong></p>
-          </div>
-          <div class="card-indicator text-center">
-            <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Total Money Spent Today</strong></p>
-            <p class="card-value card-item"><strong> <%= @total_money_spent_today %>€</strong></p>
-          </div>
-          <!-- sales information -->
-          <div class="card-indicator text-center">
-              <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Current Contract</strong></p>
-              <p class="card-value card-item"><strong> <%= @contract.name %></strong></p>
-          </div>
-          <div class="card-indicator text-center">
-              <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Total sales for today</strong></p>
-              <p class="card-value card-item"><strong> <%= @total_sales_for_today %> euros</strong></p>
-          </div>
-          <!-- treasury information -->
-          <div class="card-indicator text-center">
-              <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Net Result Today</strong></p>
-              <p class="card-value card-item"><strong> <%= @net_result_today %></strong></p>
-          </div>
-          <div class="card-indicator text-center">
-              <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Your Cash!</strong></p>
-              <p class="card-value card-item"><strong> <%= @enterprise.current_cash %></strong></p>
-          </div>
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-users"></i>
+            <strong>
+              Employees
+            </strong>
+          </p>
+          <p class="card-value card-item">
+            <strong>
+              <%= @current_number_of_employees %>
+            </strong>
+          </p>
         </div>
+
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-sign-out"></i>
+            <strong>
+              Production capacity
+            </strong>
+          </p>
+          <p class="card-value card-item">
+            <strong>
+              <%= @today_workshop_production_capacity %> items/day
+            </strong>
+          </p>
+        </div>
+
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-sign-out"></i>
+            <strong>Backlog tonight</strong>
+          </p>
+          <p class="card-value card-item">
+            <strong><%= @enterprise.current_backlog%> items</strong>
+          </p>
+        </div>
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-sign-out"></i>
+            <strong>Total to produce today</strong>
+          </p>
+          <p class="card-value card-item">
+            <strong><%= @total_to_produce_today%> items/day</strong>
+          </p>
+        </div>
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-sign-out"></i>
+            <strong>Items Manufactured today</strong>
+          </p>
+          <p class="card-value card-item">
+            <strong><%= @products_manufactured_today %> items</strong>
+          </p>
+        </div>
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-sign-out"></i>
+            <strong>Delivery time for today orders</strong>
+          </p>
+          <p class="card-value card-item">
+            <strong><%= @when_can_todays_orders_be_delivered %> days</strong>
+          </p>
+        </div>
+
+        <!-- costs -->
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-money"></i>
+            <strong>Today's salaries costs</strong>
+          </p>
+          <p class="card-value card-item">
+            <strong>
+              <%= @cost_of_salaries_for_today %>€
+            </strong>
+          </p>
+        </div>
+
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-money"></i>
+            <strong>
+              Today materials cost
+            </strong>
+          </p>
+          <p class="card-value card-item">
+            <strong>
+              <%= @cost_of_raw_materials_for_today %>€
+            </strong>
+          </p>
+        </div>
+
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-money"></i>
+            <strong>
+              Cost Hiring Firing Today
+            </strong>
+          </p>
+          <p class="card-value card-item">
+            <strong>
+              <%= @cost_of_hiring_and_firing_for_today %>€
+            </strong>
+          </p>
+        </div>
+
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-money"></i>
+            <strong>
+              Total Money Spent Today
+            </strong>
+          </p>
+          <p class="card-value card-item">
+            <strong>
+            <%= @total_money_spent_today %>€
+            </strong>
+          </p>
+        </div>
+
+        <!-- sales information -->
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-money"></i>
+            <strong>Current Contract</strong>
+          </p>
+          <p class="card-value card-item">
+            <strong><%= @contract.name %></strong>
+          </p>
+        </div>
+        <div class="card-indicator text-center">
+          <p class="card-title card-item"><i class="fa fa-money"></i>
+            <strong>Total sales for today</strong>
+          </p>
+          <p class="card-value card-item">
+            <strong><%= @total_sales_for_today %> euros</strong>
+          </p>
+        </div>
+        <!-- treasury information -->
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-money"></i>
+            <strong>Net Result Today</strong>
+          </p>
+          <p class="card-value card-item">
+            <strong> <%= @net_result_today %></strong>
+          </p>
+        </div>
+        <div class="card-indicator text-center">
+            <p class="card-title card-item">
+              <i class="fa fa-money"></i>
+              <strong>Treasury</strong>
+            </p>
+            <p class="card-value card-item">
+              <strong><%= @enterprise.current_cash %></strong>
+            </p>
+        </div>
+
       </div>
+    </div> <!-- end right side-->
+  </div>
+</div>
     <!-- TODO : add links to graphics with history -->
 
     <!--     Accéder aux indicateurs
@@ -183,10 +276,3 @@
           du jour (+/-)
           depuis le début de la session
      -->
-    </div>
-
-
-    <!-- En tant qu’élève je peux:
-
-    -->
-  </div>
