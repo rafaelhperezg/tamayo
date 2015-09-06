@@ -27,17 +27,14 @@ class EnterprisesController < ApplicationController
     @cost_of_hiring_and_firing_for_today = @enterprise.cost_of_hiring_and_firing_for_today(@gamedecisions.last.employees_variation)
     @total_money_spent_today             = @cost_of_salaries_for_today + @cost_of_raw_materials_for_today + @cost_of_hiring_and_firing_for_today
 
-# SALES VARIABLES
-    @current_contract_id = @previous_game_decision.new_contract_id
-    @contract            = Contract.find(@current_contract_id)
-    # @contract = @enterprise.contract.find(@current_contract_id)
-    @total_sales_for_today = @enterprise.total_sales_for_today( @products_manufactured_today, @contract.timeframe, @when_can_todays_orders_be_delivered, @contract.price )
-
-
+# SALES VARIABLES =>Test for the 3 variables: OK
+    @current_contract_id                 = @previous_game_decision.new_contract_id
+    @contract                            = Contract.find(@current_contract_id)
+    @total_sales_for_today               = @enterprise.total_sales_for_today( @products_manufactured_today, @contract.timeframe, @when_can_todays_orders_be_delivered, @contract.price )
 
 # TREASURY VARIABLES
 
-
+    @net_result_today = @total_sales_for_today - @total_money_spent_today
 
 
   end
