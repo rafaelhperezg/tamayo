@@ -151,9 +151,15 @@
             <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Total Money Spent Today</strong></p>
             <p class="card-value card-item"><strong> <%= @total_money_spent_today %>€</strong></p>
           </div>
-            <div class="card-indicator text-center">
+          <!-- sales methods -->
+          <div class="card-indicator text-center">
               <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Current Contract</strong></p>
               <p class="card-value card-item"><strong> <%= @contract.name %></strong></p>
+            </div>
+          </div>
+          <div class="card-indicator text-center">
+              <p class="card-title card-item"><i class="fa fa-money"></i> <strong>Total sales for today</strong></p>
+              <p class="card-value card-item"><strong> <%= @total_sales_for_today %> euros</strong></p>
             </div>
           </div>
           <div class="card-indicator text-center">

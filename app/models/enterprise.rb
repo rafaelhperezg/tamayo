@@ -81,20 +81,17 @@ class Enterprise < ActiveRecord::Base
 
 
 # --------------SALES METHODS--------------------
-  def current_contract_id #attempt sunday night rp
-    game_decisions.last.new_contract_id
-  end
 
-  def profit_per_item_in_order_received_today
-    if contractual_maximum_number_of_days_to_deliver_order <= when_can_todays_orders_be_delivered
-      contractual_price_of_item_if_delivered_within_maximum_number_of_days_allowed
+  def profit_per_item_in_order_received_today(contractual_maximum_number_of_days_to_deliver_order_data, when_can_todays_orders_be_delivered_data, contractual_price_of_item_if_delivered_within_maximum_number_of_days_allowed_data)
+    if contractual_maximum_number_of_days_to_deliver_order_data >= when_can_todays_orders_be_delivered_data
+      contractual_price_of_item_if_delivered_within_maximum_number_of_days_allowed_data
     else
       0
     end
   end
 
-  def total_sales_for_today
-    # products_manufactured_today * profit_per_item_in_order_received_today ()
+  def total_sales_for_today(products_manufactured_today_data,contract_timeframe, when_orders_delivered, contract_price )
+    products_manufactured_today_data * profit_per_item_in_order_received_today(contract_timeframe, when_orders_delivered, contract_price)
   end
 # /--------------end SALES METHODS--------------
 
