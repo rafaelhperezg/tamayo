@@ -1,9 +1,6 @@
 class Enterprise < ActiveRecord::Base
   belongs_to :game_session
   has_many :game_decisions
-  # has_one :contract, through: :game_decisions
-  # upline: attempt sales methods sunday night rp
-
 
 # --------------PRODUCTION METHODS----------
 
@@ -25,7 +22,6 @@ class Enterprise < ActiveRecord::Base
   end
 
   def backlog(today_orders_received, actual_backlog) #Test OK
-    # prov_calcul = to_produce_today - today_workshop_production_capacity
     prov_calcul = today_orders_received + actual_backlog - today_workshop_production_capacity
     if prov_calcul > 0
       prov_calcul
