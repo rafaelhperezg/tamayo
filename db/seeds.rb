@@ -72,3 +72,7 @@ enterprises.each { |enterprise| Enterprise.create(enterprise) }
 
 dec = GameDecision.new(day_of_decision:0, employees_variation:0,enterprise_id:1,new_contract_id:2)
 dec.save
+dec = GameDecision.new(day_of_decision:0, employees_variation:0,enterprise_id:2,new_contract_id:2)
+dec.save
+dec = GameDecision.new(day_of_decision:0, employees_variation:0,enterprise_id:3,new_contract_id:2)
+dec.save
