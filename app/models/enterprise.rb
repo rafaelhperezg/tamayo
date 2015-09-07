@@ -2,6 +2,18 @@ class Enterprise < ActiveRecord::Base
   belongs_to :game_session
   has_many :game_decisions
 
+
+# --------------Current day METHOD----------
+# This method should be used only when time is managed manually, when each user
+# take a decision or the page is reloaded. When we'll use a worker to update current_day
+# (in game session!) this method should not be used anymore
+  def update_current_day
+    self.current_day += 1
+    self.save
+    return self.current_day
+  end
+
+
 # --------------PRODUCTION METHODS----------
 
 #****DONE (and tested)****

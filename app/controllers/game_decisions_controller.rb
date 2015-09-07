@@ -11,7 +11,7 @@ class GameDecisionsController < ApplicationController
     @game_decision.day_of_decision = @enterprise.game_session.current_day
 
     if @game_decision.save
-      @game_session.current_day += 1
+      # @game_session.current_day += 1
       @game_session.save
       redirect_to enterprise_path(@enterprise)
     else

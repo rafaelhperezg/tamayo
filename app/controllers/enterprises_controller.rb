@@ -12,10 +12,16 @@ class EnterprisesController < ApplicationController
     @all_enterprises_sorted = @all_enterprises.sort_by { |enterprise| enterprise.current_cash}.reverse
     @gamedecision = GameDecision.new
     @previous_game_decision = GameDecision.where(enterprise_id: @enterprise).last
-    @current_day = @gamesession.current_day
+    # Next 2 lines will be needed when current_day will be managed by worker
+    # @gamesession.current_day = @gamesession.update_current_day
+    # @current_day = @gamesession.current_day
+    # Next 2 lines will be DELETED when current_day will be managed by worker
+    @enterprise.current_day = @enterprise.update_current_day
+    @current_day = @enterprise.current_day
+
 
 # PRODUCTION VARIABLES
-    @today_orders_received              = ORDERS[@current_day]
+    @today_orders_received              = ORDERS[@current_day -1] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]
     @current_number_of_employees        = @enterprise.current_number_of_employees
     @today_workshop_production_capacity = @enterprise.today_workshop_production_capacity
     @total_to_produce_today             = @enterprise.total_to_produce_today(@today_orders_received, @enterprise.current_backlog)
