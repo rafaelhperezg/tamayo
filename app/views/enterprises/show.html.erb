@@ -118,31 +118,16 @@
             </strong>
           </p>
         </div>
-
         <div class="card-indicator text-center">
           <p class="card-title card-item">
             <i class="fa fa-sign-out"></i>
             <strong>
-              Production capacity this morning
+              You start your day with a Backlog of:
             </strong>
           </p>
           <p class="card-value card-item">
             <strong>
-              <%= @today_workshop_production_capacity %> items/day
-            </strong>
-          </p>
-        </div>
-
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-sign-out"></i>
-            <strong>
-              Est. Backlog tonight
-            </strong>
-          </p>
-          <p class="card-value card-item">
-            <strong>
-              <%= @enterprise.current_backlog%> items
+              <%= @previous_backlog%> items
             </strong>
           </p>
         </div>
@@ -163,12 +148,38 @@
           <p class="card-title card-item">
             <i class="fa fa-sign-out"></i>
             <strong>
+              Production capacity this morning
+            </strong>
+          </p>
+          <p class="card-value card-item">
+            <strong>
+              <%= @today_workshop_production_capacity %> items/day
+            </strong>
+          </p>
+        </div>
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-sign-out"></i>
+            <strong>
               Est. Items Manufactured today
             </strong>
           </p>
           <p class="card-value card-item">
             <strong>
               <%= @products_manufactured_today %> items
+            </strong>
+          </p>
+        </div>
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-sign-out"></i>
+            <strong>
+              Est. Backlog tonight
+            </strong>
+          </p>
+          <p class="card-value card-item">
+            <strong>
+              <%= @enterprise.current_backlog%> items
             </strong>
           </p>
         </div>
