@@ -9,6 +9,7 @@ class EnterprisesController < ApplicationController
 
   def show
     @all_enterprises = Enterprise.all
+    @all_enterprises_sorted = @all_enterprises.sort_by { |enterprise| enterprise.current_cash}.reverse
     @gamedecision = GameDecision.new
     @previous_game_decision = GameDecision.where(enterprise_id: @enterprise).last
     @current_day = @gamesession.current_day
