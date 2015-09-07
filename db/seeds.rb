@@ -10,6 +10,7 @@
 GameSession.destroy_all
 Contract.destroy_all
 Enterprise.destroy_all
+GameDecision.destroy_all
 
 
 gamesessions = [
