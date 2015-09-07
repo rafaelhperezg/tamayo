@@ -94,19 +94,22 @@
     });
     </script>
 
-
-
-
   <!-- /END MIDDLE OF THE PAGE (ENTERPRISE) -->
+
+
+
+  <!-- RIGHT SIDE OF THE PAGE (COMPANY STATS) -->
     <div class="col-md-3 enterprise-indicators border-column text-center total-height">
       <div class="bg-white text-center margin-center padding-top-bottom">
         <h2>Company stats</h2>
+        <hr>
+        <h3>Production info</h3>
 
         <div class="card-indicator text-center">
           <p class="card-title card-item">
             <i class="fa fa-users"></i>
             <strong>
-              Employees
+              Employees this morning
             </strong>
           </p>
           <p class="card-value card-item">
@@ -115,12 +118,37 @@
             </strong>
           </p>
         </div>
-
         <div class="card-indicator text-center">
           <p class="card-title card-item">
             <i class="fa fa-sign-out"></i>
             <strong>
-              Production capacity
+              You start your day with a Backlog of:
+            </strong>
+          </p>
+          <p class="card-value card-item">
+            <strong>
+              <%= @previous_backlog%> items
+            </strong>
+          </p>
+        </div>
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-sign-out"></i>
+            <strong>
+              Total to produce today (compute this morning)
+            </strong>
+          </p>
+          <p class="card-value card-item">
+            <strong>
+              <%= @total_to_produce_today%> items/day
+            </strong>
+          </p>
+        </div>
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-sign-out"></i>
+            <strong>
+              Production capacity this morning
             </strong>
           </p>
           <p class="card-value card-item">
@@ -129,45 +157,50 @@
             </strong>
           </p>
         </div>
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-sign-out"></i>
+            <strong>
+              Est. Items Manufactured today
+            </strong>
+          </p>
+          <p class="card-value card-item">
+            <strong>
+              <%= @products_manufactured_today %> items
+            </strong>
+          </p>
+        </div>
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-sign-out"></i>
+            <strong>
+              Est. Backlog tonight
+            </strong>
+          </p>
+          <p class="card-value card-item">
+            <strong>
+              <%= @enterprise.current_backlog%> items
+            </strong>
+          </p>
+        </div>
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-sign-out"></i>
+            <strong>
+              Est. Delivery time for today orders
+            </strong>
+          </p>
+          <p class="card-value card-item">
+            <strong>
+              <%= @when_can_todays_orders_be_delivered %> days
+            </strong>
+          </p>
+        </div>
 
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-sign-out"></i>
-            <strong>Backlog tonight</strong>
-          </p>
-          <p class="card-value card-item">
-            <strong><%= @enterprise.current_backlog%> items</strong>
-          </p>
-        </div>
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-sign-out"></i>
-            <strong>Total to produce today</strong>
-          </p>
-          <p class="card-value card-item">
-            <strong><%= @total_to_produce_today%> items/day</strong>
-          </p>
-        </div>
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-sign-out"></i>
-            <strong>Items Manufactured today</strong>
-          </p>
-          <p class="card-value card-item">
-            <strong><%= @products_manufactured_today %> items</strong>
-          </p>
-        </div>
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-sign-out"></i>
-            <strong>Delivery time for today orders</strong>
-          </p>
-          <p class="card-value card-item">
-            <strong><%= @when_can_todays_orders_be_delivered %> days</strong>
-          </p>
-        </div>
+        <!-- costs information-->
+        <hr>
+        <h3>Costs-expenses Info</h3>
 
-        <!-- costs -->
         <div class="card-indicator text-center">
           <p class="card-title card-item">
             <i class="fa fa-money"></i>
@@ -198,7 +231,7 @@
           <p class="card-title card-item">
             <i class="fa fa-money"></i>
             <strong>
-              Cost Hiring Firing Today
+              Cost Hiring Firing to pay today(decisions yesterday)
             </strong>
           </p>
           <p class="card-value card-item">
@@ -212,7 +245,7 @@
           <p class="card-title card-item">
             <i class="fa fa-money"></i>
             <strong>
-              Total Money Spent Today
+              Est. Total Money Spent Today
             </strong>
           </p>
           <p class="card-value card-item">
@@ -223,40 +256,75 @@
         </div>
 
         <!-- sales information -->
+        <hr>
+        <h3>Sales Info</h3>
         <div class="card-indicator text-center">
           <p class="card-title card-item">
             <i class="fa fa-money"></i>
-            <strong>Current Contract</strong>
+            <strong>
+              Current Contract (this morning)
+            </strong>
           </p>
           <p class="card-value card-item">
-            <strong><%= @contract.name %></strong>
+            <strong>
+              <%= @contract.name %>
+            </strong>
           </p>
         </div>
         <div class="card-indicator text-center">
           <p class="card-title card-item"><i class="fa fa-money"></i>
-            <strong>Total sales for today</strong>
+            <strong>
+              Est. Total sales for today
+            </strong>
           </p>
           <p class="card-value card-item">
-            <strong><%= @total_sales_for_today %> euros</strong>
+            <strong>
+              <%= @total_sales_for_today %> euros
+            </strong>
           </p>
         </div>
+
         <!-- treasury information -->
+        <hr>
+        <h3>Treasury Info</h3>
+
         <div class="card-indicator text-center">
           <p class="card-title card-item">
             <i class="fa fa-money"></i>
-            <strong>Net Result Today</strong>
+            <strong>
+              Trasury at the beggining of day
+            </strong>
           </p>
           <p class="card-value card-item">
-            <strong> <%= @net_result_today %></strong>
+            <strong>
+              <%= @prev_current_cash %>
+            </strong>
+          </p>
+        </div>
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-money"></i>
+            <strong>
+              Est. Net Result Today
+            </strong>
+          </p>
+          <p class="card-value card-item">
+            <strong>
+              <%= @net_result_today %>
+            </strong>
           </p>
         </div>
         <div class="card-indicator text-center">
             <p class="card-title card-item">
               <i class="fa fa-money"></i>
-              <strong>Treasury</strong>
+              <strong>
+                Est. Treasury (at the end of the day)
+              </strong>
             </p>
             <p class="card-value card-item">
-              <strong><%= @enterprise.current_cash %></strong>
+              <strong>
+                <%= @enterprise.current_cash %>
+              </strong>
             </p>
         </div>
 

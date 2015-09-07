@@ -1,7 +1,7 @@
 
 #require './lib/tamayo/tamayocompute.rb'
 
-ORDERS = [20, 20, 20, 20, 20, 10, 20, 10, 20, 30, 30, 10, 30, 20, 10, 30, 10, 10, 10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30, 20,10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30 , 50]
+ORDERS = [20, 20, 20, 20, 20, 10, 20, 10, 20, 30, 30, 10, 30, 20, 10, 30, 10, 10, 10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30, 20,10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30 , 50, 10, 10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30, 20,10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10]
 
 class EnterprisesController < ApplicationController
   before_action :find_enterprise, :find_game_session, :get_game_decisions
@@ -24,6 +24,7 @@ class EnterprisesController < ApplicationController
     @today_orders_received              = ORDERS[@current_day -1] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]
     @current_number_of_employees        = @enterprise.current_number_of_employees
     @today_workshop_production_capacity = @enterprise.today_workshop_production_capacity
+    @previous_backlog                       = @enterprise.current_backlog #should be here because in next line backlog will be recalculated when calling total to produce
     @total_to_produce_today             = @enterprise.total_to_produce_today(@today_orders_received, @enterprise.current_backlog)
     @products_manufactured_today        = @enterprise.products_manufactured_today(@today_workshop_production_capacity, @total_to_produce_today)
     @when_can_todays_orders_be_delivered= @enterprise.when_can_todays_orders_be_delivered(@today_workshop_production_capacity, @total_to_produce_today)
@@ -42,6 +43,7 @@ class EnterprisesController < ApplicationController
 # TREASURY VARIABLES =>Test for the 2 variables: OK
 
     @net_result_today                   = @total_sales_for_today - @total_money_spent_today
+    @prev_current_cash                  = @enterprise.current_cash
     @current_cash                       = @enterprise.total_treasury_today(@net_result_today)
 
   end
