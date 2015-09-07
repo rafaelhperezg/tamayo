@@ -42,6 +42,7 @@ class EnterprisesController < ApplicationController
 # TREASURY VARIABLES =>Test for the 2 variables: OK
 
     @net_result_today                   = @total_sales_for_today - @total_money_spent_today
+    @prev_current_cash                  = @enterprise.current_cash
     @current_cash                       = @enterprise.total_treasury_today(@net_result_today)
 
   end
