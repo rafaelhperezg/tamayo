@@ -1,48 +1,31 @@
-
+<% if false %>
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-offset-4">
       <%= line_chart [
 
-      {name: "Series A", data: [
-                ['Year', 'Sales'],
-                ['2004',  1000],
-                ['2005',  1200],
-                ['2006',  700],
-                ['2007',  1030],
-                ['2008',  500],
-                ['2009',  300],
-                ['2010',  200],
-                ['2011',  900],
-                ['2012',  1500],
-                ['2013',  2000],
-                ['2014',  1500],
-                ['2015',  2500],
-                ['2016',  3000],
-                ['2017',  3500],
-                ]},
+                        { name:
+                            "Tamayo Inc.",
+                          data: [
+                                  ['Day', 'Treasury'],
+                                  ['Day 1',  100],
+                                  ['Day 2',  200],
+                                  ['Day 3',  400],
+                                  ['Day 4',  800],
+                                  ['Day 5',  1600],
+                                  ['Day 6',  3200],
+                                ]
+                        },
+                      ]
 
-      {name: "Series B", data: [
-                ['Year', 'Sales'],
-                ['2004',  1000],
-                ['2005',  1100],
-                ['2006',  600],
-                ['2007',  1030],
-                ['2008',  300],
-                ['2009',  900],
-                ['2010',  4000],
-                ['2011',  2500],
-                ['2012',  1500],
-                ['2013',  800],
-                ['2014',  3000],
-                ['2015',  1500],
-                ['2016',  1000],
-                ['2017',  1200],
-                ]}]%>
+      %>
     </div>
   </div>
 </div>
 
+<div id="chart-4" style="height: 300px; text-align: center; color: #999; line-height: 300px; font-size: 14px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif;">Loading...</div><script type="text/javascript">
+  new Chartkick.LineChart("chart-4", [{"name":"Tamayo Inc.","data":[["Day","Treasury"],["Day 1",500],["Day 2",200],["Day 3",400],["Day 4",800],["Day 5",1600],["Day 6",3200]]}], {});
+</script>
+<% end %>
 
-<%= line_chart json_decisions %>
-
+<%= line_chart({20.day.ago => 5, 1368174456 => 4, "2013-05-07 00:00:00 UTC" => 7}) %>
