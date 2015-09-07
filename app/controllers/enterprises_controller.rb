@@ -12,7 +12,10 @@ class EnterprisesController < ApplicationController
     @all_enterprises_sorted = @all_enterprises.sort_by { |enterprise| enterprise.current_cash}.reverse
     @gamedecision = GameDecision.new
     @previous_game_decision = GameDecision.where(enterprise_id: @enterprise).last
+    @gamesession.current_day += 1
+    @gamesession.save
     @current_day = @gamesession.current_day
+
 
 # PRODUCTION VARIABLES
     @today_orders_received              = ORDERS[@current_day]
