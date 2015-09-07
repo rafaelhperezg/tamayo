@@ -40,7 +40,7 @@
             <%= image_tag "orders.png", width:"100" %>
             <%= image_tag "contract.png", width:"100", class:"block" %>
             <p>Contract type:</p>
-            <%= f.input :new_contract_id, collection: [["Long", Contract.find_by(name: "long").id], ["Court", Contract.find_by(name: "court").id]], as: :radio_buttons %>
+            <%= f.input :new_contract_id, collection: [["Long", Contract.find_by(name: "long").id], ["Court", Contract.find_by(name: "court").id]], as: :radio_buttons, checked: @current_contract_id %>
           </div>
 
           <div class="enterprise-workshop">
