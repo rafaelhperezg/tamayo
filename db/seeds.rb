@@ -49,19 +49,22 @@ enterprises = [
     name: "Tamayo Inc.",
     game_session_id: 1,
     current_backlog: 0,
-    current_cash: 10000
+    current_cash: 10000,
+    current_day: 0
   },
   {
     name: "Rafa Inc.",
     game_session_id: 1,
     current_backlog: 0,
-    current_cash: 10000
+    current_cash: 10000,
+    current_day: 0
   },
   {
     name: "PE Inc.",
     game_session_id: 1,
     current_backlog: 0,
-    current_cash: 10000
+    current_cash: 10000,
+    current_day:0
   }
 
 ]
