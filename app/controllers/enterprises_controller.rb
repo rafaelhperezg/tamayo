@@ -14,8 +14,8 @@ class EnterprisesController < ApplicationController
     @previous_game_decision = GameDecision.where(enterprise_id: @enterprise).last
     # @gamesession.current_day = @gamesession.update_current_day
     # @current_day = @gamesession.current_day
-    # @gamesession.current_day = @gamesession.update_current_day
-    # @current_day = @gamesession.current_day
+    @enterprise.current_day = @enterprise.update_current_day
+    @current_day = @enterprise.current_day
 
 
 # PRODUCTION VARIABLES
