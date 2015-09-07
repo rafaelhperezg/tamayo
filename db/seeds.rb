@@ -16,7 +16,7 @@ gamesessions = [
   {
     virtual_duration: 100,
     real_duration: 10,
-    initial_amount_of_cash: 1000,
+    initial_amount_of_cash: 10000,
     initial_number_of_employees: 1,
     salary_per_employee: 100,
     hiring_cost: 200,
@@ -25,6 +25,7 @@ gamesessions = [
     material_cost: 10,
     name: "Difficulty: Easy",
     current_day: 1,
+    initial_backlog: 0,
   }
 ]
 
@@ -46,15 +47,21 @@ contracts = [
 enterprises = [
   {
     name: "Tamayo Inc.",
-    game_session_id: 1
+    game_session_id: 1,
+    current_backlog: 0,
+    current_cash: 10000
   },
   {
     name: "Rafa Inc.",
-    game_session_id: 1
+    game_session_id: 1,
+    current_backlog: 0,
+    current_cash: 10000
   },
   {
     name: "PE Inc.",
-    game_session_id: 1
+    game_session_id: 1,
+    current_backlog: 0,
+    current_cash: 10000
   }
 
 ]
@@ -62,3 +69,5 @@ enterprises = [
 gamesessions.each { |gamesession| GameSession.create(gamesession) }
 contracts.each { |contract| Contract.create(contract) }
 enterprises.each { |enterprise| Enterprise.create(enterprise) }
+
+# dec = GameDecision.new(day_of_decision:0, employees_variation:0,enterprise_id:1,new_contract_id:1)

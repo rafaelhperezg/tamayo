@@ -132,18 +132,42 @@
 
         <div class="card-indicator text-center">
           <p class="card-title card-item">
-            <i class="fa fa-hourglass-half"> </i>
-            <strong>
-              Production queue
-            </strong>
+            <i class="fa fa-sign-out"></i>
+            <strong>Backlog tonight</strong>
           </p>
           <p class="card-value card-item">
-            <strong>
-              35 items
-            </strong>
+            <strong><%= @enterprise.current_backlog%> items</strong>
+          </p>
+        </div>
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-sign-out"></i>
+            <strong>Total to produce today</strong>
+          </p>
+          <p class="card-value card-item">
+            <strong><%= @total_to_produce_today%> items/day</strong>
+          </p>
+        </div>
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-sign-out"></i>
+            <strong>Items Manufactured today</strong>
+          </p>
+          <p class="card-value card-item">
+            <strong><%= @products_manufactured_today %> items</strong>
+          </p>
+        </div>
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-sign-out"></i>
+            <strong>Delivery time for today orders</strong>
+          </p>
+          <p class="card-value card-item">
+            <strong><%= @when_can_todays_orders_be_delivered %> days</strong>
           </p>
         </div>
 
+        <!-- costs -->
         <div class="card-indicator text-center">
           <p class="card-title card-item">
             <i class="fa fa-money"></i>
@@ -198,22 +222,46 @@
           </p>
         </div>
 
+        <!-- sales information -->
         <div class="card-indicator text-center">
           <p class="card-title card-item">
             <i class="fa fa-money"></i>
-            <strong>
-              Treasury
-            </strong>
+            <strong>Current Contract</strong>
           </p>
           <p class="card-value card-item">
-            <strong>
-              10 535€
-            </strong>
+            <strong><%= @contract.name %></strong>
           </p>
+        </div>
+        <div class="card-indicator text-center">
+          <p class="card-title card-item"><i class="fa fa-money"></i>
+            <strong>Total sales for today</strong>
+          </p>
+          <p class="card-value card-item">
+            <strong><%= @total_sales_for_today %> euros</strong>
+          </p>
+        </div>
+        <!-- treasury information -->
+        <div class="card-indicator text-center">
+          <p class="card-title card-item">
+            <i class="fa fa-money"></i>
+            <strong>Net Result Today</strong>
+          </p>
+          <p class="card-value card-item">
+            <strong> <%= @net_result_today %></strong>
+          </p>
+        </div>
+        <div class="card-indicator text-center">
+            <p class="card-title card-item">
+              <i class="fa fa-money"></i>
+              <strong>Treasury</strong>
+            </p>
+            <p class="card-value card-item">
+              <strong><%= @enterprise.current_cash %></strong>
+            </p>
         </div>
 
       </div>
-    </div> <!-- end -->
+    </div> <!-- end right side-->
   </div>
 </div>
     <!-- TODO : add links to graphics with history -->

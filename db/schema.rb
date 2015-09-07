@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150903171813) do
+ActiveRecord::Schema.define(version: 20150906173118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20150903171813) do
     t.integer  "game_session_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "current_backlog"
+    t.integer  "current_cash"
   end
 
   add_index "enterprises", ["game_session_id"], name: "index_enterprises_on_game_session_id", using: :btree
@@ -62,6 +64,7 @@ ActiveRecord::Schema.define(version: 20150903171813) do
     t.datetime "updated_at",                  null: false
     t.string   "name"
     t.integer  "current_day"
+    t.integer  "initial_backlog"
   end
 
   add_foreign_key "contracts", "game_sessions"
