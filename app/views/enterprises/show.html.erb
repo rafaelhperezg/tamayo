@@ -141,7 +141,9 @@
             </strong>
           </p>
           <p class="card-value card-item">
-            <strong><%= @enterprise.current_backlog%> items</strong>
+            <strong>
+              <%= @enterprise.current_backlog%> items
+            </strong>
           </p>
         </div>
         <div class="card-indicator text-center">
@@ -248,18 +250,26 @@
         <div class="card-indicator text-center">
           <p class="card-title card-item">
             <i class="fa fa-money"></i>
-            <strong>Current Contract (this morning)</strong>
+            <strong>
+              Current Contract (this morning)
+            </strong>
           </p>
           <p class="card-value card-item">
-            <strong><%= @contract.name %></strong>
+            <strong>
+              <%= @contract.name %>
+            </strong>
           </p>
         </div>
         <div class="card-indicator text-center">
           <p class="card-title card-item"><i class="fa fa-money"></i>
-            <strong>Est. Total sales for today</strong>
+            <strong>
+              Est. Total sales for today
+            </strong>
           </p>
           <p class="card-value card-item">
-            <strong><%= @total_sales_for_today %> euros</strong>
+            <strong>
+              <%= @total_sales_for_today %> euros
+            </strong>
           </p>
         </div>
 
@@ -270,28 +280,40 @@
         <div class="card-indicator text-center">
           <p class="card-title card-item">
             <i class="fa fa-money"></i>
-            <strong>Trasury at the beggining of day</strong>
+            <strong>
+              Trasury at the beggining of day
+            </strong>
           </p>
           <p class="card-value card-item">
-            <strong> <%= @prev_current_cash %></strong>
+            <strong>
+              <%= @prev_current_cash %>
+            </strong>
           </p>
         </div>
         <div class="card-indicator text-center">
           <p class="card-title card-item">
             <i class="fa fa-money"></i>
-            <strong>Est. Net Result Today</strong>
+            <strong>
+              Est. Net Result Today
+            </strong>
           </p>
           <p class="card-value card-item">
-            <strong> <%= @net_result_today %></strong>
+            <strong>
+              <%= @net_result_today %>
+            </strong>
           </p>
         </div>
         <div class="card-indicator text-center">
             <p class="card-title card-item">
               <i class="fa fa-money"></i>
-              <strong>Est. Treasury (at the end of the day</strong>
+              <strong>
+                Est. Treasury (at the end of the day)
+              </strong>
             </p>
             <p class="card-value card-item">
-              <strong><%= @enterprise.current_cash %></strong>
+              <strong>
+                <%= @enterprise.current_cash %>
+              </strong>
             </p>
         </div>
 

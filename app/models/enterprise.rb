@@ -69,7 +69,7 @@ class Enterprise < ActiveRecord::Base
       game_session.hiring_cost * employee_variation_from_game_decisions_for_today
     # (constant_employee_hiring_cost) * (employee_variation_from_game_decisions_for_today)
     elsif (employee_variation_from_game_decisions_for_today) < 0
-      game_session.firing_cost * employee_variation_from_game_decisions_for_today
+      game_session.firing_cost * employee_variation_from_game_decisions_for_today * -1 #as variation is negatif when firing we need minus one to make positif the expense
     # (constant_employee_firing_cost) * (employee_variation_from_game_decisions_for_today)
     else
       0
