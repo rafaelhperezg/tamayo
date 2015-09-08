@@ -37,14 +37,14 @@
           </div>
 
           <div class="enterprise-orders">
-            <%= image_tag "orders.png", width:"100" %>
-            <%= image_tag "contract.png", width:"100", class:"block" %>
+            <%#= image_tag "orders.png", width:"100" %>
+            <%#= image_tag "contract.png", width:"100", class:"block" %>
             <p>Contract type:</p>
             <%= f.input :new_contract_id, collection: [["Long", Contract.find_by(name: "long").id], ["Court", Contract.find_by(name: "court").id]], as: :radio_buttons, checked: @current_contract_id %>
           </div>
 
           <div class="enterprise-workshop">
-            <%= image_tag "workshop.png", width:"200" %>
+            <%#= image_tag "workshop.png", width:"200" %>
             <%= f.input :employees_variation, input_html: {value: f.object.employees_variation || '0'} %>
             <div class="displaycost">
               <span id="totalcosttext">
@@ -56,7 +56,6 @@
             <div id="buttonsminus" class="btn btn-danger">Fire</div><br>
             <%= f.button :submit, class: "btn btn-success margined" %>
           </div>
-
           <div class="enterprise-arrow">
             <%= image_tag "arrow-right.png", width:"50" %>
           </div>
