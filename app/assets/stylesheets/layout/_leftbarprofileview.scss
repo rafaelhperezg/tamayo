@@ -11,19 +11,6 @@
   justify-content: center;
 }
 
-#avatar {
-  background-image: url(https://www.schmidtlaw.com/wp-content/uploads/factory-worker.jpeg);
-  background-size: cover;
-  background-position: center;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  align-self: center;
-  text-align: center;
-  justify-content: center;
-  margin: 5px;
-}
-
 .flexcontainer {
   height: 200px;
   width: 100%;
@@ -34,90 +21,27 @@
   margin-bottom: 100px;
 }
 
-.flexuser {
+.enterprise-card {
   border: solid 1px black;
+  border-radius: 2px;
   margin-bottom: 10px;
   background-color: $color4;
-}
+  &-name {
 
-#otherenterprises {
-    align-self: flex-start;
-    align-content: stretch;
-    background-color: $color3;
-    width: 100%;
-    height: 30%;
+  };
+  &-treasury {
+
+  };
+  &-avatar {
+    background-image: url(https://www.schmidtlaw.com/wp-content/uploads/factory-worker.jpeg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    align-self: center;
     text-align: center;
+    justify-content: center;
+    margin: 5px;
+  }
 }
-
-#otherenterprises h3 {
-  align-self: center;
-}
-
-#playerscore {
-    align-self: flex-end;
-    align-content: stretch;
-    background-color: $color2;
-    text-align: center;
-    width: 70%;
-    height: 70%;
-}
-
-#playerscore h5 {
-  align-self: center;
-}
-
-// #profilepic {
-//     width: 30%;
-//     height: 70%;
-//       align-self: center;
-//     text-align: center;
-//     justify-content: center;
-
-// }
-
-// #profilepic #avatar {
-//   background-image: url(https://www.schmidtlaw.com/wp-content/uploads/factory-worker.jpeg);
-//   background-size: cover;
-//   background-position: center;
-//   border-radius: 50%;
-//   width: 50px;
-//   height: 50px;
-//   align-self: center;
-//     text-align: center;
-//     justify-content: center;
-// }
-
-.flexcard {
-    border: solid 1px black;
-    height: 200px;
-    width: 300px;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    flex-direction: row;
-}
-
-// #enterpriseperson {
-//     align-self: flex-start;
-//     align-content: stretch;
-//     background-color: grey;
-//     width: 100%;
-//     height: 30%;
-//     text-align: center;
-// }
-
-// #enterpriseperson h3 {
-//     align-self: center;
-// }
-// #enterprisescore {
-//     align-self: flex-end;
-//     align-content: stretch;
-//     background-color: beige;
-//     text-align: center;
-//     width: 70%;
-//     height: 70%;
-// }
-
-// #enterprisescore h5 {
-//     align-self: center;
-// }

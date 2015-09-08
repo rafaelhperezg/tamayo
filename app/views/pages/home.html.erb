@@ -1,48 +1,67 @@
+<%= pie_chart GameDecision.group(:new_contract_id).count %>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-offset-4">
-      <%= line_chart [
 
-      {name: "Series A", data: [
-                ['Year', 'Sales'],
-                ['2004',  1000],
-                ['2005',  1200],
-                ['2006',  700],
-                ['2007',  1030],
-                ['2008',  500],
-                ['2009',  300],
-                ['2010',  200],
-                ['2011',  900],
-                ['2012',  1500],
-                ['2013',  2000],
-                ['2014',  1500],
-                ['2015',  2500],
-                ['2016',  3000],
-                ['2017',  3500],
-                ]},
+<%#= line_chart @goals.map { |goal|
+  {
+    :name => goal.name,
+    :data => goal.feats.group_by_week(:created_at).count
+  }
+} %>
 
-      {name: "Series B", data: [
-                ['Year', 'Sales'],
-                ['2004',  1000],
-                ['2005',  1100],
-                ['2006',  600],
-                ['2007',  1030],
-                ['2008',  300],
-                ['2009',  900],
-                ['2010',  4000],
-                ['2011',  2500],
-                ['2012',  1500],
-                ['2013',  800],
-                ['2014',  3000],
-                ['2015',  1500],
-                ['2016',  1000],
-                ['2017',  1200],
-                ]}]%>
+
+
+<%# raise %>
+
+
+
+<%#= line_chart @enterprise.game_decisions.map { |t| [t.day_of_decision, t.employees_variation  ] } %>
+
+<% if false %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-offset-4">
+        <%= line_chart [
+
+                          { data: [
+                                    ['Day 1',  100],
+                                    ['Day 2',  200],
+                                    ['Day 3',  400],
+                                    ['Day 4',  800],
+                                    ['Day 5',  1600],
+                                    ['Day 6',  3200],
+                                  ]
+                          },
+                        ]
+
+        %>
+      </div>
     </div>
   </div>
-</div>
+<%# end %>
 
 
-<%= line_chart json_decisions %>
+<%# if false %>
+  <div id="chart-1" style="height: 300px; text-align: center; color: #999; line-height: 300px; font-size: 14px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif;">Loading...</div>
 
+  <script type="text/javascript">
+  new Chartkick.LineChart("chart-1", {"1":11,"2":6,"3":3,"4":2,"5":5,"6":3,"7":8,"8":6,"9":6,"10":12,"2":5,"2":5,"2":3,"2":1,"2":10,"2":1,"2":3,"2":2,"2":3,"2":2,"2":8}, {});
+  </script>
+
+        <%= line_chart [
+
+                          { name:
+                              "Tamayo Inc.",
+                            data: [
+                                    ['Day', 'Treasury'],
+                                    ['Day 1',  100],
+                                    ['Day 2',  200],
+                                    ['Day 3',  400],
+                                    ['Day 4',  800],
+                                    ['Day 5',  1600],
+                                    ['Day 6',  3200],
+                                  ]
+                          },
+                        ]
+
+        %>
+<% end %>
