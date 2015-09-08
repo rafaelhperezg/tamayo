@@ -21,10 +21,47 @@
       </div>
     </div>
 
-<% raise %>
-
   <!-- MIDDLE OF THE PAGE (ENTERPRISE) -->
     <div class="col-md-7 enterprise-middle border-column text-center total-height">
+    <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        See the current ranking
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Here's where you stand right now relative to other enterprises</h4>
+            </div>
+            <div class="modal-body">
+              <%  @all_enterprises_sorted.each do |other| %>
+                <div class="enterprise-card">
+                  <div class="enterprise-card-name">
+                    <h3><%= other.name %></h3>
+                  </div>
+                  <div class="enterprise-card-treasury">
+                    <h5><%= other.current_cash %>€</h5>
+                  </div>
+                  <div>
+                    <!-- <div id="avatar"></div> -->
+                  </div>
+                </div>
+              <% end %>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+<%# raise %>
+
       <%= simple_form_for [@enterprise, @gamedecision], url: enterprise_game_decisions_path(@enterprise), method: :post do |f| %>
         <h1> Day # <%= @current_day %> (<%= @gamesession.virtual_duration - @current_day %> days left!) </h1>
         <h3> Today you have an order for <strong><%= @today_orders_received %></strong> items</h3>

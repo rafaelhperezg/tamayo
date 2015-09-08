@@ -1,10 +1,9 @@
 module EnterprisesHelper
-  def workshop_productivity
-    employees * productivity_per_employee
+  def print_toto
+    Enterprise.find(1).current_number_of_employees
   end
 
   def production_queue
-
   end
 end
 
