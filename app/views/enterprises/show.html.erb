@@ -1,6 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs nav-pills" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#overview" role="tab" data-toggle="tab">
+            Overview
+            <i class="fa fa-dashboard"></i>
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#stats" role="tab" data-toggle="tab">
+            Stats
+            <i class="fa fa-bar-chart"></i>
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#doc" role="tab" data-toggle="tab">
+            Documentation
+            <i class="fa fa-book"></i>
+          </a>
+        </li>
+        <li role="presentation" class="cta"><a href="#form" class="btn btn-danger pull-right" role="tab" data-toggle="tab">Make a decision</a></li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="overview">
+          <h2>Overview</h2>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="stats">
+          <h2>Statistics</h2>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="form">
+          <h2>Make a decision</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<% if false %>
+
 <div class="container-fluid padding-none total-height">
   <div class="row margin-none total-height">
     <div class="col-md-2 enterprise-profile border-column text-center total-height">
+
       <span>What's up <h3><%= @enterprise.name %></h3></span>
       <hr>
       <h4>Here's how you're doing:</h4>
@@ -20,8 +66,6 @@
         <% end %>
       </div>
     </div>
-
-
 
   <!-- MIDDLE OF THE PAGE (ENTERPRISE) -->
     <div class="col-md-7 enterprise-middle border-column text-center total-height">
@@ -332,6 +376,8 @@
     </div> <!-- end right side-->
   </div>
 </div>
+
+<% end %>
     <!-- TODO : add links to graphics with history -->
 
     <!--     Accéder aux indicateurs
