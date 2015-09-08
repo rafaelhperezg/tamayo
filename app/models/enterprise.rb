@@ -1,3 +1,5 @@
+ORDERS = [20, 20, 20, 20, 20, 10, 20, 10, 20, 30, 30, 10, 30, 20, 10, 30, 10, 10, 10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30, 20,10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30 , 50, 10, 10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30, 20,10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10]
+
 class Enterprise < ActiveRecord::Base
   belongs_to :game_session
   has_many :game_decisions
@@ -114,28 +116,32 @@ class Enterprise < ActiveRecord::Base
 # /--------------end TREASURY METHODS---------------
 
    def hyper_method
+
+    current_day = self.current_day
+
      # PRODUCTION VARIABLES
-     today_orders_received           = ORDERS[@current_day -1] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]
+     today_orders_received           = ORDERS[current_day -1] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]
      self.current_employees         = self.current_number_of_employees #method
      self.current_prod_capacity     = self.today_workshop_production_capacity #method
      previous_backlog               = self.current_backlog # column
      self.current_to_produce        = self.total_to_produce_today(today_orders_received, self.current_backlog) #method
-     self.est_manufactured_today    = self.products_manufactured_today(today_workshop_production_capacity, total_to_produce_today) # method
-     self.est_delivery_time         = self.when_can_todays_orders_be_delivered(@today_workshop_production_capacity, @total_to_produce_today)
+
+     self.est_manufactured_today    = self.products_manufactured_today(self.current_prod_capacity, self.current_to_produce) # method
+     self.est_delivery_time         = self.when_can_todays_orders_be_delivered(self.current_prod_capacity, self.current_to_produce)
 
      # COSTS VARIABLES
      self.current_salaries           = self.cost_of_salaries_for_today #Method
      self.current_raw_materials      = self.cost_of_raw_materials_for_today(today_orders_received) #method
-     self.current_cost_hiring_firing = self.cost_of_hiring_and_firing_for_today(@gamedecisions.last.employees_variation)#GAME DECISIONS A CALCULER
-     # Enterprise.est_total_costs_today      = current_salaries  + cost_of_raw_materials_for_today + cost_of_hiring_and_firing_for_today
+     self.current_cost_hiring_firing = self.cost_of_hiring_and_firing_for_today(game_decisions.last.employees_variation)
+     total_money_spent_today         = self.current_salaries + self.current_raw_materials + self.current_cost_hiring_firing
 
      # SALES VARIABLES =>Test for the 3 variables: OK
-     # Enterprise.current_contract_id      = @previous_game_decision.new_contract_id #A CALCULER PREV GAME DECISSION
-     # contract                            = Contract.find(@current_contract_id)
-     self.est_total_sales_today      = self.total_sales_for_today( @products_manufactured_today, @contract.timeframe, @when_can_todays_orders_be_delivered, @contract.price )
+     self.current_contract_id        = game_decisions.last.new_contract_id #A CALCULER PREV GAME DECISSION
+     contract                        = Contract.find(self.current_contract_id)
+     self.est_total_sales_today      = self.total_sales_for_today( self.est_manufactured_today, contract.timeframe, self.est_delivery_time, contract.price )
 
      # TREASURY VARIABLES =>Test for the 2 variables: OK
-     self.est_net_result_today       = self.est_total_sales_today - self.total_money_spent_today
+     self.est_net_result_today       = self.est_total_sales_today - total_money_spent_today
      # @prev_current_cash              = @e.current_cash
      self.current_cash               = self.total_treasury_today(self.est_net_result_today) #METHOD
 
