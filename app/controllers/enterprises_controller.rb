@@ -1,13 +1,14 @@
-
-#require './lib/tamayo/tamayocompute.rb'
-
 ORDERS = [20, 20, 20, 20, 20, 10, 20, 10, 20, 30, 30, 10, 30, 20, 10, 30, 10, 10, 10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30, 20,10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30 , 50, 10, 10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30, 20, 10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 20, 10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 20, 10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10]
 
 class EnterprisesController < ApplicationController
   before_action :find_enterprise, :find_game_session, :get_game_decisions
   # todo gamedecisions, current_day
 
-  def show
+  def yoyo
+    puts "yoyo"
+  end
+
+  def self.show
     @all_enterprises        = Enterprise.all
     @all_enterprises_sorted = @all_enterprises.sort_by { |enterprise| enterprise.current_cash}.reverse
     @gamedecision           = GameDecision.new

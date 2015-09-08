@@ -1,6 +1,20 @@
-<% raise %>
+<%= pie_chart GameDecision.group(:new_contract_id).count %>
 
-<%= line_chart @enterprise.game_decisions.map { |t| [t.day_of_decision, t.employees_variation  ] } %>
+
+<%#= line_chart @goals.map { |goal|
+  {
+    :name => goal.name,
+    :data => goal.feats.group_by_week(:created_at).count
+  }
+} %>
+
+
+
+<%# raise %>
+
+
+
+<%#= line_chart @enterprise.game_decisions.map { |t| [t.day_of_decision, t.employees_variation  ] } %>
 
 <% if false %>
   <div class="container">
@@ -23,10 +37,10 @@
       </div>
     </div>
   </div>
-<% end %>
+<%# end %>
 
 
-<% if false %>
+<%# if false %>
   <div id="chart-1" style="height: 300px; text-align: center; color: #999; line-height: 300px; font-size: 14px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif;">Loading...</div>
 
   <script type="text/javascript">
