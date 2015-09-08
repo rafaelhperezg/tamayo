@@ -18,7 +18,7 @@ class EnterprisesController < ApplicationController
     # @gamesession.current_day = @gamesession.update_current_day
     # @current_day = @gamesession.current_day
     # Next 2 lines will be DELETED when current_day will be managed by worker
-    @enterprise.current_day = @enterprise.update_current_day
+    # @enterprise.current_day = @enterprise.update_current_day =>Now this is made by RT
     @current_day = @enterprise.current_day
 
 # PRODUCTION VARIABLES
