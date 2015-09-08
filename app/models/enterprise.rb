@@ -28,10 +28,9 @@ class Enterprise < ActiveRecord::Base
   end
 
   def total_to_produce_today(today_orders_received, backlog) #Test OK
-    prev_backlog = self.current_backlog
-    self.current_backlog = backlog(today_orders_received, backlog)
+    self.est_new_backlog = backlog(today_orders_received, backlog)
     self.save
-    today_orders_received + prev_backlog
+    today_orders_received + self.current_backlog
 
   end
 
@@ -108,12 +107,9 @@ class Enterprise < ActiveRecord::Base
 # --------------TREASURY METHODS---------------
 #****DONE (and tested)****
   def total_treasury_today(net_result_today_data) #Test OK
-
     today_treasury = self.current_cash + net_result_today_data
     self.est_new_cash = today_treasury
     self.save
-binding.pry
-
   end
 # /--------------end TREASURY METHODS---------------
 
@@ -128,7 +124,7 @@ binding.pry
      today_orders_received           = ORDERS[current_day -1] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]
      self.current_employees         = self.current_number_of_employees #method
      self.current_prod_capacity     = self.today_workshop_production_capacity #method
-     previous_backlog               = self.current_backlog # column
+     self.current_backlog           = self.est_new_backlog # column
      self.current_to_produce        = self.total_to_produce_today(today_orders_received, self.current_backlog) #method
 
      self.est_manufactured_today    = self.products_manufactured_today(self.current_prod_capacity, self.current_to_produce) # method

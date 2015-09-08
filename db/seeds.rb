@@ -52,6 +52,7 @@ enterprises = [
     current_backlog: 0,
     current_cash: 0,
     est_new_cash: 10000,
+    est_new_backlog: 0,
     current_day: 0
   },
   {
@@ -60,6 +61,7 @@ enterprises = [
     current_backlog: 0,
     current_cash: 0,
     est_new_cash: 10000,
+    est_new_backlog: 0,
     current_day: 0
   },
   {
@@ -68,6 +70,7 @@ enterprises = [
     current_backlog: 0,
     current_cash: 0,
     est_new_cash: 10000,
+    est_new_backlog: 0,
     current_day:0
   }
 
