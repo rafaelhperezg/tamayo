@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
     @enterprise = Enterprise.find(1).game_decisions
-    raise
+    @suite = [200, 300, 400, 800, 900, 1500, 2500, 4000]
   end
 
   def json_decisions

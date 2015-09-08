@@ -6,11 +6,11 @@
       <h4>Here's how you're doing:</h4>
       <div class="flexcontainer">
         <%  @all_enterprises_sorted.each do |other| %>
-          <div class="flexuser">
-            <div id="otherenterprises">
+          <div class="enterprise-card">
+            <div class="enterprise-card-name">
               <h3><%= other.name %></h3>
             </div>
-            <div id="playerscore">
+            <div class="enterprise-card-treasury">
               <h5><%= other.current_cash %>€</h5>
             </div>
             <div>

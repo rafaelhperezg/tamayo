@@ -1,31 +1,53 @@
+<% raise %>
+
+<%= line_chart @enterprise.game_decisions.map { |t| [t.day_of_decision, t.employees_variation  ] } %>
+
 <% if false %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-offset-4">
-      <%= line_chart [
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-offset-4">
+        <%= line_chart [
 
-                        { name:
-                            "Tamayo Inc.",
-                          data: [
-                                  ['Day', 'Treasury'],
-                                  ['Day 1',  100],
-                                  ['Day 2',  200],
-                                  ['Day 3',  400],
-                                  ['Day 4',  800],
-                                  ['Day 5',  1600],
-                                  ['Day 6',  3200],
-                                ]
-                        },
-                      ]
+                          { data: [
+                                    ['Day 1',  100],
+                                    ['Day 2',  200],
+                                    ['Day 3',  400],
+                                    ['Day 4',  800],
+                                    ['Day 5',  1600],
+                                    ['Day 6',  3200],
+                                  ]
+                          },
+                        ]
 
-      %>
+        %>
+      </div>
     </div>
   </div>
-</div>
-
-<div id="chart-4" style="height: 300px; text-align: center; color: #999; line-height: 300px; font-size: 14px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif;">Loading...</div><script type="text/javascript">
-  new Chartkick.LineChart("chart-4", [{"name":"Tamayo Inc.","data":[["Day","Treasury"],["Day 1",500],["Day 2",200],["Day 3",400],["Day 4",800],["Day 5",1600],["Day 6",3200]]}], {});
-</script>
 <% end %>
 
-<%= line_chart({20.day.ago => 5, 1368174456 => 4, "2013-05-07 00:00:00 UTC" => 7}) %>
+
+<% if false %>
+  <div id="chart-1" style="height: 300px; text-align: center; color: #999; line-height: 300px; font-size: 14px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif;">Loading...</div>
+
+  <script type="text/javascript">
+  new Chartkick.LineChart("chart-1", {"1":11,"2":6,"3":3,"4":2,"5":5,"6":3,"7":8,"8":6,"9":6,"10":12,"2":5,"2":5,"2":3,"2":1,"2":10,"2":1,"2":3,"2":2,"2":3,"2":2,"2":8}, {});
+  </script>
+
+        <%= line_chart [
+
+                          { name:
+                              "Tamayo Inc.",
+                            data: [
+                                    ['Day', 'Treasury'],
+                                    ['Day 1',  100],
+                                    ['Day 2',  200],
+                                    ['Day 3',  400],
+                                    ['Day 4',  800],
+                                    ['Day 5',  1600],
+                                    ['Day 6',  3200],
+                                  ]
+                          },
+                        ]
+
+        %>
+<% end %>
