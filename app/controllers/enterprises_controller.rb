@@ -8,7 +8,7 @@ class EnterprisesController < ApplicationController
     puts "yoyo"
   end
 
-  def self.show
+  def show
     @all_enterprises        = Enterprise.all
     @all_enterprises_sorted = @all_enterprises.sort_by { |enterprise| enterprise.current_cash}.reverse
     @gamedecision           = GameDecision.new
