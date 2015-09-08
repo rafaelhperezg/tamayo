@@ -1,9 +1,17 @@
 desc "change day in game"
 task change_day: :environment do
+  # Enterprise.show
+
   Enterprise.all.each do |ent|
-   ent.current_day += 1
-   ent.save
+    rr = EnterprisesController.new
+    rr.say_hi
+
+
+   # ent.current_day += 1
+   # ent.save
+   # ent.update_current_day
   end
+
   # puts "testing tasks"
 
 end

@@ -6,7 +6,9 @@ ORDERS = [20, 20, 20, 20, 20, 10, 20, 10, 20, 30, 30, 10, 30, 20, 10, 30, 10, 10
 class EnterprisesController < ApplicationController
   before_action :find_enterprise, :find_game_session, :get_game_decisions
   # todo gamedecisions, current_day
-
+  def say_hi
+   puts"hi"
+  end
   def show
     @all_enterprises = Enterprise.all
     @all_enterprises_sorted = @all_enterprises.sort_by { |enterprise| enterprise.current_cash}.reverse
@@ -18,7 +20,6 @@ class EnterprisesController < ApplicationController
     # Next 2 lines will be DELETED when current_day will be managed by worker
     @enterprise.current_day = @enterprise.update_current_day
     @current_day = @enterprise.current_day
-
 
 # PRODUCTION VARIABLES
     @today_orders_received              = ORDERS[@current_day -1] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]

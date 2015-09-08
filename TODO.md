@@ -76,3 +76,31 @@ THEN increments to next day
 
     - total_treasury_today
         (treasury_from_yesterday) + (net_result_today)
+
+
+
+
+
+
+
+
+  question rp (la plus longue de lhistoire des tickets des ta)
+  On est parti sur la creation d'une rake task. Pas de job pour l'instant car si
+on a bien compris ils s'utilisent surtout pour donner de la vitesse a la page
+et actuellement on n'en a pas peut etre besoin?
+Sur la rake test, quand on lappelle manuellement, on arrive a incrementer le
+current day de l'entreprise, car current day est une variable du model Enterprise
+et du coup on peut la modifier manuellenemnt (on un appelant la methode unpdate_current_day
+qu'appartient au modele Enterprise).
+Pour les autres variables du jeu qui devraient sincrementer quand on appelle la
+rake task, on a un probleme. la pluspart de ves variables ne sont pas de variables
+du modele Enterprise, ils s'agit juste des variables d'instances du method show du model Enterprise. Ces variables se recalculent quand on fait un show sur la page (en prenant
+une decision ou en faisant un reload sur la page).
+Comment on recalcule ces variables d'instances avec notre rake test, comment simmuler
+un show?
+Pou l'instant la piste est plutot d'ajouter toutes ces variables au model Enterprise
+car de cettemaniere, dans le rake test on pourra appeller les methodes du modele En-
+terprise qui viendront mettre  à jour les variables du modele (car on ne vois pas comment ces methodes peuvent aller modifier des variables d'instances (@xxxx) en show)
+Du coup, par la suite en show, pour connaitre les valeur des variable, on fera,
+par exemple:
+@total_to_produce_today = @enterprise.total_to_produce_today
