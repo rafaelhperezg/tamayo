@@ -109,11 +109,17 @@ class Enterprise < ActiveRecord::Base
 #****DONE (and tested)****
   def total_treasury_today(net_result_today_data) #Test OK
     rr = self.current_cash
+
     today_treasury = rr + net_result_today_data
     self.current_cash = today_treasury
     self.save
+binding.pry
+
   end
 # /--------------end TREASURY METHODS---------------
+
+
+
 
    def hyper_method
 
