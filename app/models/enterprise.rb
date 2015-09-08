@@ -108,10 +108,9 @@ class Enterprise < ActiveRecord::Base
 # --------------TREASURY METHODS---------------
 #****DONE (and tested)****
   def total_treasury_today(net_result_today_data) #Test OK
-    rr = self.current_cash
 
-    today_treasury = rr + net_result_today_data
-    self.current_cash = today_treasury
+    today_treasury = self.current_cash + net_result_today_data
+    self.est_new_cash = today_treasury
     self.save
 binding.pry
 
@@ -149,7 +148,9 @@ binding.pry
      # TREASURY VARIABLES =>Test for the 2 variables: OK
      self.est_net_result_today       = self.est_total_sales_today - total_money_spent_today
      # @prev_current_cash              = @e.current_cash
-     self.current_cash               = self.total_treasury_today(self.est_net_result_today) #METHOD
+     #
+     self.current_cash               = self.est_new_cash
+     self.est_new_cash               = self.total_treasury_today(self.est_net_result_today) #METHOD
 
      self.save
 
