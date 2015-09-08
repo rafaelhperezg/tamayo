@@ -2,11 +2,11 @@
   <div class="container navbar-wagon-container">
 
     <span href="" class="navbar-wagon-date">
-      <i class="fa fa-dollar"></i> Mon. 12th Sept (14th day)
+      <i class="fa fa-calendar"></i> Day <%= @current_day %>
     </span>
     <div action="" class="navbar-wagon-search"></div>
     <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link hidden-xs" do %>
-      Leader board
+      Leader board  <i class="fa fa-balance-scale"></i>
 <!--       <div class="icon-badge-container">
         <i class="fa fa-star-o"></i>
         <div class="icon-badge icon-badge-blue">3</div>
@@ -15,7 +15,7 @@
     <hr>
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <span class="dropdown-toggle navbar-wagon-link" data-toggle="dropdown">Profile</span>
+        <span class="dropdown-toggle navbar-wagon-link" data-toggle="dropdown"><%= @enterprise.name %></span>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
             <%= link_to "#" do %>
