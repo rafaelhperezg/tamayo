@@ -1,7 +1,8 @@
 .nav-tabs {
   position: relative;
   /* box-shadow: 1px 1px 3px rgb(249, 248, 248); */
-  background-color: rgb(250, 250, 250);
+  background-color: transparent;
+  border: none;
   padding: 13px;
   li a {
     background-color: rgba(0, 0, 0, 0) !important;

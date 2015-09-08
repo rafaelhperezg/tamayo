@@ -1,0 +1,32 @@
+.dashboard-box {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 30px;
+  &-item {
+    flex: 1 1 auto;
+    text-align: center;
+    span {
+      font-size: 12px;
+      color: rgb(193, 190, 190);
+    }
+    h3 {
+      font-size: 22px;
+      font-weight: 300;
+      margin-top: 0;
+    }
+    .red {
+      color: $red;
+      font-weight: bold;
+    }
+    .green {
+      color: $green;
+      font-weight: bold;
+    }
+    border-right: 1px solid rgb(246, 242, 242);
+    &:last-child {
+      border-right: none;
+
+    }
+  }
+}

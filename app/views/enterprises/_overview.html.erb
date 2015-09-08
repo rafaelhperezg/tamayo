@@ -1,0 +1,328 @@
+<!-- treasury information -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <h2 class="text-center">Cash</h2>
+      <div class="dashboard-box">
+        <div class="dashboard-box-item">
+          <h3>1500€</h3>
+          <span>beginning of the day</span>
+        </div>
+        <div class="dashboard-box-item">
+          <h3 class="<%= (-500 > 0) ? 'green' : 'red'%>">-400€</h3>
+          <span>net resuls today</span>
+        </div>
+        <div class="dashboard-box-item">
+          <h3>1000€</h3>
+          <span>estimated treasury</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <h2 class="text-center">Orders</h2>
+      <div class="dashboard-box">
+        <div class="dashboard-box-item">
+          <h3>400 items</h3>
+          <span>orders backlog</span>
+        </div>
+        <div class="dashboard-box-item">
+          <h3 class="<%= (100 > 0) ? 'green' : 'red'%>">10 items</h3>
+          <span>orders today</span>
+        </div>
+        <div class="dashboard-box-item">
+          <h3>410 items</h3>
+          <span>total</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <h2 class="text-center">Costs</h2>
+
+      <div class="resource-card">
+        <div class="resource-card-item resource-card-number">
+          <p>5 X <i class="fa fa-users"></i></p>
+        </div>
+        <div class="resource-card-item">
+          <p>500€ / day</p>
+          <span>100€ / day</span>
+        </div>
+      </div>
+      <div class="resource-card">
+        <div class="resource-card-item resource-card-number">
+          <p>5 X <i class="fa fa-industry"></i></p>
+        </div>
+        <div class="resource-card-item">
+          <p>500€ / day</p>
+          <span>100€ / day</span>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-card-item resource-card-number">
+          <p>10 X Fires</p>
+        </div>
+        <div class="resource-card-item">
+          <p>10€ / day</p>
+          <span>1€ / day</span>
+        </div>
+      </div>
+
+
+      <div class="resource-card">
+        <div class="resource-card-item resource-card-number">
+          <p>5 X Hires</p>
+        </div>
+        <div class="resource-card-item">
+          <p>5€ / day</p>
+           <span>0.5€ / day</span>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-card-item resource-card-number">
+          <p>Total</p>
+        </div>
+        <div class="resource-card-item">
+          <p>1000€ / day</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <h2 class="text-center">Sales</h2>
+    </div>
+  </div>
+</div>
+
+
+
+
+<h3>Production info</h3>
+
+<div class="card-indicator text-center">
+  <p class="card-title card-item">
+    <i class="fa fa-users"></i>
+    <strong>
+      Employees this morning
+    </strong>
+  </p>
+  <p class="card-value card-item">
+    <strong>
+      <%= @current_number_of_employees %>
+    </strong>
+  </p>
+</div>
+<div class="card-indicator text-center">
+  <p class="card-title card-item">
+    <i class="fa fa-sign-out"></i>
+    <strong>
+      You start your day with a Backlog of:
+    </strong>
+  </p>
+  <p class="card-value card-item">
+    <strong>
+      <%= @previous_backlog%> items
+    </strong>
+  </p>
+</div>
+<div class="card-indicator text-center">
+  <p class="card-title card-item">
+    <i class="fa fa-sign-out"></i>
+    <strong>
+      Total to produce today (compute this morning)
+    </strong>
+  </p>
+  <p class="card-value card-item">
+    <strong>
+      <%= @total_to_produce_today%> items/day
+    </strong>
+  </p>
+</div>
+<div class="card-indicator text-center">
+  <p class="card-title card-item">
+    <i class="fa fa-sign-out"></i>
+    <strong>
+      Production capacity this morning
+    </strong>
+  </p>
+  <p class="card-value card-item">
+    <strong>
+      <%= @today_workshop_production_capacity %> items/day
+    </strong>
+  </p>
+</div>
+<div class="card-indicator text-center">
+  <p class="card-title card-item">
+    <i class="fa fa-sign-out"></i>
+    <strong>
+      Est. Items Manufactured today
+    </strong>
+  </p>
+  <p class="card-value card-item">
+    <strong>
+      <%= @products_manufactured_today %> items
+    </strong>
+  </p>
+</div>
+<div class="card-indicator text-center">
+  <p class="card-title card-item">
+    <i class="fa fa-sign-out"></i>
+    <strong>
+      Est. Backlog tonight
+    </strong>
+  </p>
+  <p class="card-value card-item">
+    <strong>
+      <%= @enterprise.current_backlog%> items
+    </strong>
+  </p>
+</div>
+<div class="card-indicator text-center">
+  <p class="card-title card-item">
+    <i class="fa fa-sign-out"></i>
+    <strong>
+      Est. Delivery time for today orders
+    </strong>
+  </p>
+  <p class="card-value card-item">
+    <strong>
+      <%= @when_can_todays_orders_be_delivered %> days
+    </strong>
+  </p>
+</div>
+
+<!-- costs information-->
+<hr>
+<h3>Costs-expenses Info</h3>
+
+<div class="card-indicator text-center">
+  <p class="card-title card-item">
+    <i class="fa fa-money"></i>
+    <strong>Today's salaries costs</strong>
+  </p>
+  <p class="card-value card-item">
+    <strong>
+      <%= @cost_of_salaries_for_today %>€
+    </strong>
+  </p>
+</div>
+
+<div class="card-indicator text-center">
+  <p class="card-title card-item">
+    <i class="fa fa-money"></i>
+    <strong>
+      Today materials cost
+    </strong>
+  </p>
+  <p class="card-value card-item">
+    <strong>
+      <%= @cost_of_raw_materials_for_today %>€
+    </strong>
+  </p>
+</div>
+
+<div class="card-indicator text-center">
+  <p class="card-title card-item">
+    <i class="fa fa-money"></i>
+    <strong>
+      Cost Hiring Firing to pay today(decisions yesterday)
+    </strong>
+  </p>
+  <p class="card-value card-item">
+    <strong>
+      <%= @cost_of_hiring_and_firing_for_today %>€
+    </strong>
+  </p>
+</div>
+
+<div class="card-indicator text-center">
+  <p class="card-title card-item">
+    <i class="fa fa-money"></i>
+    <strong>
+      Est. Total Money Spent Today
+    </strong>
+  </p>
+  <p class="card-value card-item">
+    <strong>
+    <%= @total_money_spent_today %>€
+    </strong>
+  </p>
+</div>
+
+<!-- sales information -->
+<hr>
+<h3>Sales Info</h3>
+<div class="card-indicator text-center">
+  <p class="card-title card-item">
+    <i class="fa fa-money"></i>
+    <strong>
+      Current Contract (this morning)
+    </strong>
+  </p>
+  <p class="card-value card-item">
+    <strong>
+      <%= @contract.name %>
+    </strong>
+  </p>
+</div>
+<div class="card-indicator text-center">
+  <p class="card-title card-item"><i class="fa fa-money"></i>
+    <strong>
+      Est. Total sales for today
+    </strong>
+  </p>
+  <p class="card-value card-item">
+    <strong>
+      <%= @total_sales_for_today %> euros
+    </strong>
+  </p>
+</div>
+
+
+
+
+
+
+
+<h3>Treasury Info</h3>
+
+<div class="card-indicator text-center">
+  <p class="card-title card-item">
+    <i class="fa fa-money"></i>
+    <strong>
+      Treasury at the beggining of day
+    </strong>
+  </p>
+  <p class="card-value card-item">
+    <strong>
+      <%= @prev_current_cash %>
+    </strong>
+  </p>
+</div>
+<div class="card-indicator text-center">
+  <p class="card-title card-item">
+    <i class="fa fa-money"></i>
+    <strong>
+      Est. Net Result Today
+    </strong>
+  </p>
+  <p class="card-value card-item">
+    <strong>
+      <%= @net_result_today %>
+    </strong>
+  </p>
+</div>
+<div class="card-indicator text-center">
+    <p class="card-title card-item">
+      <i class="fa fa-money"></i>
+      <strong>
+        Est. Treasury (at the end of the day)
+      </strong>
+    </p>
+    <p class="card-value card-item">
+      <strong>
+        <%= @enterprise.current_cash %>
+      </strong>
+    </p>
+</div>
