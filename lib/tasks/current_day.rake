@@ -5,7 +5,8 @@ task change_day: :environment do
 
   Enterprise.all.each do |ent|
     ent.update_current_day
-    ent.hyper_method
+    # ent.hyper_method
+    RunGameJob.perform_later ent.id
   end
 
 end
