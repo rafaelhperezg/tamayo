@@ -44,8 +44,9 @@ class EnterprisesController < ApplicationController
 # TREASURY VARIABLES =>Test for the 2 variables: OK
 
     @net_result_today                   = @enterprise.est_net_result_today
+    # next  line to update
     @prev_current_cash                  =  "a rajouter comme column in enterprises"   #@enterprise.current_cash
-    @current_cash                       = @enterprise.total_treasury_today(@net_result_today)
+    @current_cash                       = @enterprise.current_cash
 
   end
 
