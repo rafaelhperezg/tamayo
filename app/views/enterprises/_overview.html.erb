@@ -61,7 +61,7 @@
 
       <div class="resource-card">
         <div class="resource-card-item resource-card-number">
-          <p data-toggle="tooltip" data-placement="top" title="Costs for hirings and layoffs">Hire/Fire</p>
+          <p data-toggle="tooltip" data-placement="top" title="Costs for hirings and layoffs">Hire/Layoffs</p>
         </div>
         <div class="resource-card-item">
           <p><%= @cost_of_hiring_and_firing_for_today %>€</p>
@@ -80,7 +80,7 @@
     <div class="col-xs-12 col-sm-6">
       <h2 class="text-center">Sales</h2>
               <p>Contract: <%= @contract.name %></p>
-              <p>Delay: <%= @when_can_todays_orders_be_delivered %></p>
+              <p>Orders passed right now will be delivered in <%= @when_can_todays_orders_be_delivered %> days</p>
               <p>Backlog:</p>
     </div>
   </div>
