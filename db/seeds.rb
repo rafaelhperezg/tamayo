@@ -10,7 +10,14 @@
 GameSession.destroy_all
 Contract.destroy_all
 Enterprise.destroy_all
+GameDecision.destroy_all
 
+sample_orders = [10,20,30,40]
+array_of_orders = []
+
+300.times do
+  array_of_orders << sample_orders.sample
+end
 
 gamesessions = [
   {
@@ -26,6 +33,7 @@ gamesessions = [
     name: "Difficulty: Easy",
     current_day: 0,
     initial_backlog: 0,
+    orders: array_of_orders,
   }
 ]
 
