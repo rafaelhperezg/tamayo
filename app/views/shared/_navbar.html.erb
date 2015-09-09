@@ -5,8 +5,10 @@
       <i class="fa fa-calendar"></i> Day <%= @current_day %>
     </span>
     <div action="" class="navbar-wagon-search"></div>
-    <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link hidden-xs" do %>
+    <%= link_to "#", { class: "navbar-wagon-item navbar-wagon-link hidden-xs", "data-toggle": "modal", "data-target": "#myModal"} do %>
       Leader board  <i class="fa fa-balance-scale"></i>
+
+
 <!--       <div class="icon-badge-container">
         <i class="fa fa-star-o"></i>
         <div class="icon-badge icon-badge-blue">3</div>
