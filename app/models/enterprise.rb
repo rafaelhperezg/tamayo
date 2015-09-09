@@ -139,7 +139,7 @@ class Enterprise < ActiveRecord::Base
      # COSTS VARIABLES
      self.current_salaries           = self.cost_of_salaries_for_today #Method
      self.current_raw_materials      = self.cost_of_raw_materials_for_today(today_orders_received) #method
-     # attention no cost firing hiring if no decision! TODO
+
      previous_employees_variation    = find_last_employee_variation(game_decisions.last) #method
      self.current_cost_hiring_firing = self.cost_of_hiring_and_firing_for_today(previous_employees_variation)
      total_money_spent_today         = self.current_salaries + self.current_raw_materials + self.current_cost_hiring_firing

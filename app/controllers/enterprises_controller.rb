@@ -6,9 +6,7 @@ ORDERS = [20, 20, 20, 20, 20, 10, 20, 10, 20, 30, 30, 10, 30, 20, 10, 30, 10, 10
 class EnterprisesController < ApplicationController
   before_action :find_enterprise, :find_game_session, :get_game_decisions
   # todo gamedecisions, current_day
-  def say_hi
-   puts"hi"
-  end
+
   def show
     @all_enterprises        = Enterprise.all
     @all_enterprises_sorted = @all_enterprises.sort_by { |enterprise| enterprise.current_cash}.reverse
@@ -29,21 +27,13 @@ class EnterprisesController < ApplicationController
 
 # PRODUCTION VARIABLES
     @today_orders_received              = ORDERS[@current_day -1] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]
-# <<<<<<< HEAD
+
     @current_number_of_employees        = @enterprise.current_employees
     @today_workshop_production_capacity = @enterprise.current_prod_capacity
     @previous_backlog                   = @enterprise.current_backlog #should be here because in next line backlog will be recalculated when calling total to produce
     @total_to_produce_today             = @enterprise.current_to_produce
     @products_manufactured_today        = @enterprise.est_manufactured_today
     @when_can_todays_orders_be_delivered= @enterprise.est_delivery_time
-# =======
-#     @current_number_of_employees        = @enterprise.current_number_of_employees
-#     @today_workshop_production_capacity = @enterprise.today_workshop_production_capacity
-#     @previous_backlog                   = @enterprise.current_backlog #should be here because in next line backlog will be recalculated when calling total to produce
-#     @total_to_produce_today             = @enterprise.total_to_produce_today(@today_orders_received, @enterprise.current_backlog)
-#     @products_manufactured_today        = @enterprise.products_manufactured_today(@today_workshop_production_capacity, @total_to_produce_today)
-#     @when_can_todays_orders_be_delivered= @enterprise.when_can_todays_orders_be_delivered(@today_workshop_production_capacity, @total_to_produce_today)
-# >>>>>>> 7bd7b98ea53a75638725b73dcfc30dcb1548da82
 
 # COSTS VARIABLES =>Test for the 4 variables: OK
     @cost_of_salaries_for_today          = @enterprise.current_salaries
@@ -60,8 +50,8 @@ class EnterprisesController < ApplicationController
 
     @net_result_today                   = @enterprise.est_net_result_today
     # next  line to update
-    @prev_current_cash                  =  "a rajouter comme column in enterprises"   #@enterprise.current_cash
-    @current_cash                       = @enterprise.current_cash
+    @prev_current_cash                  = @enterprise.current_cash   #@enterprise.current_cash
+    @current_cash                       = @enterprise.est_new_cash
 
   end
 
