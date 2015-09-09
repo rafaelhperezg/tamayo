@@ -21,8 +21,8 @@ end
 
 gamesessions = [
   {
-    virtual_duration: 100,
-    real_duration: 10,
+    virtual_duration: 6,
+    real_duration: 3,
     initial_amount_of_cash: 10000,
     initial_number_of_employees: 1,
     salary_per_employee: 100,
@@ -57,21 +57,27 @@ enterprises = [
     name: "Tamayo Inc.",
     game_session_id: 1,
     current_backlog: 0,
-    current_cash: 10000,
+    current_cash: 0,
+    est_new_cash: 10000,
+    est_new_backlog: 0,
     current_day: 0
   },
   {
     name: "Rafa Inc.",
     game_session_id: 1,
     current_backlog: 0,
-    current_cash: 10000,
+    current_cash: 0,
+    est_new_cash: 10000,
+    est_new_backlog: 0,
     current_day: 0
   },
   {
     name: "PE Inc.",
     game_session_id: 1,
     current_backlog: 0,
-    current_cash: 10000,
+    current_cash: 0,
+    est_new_cash: 10000,
+    est_new_backlog: 0,
     current_day:0
   }
 
