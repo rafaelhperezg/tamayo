@@ -1,0 +1,88 @@
+<!-- treasury information -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <h2 class="text-center">Cash</h2>
+      <div class="dashboard-box">
+        <div class="dashboard-box-item">
+          <h3><%= @prev_current_cash %>€</h3>
+          <span>Beginning of the day</span>
+        </div>
+        <div class="dashboard-box-item">
+          <h3 class="<%= (-500 > 0) ? 'green' : 'red'%>"><%= @net_result_today %>€</h3>
+          <span>Net results today</span>
+        </div>
+        <div class="dashboard-box-item">
+          <h3><%= @enterprise.current_cash %>€</h3>
+          <span>Estimated treasury</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <h2 class="text-center">Orders</h2>
+      <div class="dashboard-box">
+        <div class="dashboard-box-item">
+          <h3><%= @previous_backlog%> items</h3>
+          <span>orders backlog</span>
+        </div>
+        <div class="dashboard-box-item">
+          <h3><%= @today_orders_received %> items</h3>
+          <span>orders today</span>
+        </div>
+        <div class="dashboard-box-item">
+          <h3><%= @total_to_produce_today%> items</h3>
+          <span>total</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <h2 class="text-center">Costs</h2>
+
+      <div class="resource-card">
+        <div class="resource-card-item resource-card-number">
+          <p><%= @current_number_of_employees %> X <i class="fa fa-users"></i></p>
+        </div>
+        <div class="resource-card-item">
+          <p><%= @cost_of_salaries_for_today %>€</p>
+          <span>(100€ / day)</span>
+        </div>
+      </div>
+      <div class="resource-card">
+        <div class="resource-card-item resource-card-number">
+          <p><%= @today_orders_received %> X <i class="fa fa-industry"></i></p>
+        </div>
+        <div class="resource-card-item">
+          <p><%= @cost_of_raw_materials_for_today %>€</p>
+          <span>(<%= @gamesession.material_cost %>€ / item)</span>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-card-item resource-card-number">
+          <p>Hire/Fire</p>
+        </div>
+        <div class="resource-card-item">
+          <p><%= @cost_of_hiring_and_firing_for_today %>€</p>
+          <span>400€/800€</span>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-card-item resource-card-number">
+          <p>Total</p>
+        </div>
+        <div class="resource-card-item">
+          <p><%= @total_money_spent_today %>€</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <h2 class="text-center">Sales</h2>
+              <p>Contract: <%= @contract.name %></p>
+              <p>Delay: <%= @when_can_todays_orders_be_delivered %></p>
+              <p>Backlog:</p>
+    </div>
+  </div>
+</div>
