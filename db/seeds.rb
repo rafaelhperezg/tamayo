@@ -15,8 +15,8 @@ GameDecision.destroy_all
 
 gamesessions = [
   {
-    virtual_duration: 100,
-    real_duration: 10,
+    virtual_duration: 6,
+    real_duration: 3,
     initial_amount_of_cash: 10000,
     initial_number_of_employees: 1,
     salary_per_employee: 100,
