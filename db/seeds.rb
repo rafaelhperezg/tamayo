@@ -57,7 +57,7 @@ enterprises = [
     name: "Tamayo Inc.",
     game_session_id: 1,
     current_backlog: 0,
-    current_cash: 0,
+    current_cash: 10000,
     est_new_cash: 10000,
     est_new_backlog: 0,
     current_day: 0
@@ -66,7 +66,7 @@ enterprises = [
     name: "Rafa Inc.",
     game_session_id: 1,
     current_backlog: 0,
-    current_cash: 0,
+    current_cash: 10000,
     est_new_cash: 10000,
     est_new_backlog: 0,
     current_day: 0
@@ -75,7 +75,7 @@ enterprises = [
     name: "PE Inc.",
     game_session_id: 1,
     current_backlog: 0,
-    current_cash: 0,
+    current_cash: 10000,
     est_new_cash: 10000,
     est_new_backlog: 0,
     current_day:0

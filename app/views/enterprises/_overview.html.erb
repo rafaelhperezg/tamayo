@@ -82,14 +82,20 @@
       <h2 class="text-center">Orders</h2>
       <div class="orders">
         <div class="detail">
-          <p>Currently selected contract:</p>
-            <span><%= @contract.name %></span>
-            <p>(delivery within <%= @contract.timeframe %> days)</p>
-        </div>
-        <div class="detail">
           <p>Days until today's order delivery
             <span><%= @when_can_todays_orders_be_delivered %></span>
           </p>
+        </div>
+        <div class="detail">
+          <h2 class="text-center">Contract</h2>
+          <input type="checkbox" id="toggle" data-toggle="toggle" data-on="Short" data-off="Long" name="enterprise[contract]">
+
+          <% if false %>
+
+            <p>Currently selected contract:</p>
+            <span><%= @contract.name %></span>
+            <p>(delivery within <%= @contract.timeframe %> days)</p>
+          <% end %>
         </div>
       </div>
     </div>
@@ -97,8 +103,14 @@
   </div>
 </div>
 
-<script>
-$(document).ready(function() {
-    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
-});
-</script>
+<%= content_for(:js) do %>
+  <script>
+  $(document).ready(function() {
+      $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+      $('#toggle').bootstrapToggle({
+        on: 'Long',
+        off: 'Short'
+      });
+  });
+  </script>
+<% end %>
