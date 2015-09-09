@@ -1,346 +1,69 @@
-<div class="container-fluid padding-none total-height">
-  <div class="row margin-none total-height">
-    <div class="col-md-2 enterprise-profile border-column text-center total-height">
-      <span>What's up <h3><%= @enterprise.name %></h3></span>
-      <hr>
-      <h4>Here's how you're doing:</h4>
-      <div class="flexcontainer">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs nav-pills" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#overview" role="tab" data-toggle="tab">
+            Overview
+            <i class="fa fa-dashboard"></i>
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#stats" role="tab" data-toggle="tab">
+            Stats
+            <i class="fa fa-bar-chart"></i>
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#doc" role="tab" data-toggle="tab">
+            Game rules
+            <i class="fa fa-book"></i>
+          </a>
+        </li>
+        <li role="presentation" class="cta"><a href="#form" class="btn btn-danger pull-right" role="tab">Make a decision</a></li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="overview">
+          <%= render "overview" %>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="stats">
+          <%= render "stats" %>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="doc">
+          <%= render "doc" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Here's where you stand right now relative to other enterprises</h4>
+      </div>
+      <div class="modal-body">
         <%  @all_enterprises_sorted.each do |other| %>
-          <div class="flexuser">
-            <div id="otherenterprises">
+          <div class="enterprise-card">
+            <div class="enterprise-card-name">
               <h3><%= other.name %></h3>
             </div>
-            <div id="playerscore">
+            <div class="enterprise-card-treasury">
               <h5><%= other.current_cash %>€</h5>
-            </div>
-            <div>
-              <!-- <div id="avatar"></div> -->
             </div>
           </div>
         <% end %>
-      </div>
-    </div>
-
-
-
-  <!-- MIDDLE OF THE PAGE (ENTERPRISE) -->
-    <div class="col-md-7 enterprise-middle border-column text-center total-height">
-      <%= simple_form_for [@enterprise, @gamedecision], url: enterprise_game_decisions_path(@enterprise), method: :post do |f| %>
-        <h1> Day # <%= @current_day %> (<%= @gamesession.virtual_duration - @current_day %> days left!) </h1>
-        <h3> Today you have an order for <strong><%= @today_orders_received %></strong> items</h3>
-        <hr>
-        <hr>
-
-        <div class="enterprise-design">
-          <div class="enterprise-arrow">
-            <%= image_tag "arrow-right.png", width:"50" %>
-          </div>
-
-          <div class="enterprise-orders">
-            <%= image_tag "orders.png", width:"100" %>
-            <%= image_tag "contract.png", width:"100", class:"block" %>
-            <p>Contract type:</p>
-            <%= f.input :new_contract_id, collection: [["Long", Contract.find_by(name: "long").id], ["Court", Contract.find_by(name: "court").id]], as: :radio_buttons, checked: @current_contract_id %>
-          </div>
-
-          <div class="enterprise-workshop">
-            <%= image_tag "workshop.png", width:"200" %>
-            <%= f.input :employees_variation, input_html: {value: f.object.employees_variation || '0'} %>
-            <div class="displaycost">
-              <span id="totalcosttext">
-                Total cost:
-              </span>
-              <span id="totalcost">0€</span>
-            </div>
-            <div id="buttonsplus" class="btn btn-success">Hire</div>
-            <div id="buttonsminus" class="btn btn-danger">Fire</div><br>
-            <%= f.button :submit, class: "btn btn-success margined" %>
-          </div>
-
-          <div class="enterprise-arrow">
-            <%= image_tag "arrow-right.png", width:"50" %>
-          </div>
-
-          <div class="enterprise-box">
-            <%= image_tag "box.png", width:"80" %>
-          </div>
-
-          <div class="enterprise-arrow">
-            <%= image_tag "arrow-right.png", width:"50" %>
-          </div>
-
-          <div class="enterprise-customer">
-            <%= image_tag "customer.png", width:"100" %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-
-    <script type="text/javascript">
-    var counter = 0;
-
-    $("#buttonsplus").click(function(){
-        counter ++;
-        $("#game_decision_employees_variation").val(counter);
-        salaries = counter * <%= @gamesession.hiring_cost %>;
-        $("#totalcost").text(salaries + "€");
-    });
-
-    $("#buttonsminus").click(function(){
-        counter --;
-        $("#game_decision_employees_variation").val(counter);
-        salaries = counter * <%= @gamesession.firing_cost %>;
-        $("#totalcost").text(salaries + "€");
-    });
-    </script>
-
-  <!-- /END MIDDLE OF THE PAGE (ENTERPRISE) -->
-
-
-
-  <!-- RIGHT SIDE OF THE PAGE (COMPANY STATS) -->
-    <div class="col-md-3 enterprise-indicators border-column text-center total-height">
-      <div class="bg-white text-center margin-center padding-top-bottom">
-        <h2>Company stats</h2>
-        <hr>
-        <h3>Production info</h3>
-
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-users"></i>
-            <strong>
-              Employees this morning
-            </strong>
-          </p>
-          <p class="card-value card-item">
-            <strong>
-              <%= @current_number_of_employees %>
-            </strong>
-          </p>
-        </div>
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-sign-out"></i>
-            <strong>
-              You start your day with a Backlog of:
-            </strong>
-          </p>
-          <p class="card-value card-item">
-            <strong>
-              <%= @previous_backlog%> items
-            </strong>
-          </p>
-        </div>
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-sign-out"></i>
-            <strong>
-              Total to produce today (compute this morning)
-            </strong>
-          </p>
-          <p class="card-value card-item">
-            <strong>
-              <%= @total_to_produce_today%> items/day
-            </strong>
-          </p>
-        </div>
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-sign-out"></i>
-            <strong>
-              Production capacity this morning
-            </strong>
-          </p>
-          <p class="card-value card-item">
-            <strong>
-              <%= @today_workshop_production_capacity %> items/day
-            </strong>
-          </p>
-        </div>
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-sign-out"></i>
-            <strong>
-              Est. Items Manufactured today
-            </strong>
-          </p>
-          <p class="card-value card-item">
-            <strong>
-              <%= @products_manufactured_today %> items
-            </strong>
-          </p>
-        </div>
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-sign-out"></i>
-            <strong>
-              Est. Backlog tonight
-            </strong>
-          </p>
-          <p class="card-value card-item">
-            <strong>
-              <%= @enterprise.current_backlog%> items
-            </strong>
-          </p>
-        </div>
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-sign-out"></i>
-            <strong>
-              Est. Delivery time for today orders
-            </strong>
-          </p>
-          <p class="card-value card-item">
-            <strong>
-              <%= @when_can_todays_orders_be_delivered %> days
-            </strong>
-          </p>
-        </div>
-
-        <!-- costs information-->
-        <hr>
-        <h3>Costs-expenses Info</h3>
-
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-money"></i>
-            <strong>Today's salaries costs</strong>
-          </p>
-          <p class="card-value card-item">
-            <strong>
-              <%= @cost_of_salaries_for_today %>€
-            </strong>
-          </p>
-        </div>
-
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-money"></i>
-            <strong>
-              Today materials cost
-            </strong>
-          </p>
-          <p class="card-value card-item">
-            <strong>
-              <%= @cost_of_raw_materials_for_today %>€
-            </strong>
-          </p>
-        </div>
-
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-money"></i>
-            <strong>
-              Cost Hiring Firing to pay today(decisions yesterday)
-            </strong>
-          </p>
-          <p class="card-value card-item">
-            <strong>
-              <%= @cost_of_hiring_and_firing_for_today %>€
-            </strong>
-          </p>
-        </div>
-
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-money"></i>
-            <strong>
-              Est. Total Money Spent Today
-            </strong>
-          </p>
-          <p class="card-value card-item">
-            <strong>
-            <%= @total_money_spent_today %>€
-            </strong>
-          </p>
-        </div>
-
-        <!-- sales information -->
-        <hr>
-        <h3>Sales Info</h3>
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-money"></i>
-            <strong>
-              Current Contract (this morning)
-            </strong>
-          </p>
-          <p class="card-value card-item">
-            <strong>
-              <%= @contract.name %>
-            </strong>
-          </p>
-        </div>
-        <div class="card-indicator text-center">
-          <p class="card-title card-item"><i class="fa fa-money"></i>
-            <strong>
-              Est. Total sales for today
-            </strong>
-          </p>
-          <p class="card-value card-item">
-            <strong>
-              <%= @total_sales_for_today %> euros
-            </strong>
-          </p>
-        </div>
-
-        <!-- treasury information -->
-        <hr>
-        <h3>Treasury Info</h3>
-
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-money"></i>
-            <strong>
-              Trasury at the beggining of day
-            </strong>
-          </p>
-          <p class="card-value card-item">
-            <strong>
-              <%= @prev_current_cash %>
-            </strong>
-          </p>
-        </div>
-        <div class="card-indicator text-center">
-          <p class="card-title card-item">
-            <i class="fa fa-money"></i>
-            <strong>
-              Est. Net Result Today
-            </strong>
-          </p>
-          <p class="card-value card-item">
-            <strong>
-              <%= @net_result_today %>
-            </strong>
-          </p>
-        </div>
-        <div class="card-indicator text-center">
-            <p class="card-title card-item">
-              <i class="fa fa-money"></i>
-              <strong>
-                Est. Treasury (at the end of the day)
-              </strong>
-            </p>
-            <p class="card-value card-item">
-              <strong>
-                <%= @enterprise.current_cash %>
-              </strong>
-            </p>
-        </div>
-
-      </div>
-    </div> <!-- end right side-->
-  </div>
-</div>
-    <!-- TODO : add links to graphics with history -->
-
-    <!--     Accéder aux indicateurs
-        Nombre d'employés
-        Capacité de production
-        Liquidité
-        Evolution depuis le début de la session
-        File d’attente des commandes
-        Calcul des gains
-          du jour (+/-)
-          depuis le début de la session
-     -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div><!-- /.modal-footer -->
+      </div><!-- /.modal-body -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

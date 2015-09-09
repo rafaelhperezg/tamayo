@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150907125340) do
+ActiveRecord::Schema.define(version: 20150909094722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,11 +61,12 @@ ActiveRecord::Schema.define(version: 20150907125340) do
     t.integer  "firing_cost"
     t.integer  "productivity_per_employee"
     t.integer  "material_cost"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.string   "name"
     t.integer  "current_day"
     t.integer  "initial_backlog"
+    t.integer  "orders",                      default: [],              array: true
   end
 
   add_foreign_key "contracts", "game_sessions"
