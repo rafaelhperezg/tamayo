@@ -30,11 +30,24 @@ ActiveRecord::Schema.define(version: 20150909094722) do
   create_table "enterprises", force: :cascade do |t|
     t.string   "name"
     t.integer  "game_session_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "current_backlog"
     t.integer  "current_cash"
     t.integer  "current_day"
+    t.integer  "current_employees"
+    t.integer  "current_prod_capacity"
+    t.integer  "current_to_produce"
+    t.integer  "est_manufactured_today"
+    t.integer  "est_delivery_time"
+    t.integer  "current_salaries"
+    t.integer  "current_raw_materials"
+    t.integer  "current_cost_hiring_firing"
+    t.integer  "current_contract_id"
+    t.integer  "est_total_sales_today"
+    t.integer  "est_net_result_today"
+    t.integer  "est_new_cash"
+    t.integer  "est_new_backlog"
   end
 
   add_index "enterprises", ["game_session_id"], name: "index_enterprises_on_game_session_id", using: :btree

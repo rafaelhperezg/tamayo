@@ -4,8 +4,8 @@ class GameSession < ActiveRecord::Base
 
   def update_current_day
     # This method will serve us when the current_day will be updated with a worker
-    # self.current_day += 1
-    # self.save
+    self.current_day += 1
+    self.save
     # return self.current_day
   end
 end

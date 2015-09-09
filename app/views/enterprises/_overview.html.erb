@@ -5,7 +5,7 @@
       <h2 class="text-center">Cash</h2>
       <div class="dashboard-box">
         <div class="dashboard-box-item">
-          <h3><%= @prev_current_cash %>€</h3>
+          <h3><%= @enterprise.current_cash %>€</h3>
           <span>Beginning of the day</span>
         </div>
         <div class="dashboard-box-item">
@@ -13,7 +13,7 @@
           <span>Net results today</span>
         </div>
         <div class="dashboard-box-item">
-          <h3><%= @enterprise.current_cash %>€</h3>
+          <h3><%= @enterprise.est_new_cash %>€</h3>
           <span>Estimated treasury</span>
         </div>
       </div>
