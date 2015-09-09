@@ -113,7 +113,13 @@ class Enterprise < ActiveRecord::Base
   end
 # /--------------end TREASURY METHODS---------------
 
-
+  def find_last_employee_variation(last_decision)
+    if last_decision.day_of_decision == ( self.current_day - 1 )
+      last_decision.employees_variation
+    else
+      0
+    end
+  end
 
 
    def hyper_method
@@ -134,7 +140,8 @@ class Enterprise < ActiveRecord::Base
      self.current_salaries           = self.cost_of_salaries_for_today #Method
      self.current_raw_materials      = self.cost_of_raw_materials_for_today(today_orders_received) #method
      # attention no cost firing hiring if no decision! TODO
-     self.current_cost_hiring_firing = self.cost_of_hiring_and_firing_for_today(game_decisions.last.employees_variation)
+     previous_employees_variation    = find_last_employee_variation(game_decisions.last) #method
+     self.current_cost_hiring_firing = self.cost_of_hiring_and_firing_for_today(previous_employees_variation)
      total_money_spent_today         = self.current_salaries + self.current_raw_materials + self.current_cost_hiring_firing
 
      # SALES VARIABLES =>Test for the 3 variables: OK
