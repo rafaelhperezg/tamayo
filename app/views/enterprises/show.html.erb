@@ -52,7 +52,7 @@
         <%  @all_enterprises_sorted.each do |other| %>
           <div class="enterprise-card">
             <div class="enterprise-card-name">
-              <h3><%= other.name %></h3>
+              <h3><%= @all_enterprises_sorted.find_index(other) + 1 %>: <%= other.name %></h3>
             </div>
             <div class="enterprise-card-treasury">
               <h5><%= other.current_cash %>€</h5>

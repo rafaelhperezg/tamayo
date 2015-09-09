@@ -16,14 +16,9 @@ class EnterprisesController < ApplicationController
     # @gamesession.current_day = @gamesession.update_current_day
     # @current_day = @gamesession.current_day
     # Next 3 lines will be DELETED when current_day will be managed by worker
-# <<<<<<< HEAD
     @enterprise.current_day = @enterprise.update_current_day #=>Now this is made by RT
     @current_day = @enterprise.current_day
     @enterprise.hyper_method
-# =======
-#     @enterprise.current_day = @enterprise.update_current_day
-#     @current_day            = @enterprise.current_day
-# >>>>>>> 7bd7b98ea53a75638725b73dcfc30dcb1548da82
 
 # PRODUCTION VARIABLES
     @today_orders_received              = ORDERS[@current_day -1] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]

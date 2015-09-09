@@ -19,10 +19,10 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-6">
-      <h2 class="text-center">Orders</h2>
+      <h2 class="text-center">Production</h2>
       <div class="dashboard-box">
         <div class="dashboard-box-item">
-          <h3><%= @previous_backlog%> items</h3>
+          <h3 data-toggle="tooltip" data-placement="top" title="<%= @previous_backlog%> unproduced items from yesterday."><%= @previous_backlog%> items</h3>
           <span>orders backlog</span>
         </div>
         <div class="dashboard-box-item">
@@ -42,7 +42,7 @@
 
       <div class="resource-card">
         <div class="resource-card-item resource-card-number">
-          <p><%= @current_number_of_employees %> X <i class="fa fa-users"></i></p>
+          <p data-toggle="tooltip" data-placement="top" title="<%= print_number_of_employees(@current_number_of_employees) %>"><%= @current_number_of_employees %> X <i class="fa fa-users"></i></p>
         </div>
         <div class="resource-card-item">
           <p><%= @cost_of_salaries_for_today %>€</p>
@@ -51,7 +51,7 @@
       </div>
       <div class="resource-card">
         <div class="resource-card-item resource-card-number">
-          <p><%= @today_orders_received %> X <i class="fa fa-industry"></i></p>
+          <p data-toggle="tooltip" data-placement="top" title="You need to buy <%= @today_orders_received %> items"><%= @today_orders_received %> X <i class="fa fa-industry"></i></p>
         </div>
         <div class="resource-card-item">
           <p><%= @cost_of_raw_materials_for_today %>€</p>
@@ -61,14 +61,13 @@
 
       <div class="resource-card">
         <div class="resource-card-item resource-card-number">
-          <p>Hire/Fire</p>
+          <p data-toggle="tooltip" data-placement="top" title="Costs for hirings and layoffs">Hire/Layoffs</p>
         </div>
         <div class="resource-card-item">
           <p><%= @cost_of_hiring_and_firing_for_today %>€</p>
-          <span>400€/800€</span>
+          <span data-toggle="tooltip" data-placement="right" title="Hiring 1 employee costs <%=@gamesession.hiring_cost%>€; firing one costs <%=@gamesession.firing_cost%>€"><%=@gamesession.hiring_cost%>€/<%=@gamesession.firing_cost%>€</span>
         </div>
       </div>
-
       <div class="resource-card">
         <div class="resource-card-item resource-card-number">
           <p>Total</p>
@@ -78,11 +77,28 @@
         </div>
       </div>
     </div>
+<!-- ORDERS -->
     <div class="col-xs-12 col-sm-6">
-      <h2 class="text-center">Sales</h2>
-              <p>Contract: <%= @contract.name %></p>
-              <p>Delay: <%= @when_can_todays_orders_be_delivered %></p>
-              <p>Backlog:</p>
+      <h2 class="text-center">Orders</h2>
+      <div class="orders">
+        <div class="detail">
+          <p>Currently selected contract:</p>
+            <span><%= @contract.name %></span>
+            <p>(delivery within <%= @contract.timeframe %> days)</p>
+        </div>
+        <div class="detail">
+          <p>Days until today's order delivery
+            <span><%= @when_can_todays_orders_be_delivered %></span>
+          </p>
+        </div>
+      </div>
     </div>
+<!-- /ORDERS -->
   </div>
 </div>
+
+<script>
+$(document).ready(function() {
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+});
+</script>

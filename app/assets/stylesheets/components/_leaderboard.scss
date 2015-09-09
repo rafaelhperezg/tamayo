@@ -1,0 +1,13 @@
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  .enterprise-card {
+    border-radius: 3px;
+    background-color: rgba(157, 156, 156, 0.12);
+    border: solid 1px rgba(128, 128, 128, 0.15);
+    text-align: center;
+    width: 50%;
+    align-self: center;
+    margin: 2px;
+    }
+  }
