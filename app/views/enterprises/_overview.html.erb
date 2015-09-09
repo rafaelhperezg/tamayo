@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-6">
-      <h2 class="text-center">Orders</h2>
+      <h2 class="text-center">Production</h2>
       <div class="dashboard-box">
         <div class="dashboard-box-item">
           <h3 data-toggle="tooltip" data-placement="top" title="<%= @previous_backlog%> unproduced items from yesterday."><%= @previous_backlog%> items</h3>
@@ -77,12 +77,24 @@
         </div>
       </div>
     </div>
+<!-- ORDERS -->
     <div class="col-xs-12 col-sm-6">
-      <h2 class="text-center">Sales</h2>
-              <p>Contract: <%= @contract.name %></p>
-              <p>Orders placed right now will be delivered in <%= @when_can_todays_orders_be_delivered %> days</p>
-              <p>Backlog:</p>
+      <h2 class="text-center">Orders</h2>
+      <div class="orders">
+        <div class="detail">
+          <p>Currently selected contract:
+            <span><%= @contract.name %></span>
+            <p>(delivery within <%= @contract.timeframe %> days)</p>
+          </p>
+        </div>
+        <div class="detail">
+          <p>Days until today's order delivery
+            <span><%= @when_can_todays_orders_be_delivered %></span>
+          </p>
+        </div>
+      </div>
     </div>
+<!-- /ORDERS -->
   </div>
 </div>
 
