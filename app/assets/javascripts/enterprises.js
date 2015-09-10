@@ -2,5 +2,6 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function() {
+// Tooltips
     $("body").tooltip({ selector: '[data-toggle=tooltip]' });
-});
+  });
