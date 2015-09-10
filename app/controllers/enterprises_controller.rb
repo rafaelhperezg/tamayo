@@ -23,7 +23,7 @@ class EnterprisesController < ApplicationController
     # @enterprise.hyper_method
 
 # PRODUCTION VARIABLES
-    @today_orders_received              = @gamesession.orders[@current_day - 1] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]
+    @today_orders_received              = @gamesession.orders[@current_day] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]
 
     @current_number_of_employees        = @enterprise.current_employees
     @today_workshop_production_capacity = @enterprise.current_prod_capacity
@@ -49,7 +49,17 @@ class EnterprisesController < ApplicationController
     # next  line to update
     @prev_current_cash                  = @enterprise.current_cash   #@enterprise.current_cash
     @current_cash                       = @enterprise.est_new_cash
+    @day_results                        = DayResult.where(enterprise_id: @enterprise.id)
+    @day_results_cash                   = @day_results.pluck(:cash)
+    @cash_array                         = cash_to_array
+  end
 
+  def cash_to_array
+    cash_with_index = []
+    @day_results_cash.each_with_index do |sum, index|
+      cash_with_index << [index, sum]
+    end
+    return cash_with_index
   end
 
   # ------Methods for before action---------

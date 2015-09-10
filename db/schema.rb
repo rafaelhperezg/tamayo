@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150909094722) do
+ActiveRecord::Schema.define(version: 20150910150208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,16 @@ ActiveRecord::Schema.define(version: 20150909094722) do
   end
 
   add_index "contracts", ["game_session_id"], name: "index_contracts_on_game_session_id", using: :btree
+
+  create_table "day_results", force: :cascade do |t|
+    t.integer  "cash"
+    t.integer  "day"
+    t.integer  "enterprise_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "day_results", ["enterprise_id"], name: "index_day_results_on_enterprise_id", using: :btree
 
   create_table "enterprises", force: :cascade do |t|
     t.string   "name"
@@ -83,6 +93,7 @@ ActiveRecord::Schema.define(version: 20150909094722) do
   end
 
   add_foreign_key "contracts", "game_sessions"
+  add_foreign_key "day_results", "enterprises"
   add_foreign_key "enterprises", "game_sessions"
   add_foreign_key "game_decisions", "contracts", column: "new_contract_id"
   add_foreign_key "game_decisions", "enterprises"

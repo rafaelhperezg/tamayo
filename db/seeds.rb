@@ -15,8 +15,8 @@ GameDecision.destroy_all
 sample_orders = [10,20,30,40]
 array_of_orders = []
 
-300.times do
-  array_of_orders << sample_orders.sample
+300.times do |i|
+  array_of_orders << (i * 0.2 * (5 + rand(1..10))).round
 end
 
 gamesessions = [

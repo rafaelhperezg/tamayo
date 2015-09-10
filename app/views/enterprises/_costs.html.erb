@@ -1,0 +1,76 @@
+<h2 class="text-center">Costs</h2>
+
+<!-- ROW TITLES -->
+<div class="resource-card">
+  <div class="resource-card-item resource-card-number">
+    <p>Resources</p>
+  </div>
+  <div class="resource-card-item">
+    <p>Today</p>
+  </div>
+  <div class="resource-card-item">
+    <p>~Tomorrow</p>
+  </div>
+</div>
+
+<!-- EMPLOYEES -->
+<div class="resource-card">
+  <div class="resource-card-item resource-card-number">
+    <p data-toggle="tooltip" data-placement="top" title="You have <%= pluralize(@current_number_of_employees, 'employee') %>">
+    <%= @current_number_of_employees %> X
+      <i class="fa fa-users"></i>
+    </p>
+  </div>
+  <div class="resource-card-item">
+    <p>
+      <%= @cost_of_salaries_for_today %>€
+    </p>
+    <span>(100€ / day)</span>
+  </div>
+  <div class="resource-card-item">
+    <p class="employeessalariestomorrow"><%= @cost_of_salaries_for_today %>€</p>
+  </div>
+</div>
+
+<!-- MATERIAL COSTS -->
+<div class="resource-card">
+  <div class="resource-card-item resource-card-number">
+    <p data-toggle="tooltip" data-placement="top" title="You need to buy <%= @today_orders_received %> items"><%= @today_orders_received %> X <i class="fa fa-industry"></i></p>
+  </div>
+  <div class="resource-card-item">
+    <p><%= @gamesession.material_cost * @today_orders_received %>€</p>
+    <span>(<%= @gamesession.material_cost %>€ / item)</span>
+  </div>
+  <div class="resource-card-item">
+    <p><i class="fa fa-question fa-2x"></i></p>
+  </div>
+</div>
+
+<!-- HIRES AND LAYOFFS -->
+<div class="resource-card">
+  <div class="resource-card-item resource-card-number">
+    <p data-toggle="tooltip" data-placement="top" title="Costs for hirings and layoffs">Hires/Layoffs</p>
+  </div>
+  <div class="resource-card-item">
+    <p><%= @cost_of_hiring_and_firing_for_today %>€</p>
+    <span data-toggle="tooltip" data-placement="right" title="Hiring 1 employee costs <%=@gamesession.hiring_cost%>€; firing one costs <%=@gamesession.firing_cost%>€"><%=@gamesession.hiring_cost%>€/<%=@gamesession.firing_cost%>€</span>
+  </div>
+  <div class="resource-card-item">
+    <p>resource-card-item</p>
+  </div>
+</div>
+
+<!-- TOTAL -->
+<div class="resource-card">
+  <div class="resource-card-item resource-card-number">
+    <p>Total</p>
+  </div>
+  <div class="resource-card-item">
+    <p>
+    <span class="totalcosts"><%= @total_money_spent_today %></span>€
+    </p>
+  </div>
+  <div class="resource-card-item">
+    <p>resource-card-item</p>
+  </div>
+</div>

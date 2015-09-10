@@ -37,44 +37,9 @@
   </div>
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-      <h2 class="text-center">Costs</h2>
 
-      <div class="resource-card">
-        <div class="resource-card-item resource-card-number">
-          <p data-toggle="tooltip" data-placement="top" title="You have <%= pluralize(@current_number_of_employees, 'employee') %>"><%= @current_number_of_employees %> X <i class="fa fa-users"></i></p>
-        </div>
-        <div class="resource-card-item">
-          <p><%= @cost_of_salaries_for_today %>€</p>
-          <span>(100€ / day)</span>
-        </div>
-      </div>
-      <div class="resource-card">
-        <div class="resource-card-item resource-card-number">
-          <p data-toggle="tooltip" data-placement="top" title="You need to buy <%= @today_orders_received %> items"><%= @today_orders_received %> X <i class="fa fa-industry"></i></p>
-        </div>
-        <div class="resource-card-item">
-          <p><%= @cost_of_raw_materials_for_today %>€</p>
-          <span>(<%= @gamesession.material_cost %>€ / item)</span>
-        </div>
-      </div>
+      <%= render "costs" %>
 
-      <div class="resource-card">
-        <div class="resource-card-item resource-card-number">
-          <p data-toggle="tooltip" data-placement="top" title="Costs for hirings and layoffs">Hire/Layoffs</p>
-        </div>
-        <div class="resource-card-item">
-          <p><%= @cost_of_hiring_and_firing_for_today %>€</p>
-          <span data-toggle="tooltip" data-placement="right" title="Hiring 1 employee costs <%=@gamesession.hiring_cost%>€; firing one costs <%=@gamesession.firing_cost%>€"><%=@gamesession.hiring_cost%>€/<%=@gamesession.firing_cost%>€</span>
-        </div>
-      </div>
-      <div class="resource-card">
-        <div class="resource-card-item resource-card-number">
-          <p>Total</p>
-        </div>
-        <div class="resource-card-item">
-          <p><%= @total_money_spent_today %>€</p>
-        </div>
-      </div>
     </div>
 <!-- ORDERS -->
     <div class="col-xs-12 col-sm-6">
@@ -87,6 +52,13 @@
             <%= @when_can_todays_orders_be_delivered + 1 %> days
           </div>
         </div>
+<% if false %>
+        <div class="dashboard-control text-center">
+          <div class="dashboard-control-title">
+            <h3>Decision</h3>
+          </div>
+        </div>
+<% end %>
         <div class="dashboard-control">
           <div class="dashboard-control-label">
            <h3>Contract <i class="fa fa-book pull-right"></i></h3>
@@ -98,7 +70,7 @@
         </div>
         <div class="dashboard-control">
           <div class="dashboard-control-label">
-            <h3><span class="employee_variation label label-default">0</span> X Employee <i class="fa fa-users pull-right"></i></h3>
+            <h3><span class="employee_variation label label-default">0</span> x employees <i class="fa fa-users pull-right"></i></h3>
           </div>
           <div class="dashboard-control-input text-right">
             <ul class="list-inline">
@@ -126,48 +98,64 @@
 <%= content_for(:js) do %>
   <script>
   $(document).ready(function() {
+// Tooltips         //////////////////////////////////////
     $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+////////////////////////////////////
+
+
+
+// Toggle contract //////////////////////////////
     $('#toggle').bootstrapToggle({
       on: "long",
       off: "court"
     });
 
     var contractId = <%= @contract.id %>;
-    if (contractId == 2) {
-      $('#toggle').bootstrapToggle("on");
-    }
+      if (contractId == 2) {
+        $('#toggle').bootstrapToggle("on");
+      }
 
     $('#toggle').change(function() {
       var contractId = $("#game_decision_new_contract_id").val();
-      if (contractId == 1) {
-        $("#game_decision_new_contract_id").val(2);
-        $(".contract_name").text("long");
-      } else {
-        $("#game_decision_new_contract_id").val(1);
-        $(".contract_name").text("court");
-      }
-    });
+        if (contractId == 1) {
+          $("#game_decision_new_contract_id").val(2);
+          $(".contract_name").text("long");
+        } else {
+          $("#game_decision_new_contract_id").val(1);
+          $(".contract_name").text("court");
+        }
+      });
+//////////////////////////////////////////
 
+
+
+// Employee variation ////////////////////
+var employeescount = <%= @current_number_of_employees %>;
+var employeessalaries = <%= @current_number_of_employees %> * <%= @gamesession.salary_per_employee %>;
     $("#buttonsplus").click(function(e){
       e.preventDefault();
       var variation = parseInt($("#game_decision_employees_variation").val());
       $("#game_decision_employees_variation").val( variation + 1);
       $(".employee_variation").text(variation + 1);
+      var employeessalariestomorrow = (employeescount + variation + 1) * <%= @gamesession.salary_per_employee %>
+      $(".employeessalariestomorrow").text(employeessalariestomorrow+"€");
     });
+
     $("#buttonsminus").click(function(e){
       e.preventDefault();
       var variation = parseInt($("#game_decision_employees_variation").val());
       $("#game_decision_employees_variation").val( variation - 1);
       $(".employee_variation").text(variation - 1);
+      var employeessalariestomorrow = (employeescount + variation - 1) * <%= @gamesession.salary_per_employee %>
+      $(".employeessalariestomorrow").text(employeessalariestomorrow+"€");
     });
   });
-
-
+//////////////////////////////////////////
   </script>
 <% end %>
 
 
-
+<%# raise %>
 
 
 

@@ -27,9 +27,16 @@
       color: $red;
     }
   }
+  &-title {
+    flex: 0 0 100%;
+    h3 {
+      font-weight: bolder;
+      text-decoration: underline;
+    }
+  }
 }
 .dashboard-control-label {
-  flex: 0 0 150px;
+  flex: 0 0 160px;
 }
 .dashboard-control-input {
   flex: 1 1 auto;

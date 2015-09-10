@@ -1,0 +1,58 @@
+<h2 class="text-center">Order history</h2>
+
+
+<!-- <div id="chart_div"></div> -->
+<% data = @gamesession.orders.take(@current_day).map {|order| [@gamesession.orders.index(order), order]} %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= line_chart @cash_array, id: "cash-chart"%>
+    </div>
+    <div class="col-md-6">
+      <%= line_chart data, id: "orders-chart"%>
+    </div>
+  </div>
+</div>
+
+
+<div id="curve_chart" style="width: 900px; height: 500px"></div>
+
+
+
+<% if true %>
+  <% content_for(:js) do %>
+    <script type="text/javascript">
+          src="https://www.google.com/jsapi?autoload={
+            'modules':[{
+              'name':'visualization',
+              'version':'1',
+              'packages':['corechart']
+            }]
+          }"></script>
+
+    <script type="text/javascript">
+      google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses'],
+          ['2004',  1000,      400],
+          ['2005',  1170,      460],
+          ['2006',  660,       1120],
+          ['2007',  1030,      540]
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>    </script>
+  <% end %>
+<% end %>
