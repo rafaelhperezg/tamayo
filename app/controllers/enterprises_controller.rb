@@ -17,7 +17,7 @@ class EnterprisesController < ApplicationController
     @enterprise.hyper_method
 
 # PRODUCTION VARIABLES
-    @today_orders_received              = @gamesession.orders[@current_day -1] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]
+    @today_orders_received              = @gamesession.orders[@current_day - 1] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]
 
     @current_number_of_employees        = @enterprise.current_employees
     @today_workshop_production_capacity = @enterprise.current_prod_capacity
