@@ -35,11 +35,12 @@
       </div>
     </div>
   </div>
+  <!-- SALES -->
     <div class="col-xs-12 col-sm-6">
       <h2 class="text-center">Sales</h2>
       <div class="dashboard-box">
         <div class="dashboard-box-item">
-          <h3 data-toggle="tooltip" data-placement="top" title="<%= @previous_backlog%> unproduced items from yesterday."><%= Contract.find(@enterprise.current_contract_id).name%> </h3>
+          <h3 data-toggle="tooltip" data-placement="top" title="<%= @previous_backlog%> unproduced items from yesterday."><%= Contract.find(@enterprise.current_contract_id).name.capitalize%> </h3>
           <span>Current Contract</span>
         </div>
         <div class="dashboard-box-item">
