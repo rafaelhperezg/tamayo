@@ -3,6 +3,7 @@
   <head>
     <title>Tamayo</title>
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,5 +20,6 @@
     <%= javascript_include_tag "http://www.google.com/jsapi" %>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
     <%= yield(:js) %>
+    <%= yield :charts_js %>
   </body>
 </html>

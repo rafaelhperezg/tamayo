@@ -43,9 +43,18 @@ class EnterprisesController < ApplicationController
     # next  line to update
     @prev_current_cash                  = @enterprise.current_cash   #@enterprise.current_cash
     @current_cash                       = @enterprise.est_new_cash
-
+    @day_results                        = DayResult.where(enterprise_id: @enterprise.id)
+    @day_results_cash                   = @day_results.pluck(:cash)
+    @cash_array                         = cash_to_array
   end
 
+  def cash_to_array
+    cash_with_index = []
+    @day_results_cash.each_with_index do |sum, index|
+      cash_with_index << [index, sum]
+    end
+    return cash_with_index
+  end
   # ------Methods for before action---------
   def find_enterprise
     @enterprise     = Enterprise.find(params[:id])
