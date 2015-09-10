@@ -130,14 +130,15 @@
 
 
 // Employee variation ////////////////////
-var employeescounter = <%= @current_number_of_employees %>;
+var employeescount = <%= @current_number_of_employees %>;
 var employeessalaries = <%= @current_number_of_employees %> * <%= @gamesession.salary_per_employee %>;
     $("#buttonsplus").click(function(e){
       e.preventDefault();
       var variation = parseInt($("#game_decision_employees_variation").val());
       $("#game_decision_employees_variation").val( variation + 1);
       $(".employee_variation").text(variation + 1);
-
+      var employeessalariestomorrow = (employeescount + variation + 1) * <%= @gamesession.salary_per_employee %>
+      $(".employeessalariestomorrow").text(employeessalariestomorrow+"€");
     });
 
     $("#buttonsminus").click(function(e){
@@ -145,6 +146,8 @@ var employeessalaries = <%= @current_number_of_employees %> * <%= @gamesession.s
       var variation = parseInt($("#game_decision_employees_variation").val());
       $("#game_decision_employees_variation").val( variation - 1);
       $(".employee_variation").text(variation - 1);
+      var employeessalariestomorrow = (employeescount + variation - 1) * <%= @gamesession.salary_per_employee %>
+      $(".employeessalariestomorrow").text(employeessalariestomorrow+"€");
     });
   });
 //////////////////////////////////////////

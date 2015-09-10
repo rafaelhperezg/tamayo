@@ -19,7 +19,7 @@ gem 'sidekiq'
 gem 'sinatra'  # Dependency of sidekiq
 gem 'sidekiq-failures'
 
-gem 'chartkick'
+# gem 'chartkick'
 
 group :development, :test do
   gem 'binding_of_caller'

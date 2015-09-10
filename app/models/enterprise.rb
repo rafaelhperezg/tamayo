@@ -1,5 +1,3 @@
-ORDERS = [20, 20, 20, 20, 20, 10, 20, 10, 20, 30, 30, 10, 30, 20, 10, 30, 10, 10, 10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30, 20,10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30 , 50, 10, 10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30, 20,10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10]
-
 class Enterprise < ActiveRecord::Base
   belongs_to :game_session
   has_many :game_decisions
@@ -83,7 +81,7 @@ class Enterprise < ActiveRecord::Base
   end
 
   def total_money_spent_today #Test OK
-    cost_of_raw_materials_for_today(ORDERS[gamesession.current_day]) + cost_of_hiring_and_firing_for_today(employee_variation_from_game_decisions_for_today) + cost_of_salaries_for_today
+    cost_of_raw_materials_for_today(gamesession.orders[current_day]) + cost_of_hiring_and_firing_for_today(employee_variation_from_game_decisions_for_today) + cost_of_salaries_for_today
     # (cost_of_raw_materials_for_today) + (cost_of_hiring_and_firing_for_today) + (cost_of_salaries_for_today)
   end
 # /-------------end COSTS METHODS-------------
@@ -127,7 +125,7 @@ class Enterprise < ActiveRecord::Base
     current_day = self.current_day
 
      # PRODUCTION VARIABLES
-     today_orders_received           = ORDERS[current_day -1] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]
+     today_orders_received           = game_session.orders[current_day -1] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]
      self.current_employees         = self.current_number_of_employees #method
      self.current_prod_capacity     = self.today_workshop_production_capacity #method
      self.current_backlog           = self.est_new_backlog # column
