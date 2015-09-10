@@ -28,18 +28,18 @@
     <span>(<%= @gamesession.salary_per_employee %>€ / day)</span>
   </div>
   <div class="resource-card-item">
-    <p class="employeessalariestomorrow"><%= @cost_of_salaries_for_today %>€</p>
+    <p class="employeessalariestomorrow"><%= @enterprise.current_salaries %>€</p>
   </div>
 </div>
 
 <!-- MATERIAL COSTS -->
 <div class="resource-card">
   <div class="resource-card-item resource-card-number">
-    <p data-toggle="tooltip" data-placement="top" title="You need to buy <%= @today_orders_received %> items"><%= @today_orders_received %> X <i class="fa fa-industry"></i></p>
+    <p data-toggle="tooltip" data-placement="top" title="You need to buy <%= @today_orders_received %> kits m.p"><%= @gamesession.orders[@current_day] %> X <i class="fa fa-industry"></i></p>
   </div>
   <div class="resource-card-item">
-    <p><%= @gamesession.material_cost * @today_orders_received %>€</p>
-    <span>(<%= @gamesession.material_cost %>€ / item)</span>
+    <p><%= @gamesession.material_cost * @gamesession.orders[@current_day] %>€</p>
+    <span>(<%= @gamesession.material_cost %>€ / kit)</span>
   </div>
   <div class="resource-card-item">
     <p><i class="fa fa-question fa-2x"></i></p>
@@ -53,7 +53,7 @@
   </div>
   <div class="resource-card-item">
     <p><%= @cost_of_hiring_and_firing_for_today %>€</p>
-    <span data-toggle="tooltip" data-placement="right" title="Hiring 1 employee costs <%=@gamesession.hiring_cost%>€; firing one costs <%=@gamesession.firing_cost%>€"><%=@gamesession.hiring_cost%>€/<%=@gamesession.firing_cost%>€</span>
+    <span data-toggle="tooltip" data-placement="right" title="Hiring 1 employee costs <%=@gamesession.hiring_cost%>€; firing one costs <%=@gamesession.firing_cost%>€"><%=@gamesession.hiring_cost%>€ / <%=@gamesession.firing_cost%>€</span>
   </div>
   <div class="resource-card-item">
     <p>resource-card-item</p>
@@ -67,7 +67,7 @@
   </div>
   <div class="resource-card-item">
     <p>
-    <span class="totalcosts"><%= @total_money_spent_today %></span>€
+    <span class="totalcosts"><%= @total_money_spent_today %></span> €
     </p>
   </div>
   <div class="resource-card-item">
