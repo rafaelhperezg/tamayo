@@ -1,6 +1,7 @@
 class Enterprise < ActiveRecord::Base
   belongs_to :game_session
   has_many :game_decisions
+  has_many :day_results
 
 
 # --------------Current day METHOD----------
@@ -153,6 +154,8 @@ class Enterprise < ActiveRecord::Base
      #
      self.current_cash               = self.est_new_cash
      self.est_new_cash               = self.total_treasury_today(self.est_net_result_today) #METHOD
+
+     day_results.build day: current_day, cash: est_new_cash
 
      self.save
 
