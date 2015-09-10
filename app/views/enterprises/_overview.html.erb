@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-6">
-      <h2 class="text-center">Production</h2>
+      <h2 class="text-center">Production (Actual state)</h2>
       <div class="dashboard-box">
         <div class="dashboard-box-item">
           <h3 data-toggle="tooltip" data-placement="top" title="<%= @previous_backlog%> unproduced items from yesterday."><%= @enterprise.current_backlog%> items</h3>
@@ -36,8 +36,9 @@
       </div>
     </div>
   </div>
-  <!-- SALES -->
+
   <div class="row">
+  <!-- SALES -->
     <div class="col-xs-12 col-sm-6">
       <h2 class="text-center">Sales</h2>
       <div class="dashboard-box">
@@ -55,7 +56,27 @@
         </div>
       </div>
     </div>
+    <!-- CONT PROD -->
+    <div class="col-xs-12 col-sm-6">
+      <h2 class="text-center">Production (estimations for today)</h2>
+      <div class="dashboard-box">
+        <div class="dashboard-box-item">
+          <h3 data-toggle="tooltip" data-placement="top" title="<%= @previous_backlog%> unproduced items from yesterday."><%= @enterprise.current_prod_capacity%> items</h3>
+          <span>Production Capacity</span>
+        </div>
+        <div class="dashboard-box-item">
+          <h3><%= @enterprise.est_manufactured_today %> items</h3>
+          <span>Est prod Today</span>
+        </div>
+        <div class="dashboard-box-item">
+          <h3>Est.backlog for today</h3>
+          <span><%= @enterprise.est_new_backlog %> items</span>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- PRODUCTION 2 -->
   <div class="row">
     <div class="col-xs-12 col-sm-6">
 
