@@ -11,10 +11,17 @@ class EnterprisesController < ApplicationController
     # Next 2 lines will be needed when current_day will be managed by worker
     # @gamesession.current_day = @gamesession.update_current_day
     # @current_day = @gamesession.current_day
+
     # Next 3 lines will be DELETED when current_day will be managed by worker
     @enterprise.current_day = @enterprise.update_current_day #=>Now this is made by RT
+    if @enterprise.current_day >= @gamesession.virtual_duration
+      flash.now[:error] = "Could not save client"
+    else
+      @enterprise.hyper_method
+    end
     @current_day = @enterprise.current_day
-    @enterprise.hyper_method
+
+    # @enterprise.hyper_method
 
 # PRODUCTION VARIABLES
     @today_orders_received              = @gamesession.orders[@current_day - 1] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]

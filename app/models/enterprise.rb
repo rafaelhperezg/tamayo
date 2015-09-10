@@ -10,9 +10,13 @@ class Enterprise < ActiveRecord::Base
 # take a decision or the page is reloaded. When we'll use a worker to update current_day
 # (in game session!) this method should not be used anymore
   def update_current_day
-    self.current_day += 1
-    self.save
-    return self.current_day
+     if self.current_day < game_session.virtual_duration
+      self.current_day += 1
+      self.save
+      return self.current_day
+    else
+      self.current_day
+    end
   end
 
 
