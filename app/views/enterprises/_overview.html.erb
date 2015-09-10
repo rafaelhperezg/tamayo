@@ -89,12 +89,12 @@
         </div>
         <div class="dashboard-control">
           <div class="dashboard-control-label">
-           <h3> Contract <i class="fa fa-book pull-right"></i></h3>
+           <h3>Contract <i class="fa fa-book pull-right"></i></h3>
           </div>
           <div class="dashboard-control-input text-right">
-            <input type="checkbox" id="toggle" data-toggle="toggle" data-on="Short" data-onstyle="danger" data-off="Long" data-offstyle="success" name="enterprise[contract]">
+            <input type="checkbox" id="toggle" data-toggle="toggle" data-off="court" data-onstyle="danger" data-on="long" data-offstyle="success" name="enterprise[contract]">
           </div>
-          <%= f.input :new_contract_id, as: :hidden, input_html: {value: @contract.name}  %>
+          <%= f.input :new_contract_id, as: :hidden, input_html: {value: @contract.id}  %>
         </div>
         <div class="dashboard-control">
           <div class="dashboard-control-label">
@@ -128,19 +128,25 @@
   $(document).ready(function() {
     $("body").tooltip({ selector: '[data-toggle=tooltip]' });
     $('#toggle').bootstrapToggle({
-      on: 'Long',
-      off: 'Short'
+      on: "long",
+      off: "court"
     });
+
+    var contractId = <%= @contract.id %>;
+    if (contractId == 2) {
+      $('#toggle').bootstrapToggle("on");
+    }
 
     $('#toggle').change(function() {
-      var contractType = $("#game_decision_new_contract_id").val();
-      if (contractType == "long") {
-        $("#game_decision_new_contract_id").val("court");
+      var contractId = $("#game_decision_new_contract_id").val();
+      if (contractId == 1) {
+        $("#game_decision_new_contract_id").val(2);
+        $(".contract_name").text("long");
       } else {
-        $("#game_decision_new_contract_id").val("long");
+        $("#game_decision_new_contract_id").val(1);
+        $(".contract_name").text("court");
       }
     });
-
 
     $("#buttonsplus").click(function(e){
       e.preventDefault();
@@ -156,8 +162,6 @@
     });
   });
 
-
-  // [["long", Contract.find_by(name: "long").id], ["court", Contract.find_by(name: "court").id]]
 
   </script>
 <% end %>
