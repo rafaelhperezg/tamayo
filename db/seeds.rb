@@ -21,7 +21,7 @@ end
 
 gamesessions = [
   {
-    virtual_duration: 6,
+    virtual_duration: 12,
     real_duration: 3,
     initial_amount_of_cash: 10000,
     initial_number_of_employees: 1,
