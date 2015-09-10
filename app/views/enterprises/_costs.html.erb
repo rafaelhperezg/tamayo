@@ -56,7 +56,7 @@
     <span data-toggle="tooltip" data-placement="right" title="Hiring 1 employee costs <%=@gamesession.hiring_cost%>€; firing one costs <%=@gamesession.firing_cost%>€"><%=@gamesession.hiring_cost%>€ / <%=@gamesession.firing_cost%>€</span>
   </div>
   <div class="resource-card-item">
-    <p>resource-card-item</p>
+    <p class="costshirefire">0€</p>
   </div>
 </div>
 
@@ -71,6 +71,6 @@
     </p>
   </div>
   <div class="resource-card-item">
-    <p>resource-card-item</p>
+    <p class="totalcoststomorrow"><%= @enterprise.current_salaries %>€</p>
   </div>
 </div>
