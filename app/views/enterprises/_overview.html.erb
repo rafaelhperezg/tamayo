@@ -37,51 +37,9 @@
   </div>
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-      <h2 class="text-center">Costs</h2>
 
-      <div class="resource-card">
-        <div class="resource-card-item resource-card-number">
-          <p data-toggle="tooltip" data-placement="top" title="You have <%= pluralize(@current_number_of_employees, 'employee') %>">
-          <span class="employeesamount"><%= @current_number_of_employees %></span> X
-            <i class="fa fa-users"></i>
-          </p>
-        </div>
-        <div class="resource-card-item">
-          <p>
-            <span class="employeessalaries"><%= @cost_of_salaries_for_today %></span>€
-          </p>
-          <span>(100€ / day)</span>
-        </div>
-      </div>
-      <div class="resource-card">
-        <div class="resource-card-item resource-card-number">
-          <p data-toggle="tooltip" data-placement="top" title="You need to buy <%= @today_orders_received %> items"><%= @today_orders_received %> X <i class="fa fa-industry"></i></p>
-        </div>
-        <div class="resource-card-item">
-          <p><%= @gamesession.material_cost * @today_orders_received %>€</p>
-          <span>(<%= @gamesession.material_cost %>€ / item)</span>
-        </div>
-      </div>
+      <%= render "costs" %>
 
-      <div class="resource-card">
-        <div class="resource-card-item resource-card-number">
-          <p data-toggle="tooltip" data-placement="top" title="Costs for hirings and layoffs">Hires/Layoffs</p>
-        </div>
-        <div class="resource-card-item">
-          <p><%= @cost_of_hiring_and_firing_for_today %>€</p>
-          <span data-toggle="tooltip" data-placement="right" title="Hiring 1 employee costs <%=@gamesession.hiring_cost%>€; firing one costs <%=@gamesession.firing_cost%>€"><%=@gamesession.hiring_cost%>€/<%=@gamesession.firing_cost%>€</span>
-        </div>
-      </div>
-      <div class="resource-card">
-        <div class="resource-card-item resource-card-number">
-          <p>Total</p>
-        </div>
-        <div class="resource-card-item">
-          <p>
-          <span class="totalcosts"><%= @total_money_spent_today %></span>€
-          </p>
-        </div>
-      </div>
     </div>
 <!-- ORDERS -->
     <div class="col-xs-12 col-sm-6">
@@ -174,19 +132,12 @@
 // Employee variation ////////////////////
 var employeescounter = <%= @current_number_of_employees %>;
 var employeessalaries = <%= @current_number_of_employees %> * <%= @gamesession.salary_per_employee %>;
-var totalcosts = <%= @total_money_spent_today %>;
-
     $("#buttonsplus").click(function(e){
       e.preventDefault();
       var variation = parseInt($("#game_decision_employees_variation").val());
       $("#game_decision_employees_variation").val( variation + 1);
       $(".employee_variation").text(variation + 1);
-      employeescounter ++;
-      employeessalaries = employeescounter * <%= @gamesession.salary_per_employee %>;
-      totalcosts = employeessalaries + <%= @cost_of_raw_materials_for_today %>;
-      $(".employeesamount").text(employeescounter);
-      $(".employeessalaries").text(employeessalaries);
-      $(".totalcosts").text(totalcosts);
+
     });
 
     $("#buttonsminus").click(function(e){
@@ -194,12 +145,6 @@ var totalcosts = <%= @total_money_spent_today %>;
       var variation = parseInt($("#game_decision_employees_variation").val());
       $("#game_decision_employees_variation").val( variation - 1);
       $(".employee_variation").text(variation - 1);
-      employeescounter --;
-      employeessalaries;
-      totalcosts = employeessalaries + <%= @cost_of_raw_materials_for_today * @today_orders_received %>;
-      $(".employeesamount").text(employeescounter);
-      $(".employeessalaries").text(employeessalaries);
-      $(".totalcosts").text(totalcosts);
     });
   });
 //////////////////////////////////////////
