@@ -139,6 +139,8 @@ var employeessalaries = <%= @current_number_of_employees %> * <%= @gamesession.s
       $(".employee_variation").text(variation + 1);
       var employeessalariestomorrow = (employeescount + variation + 1) * <%= @gamesession.salary_per_employee %>
       $(".employeessalariestomorrow").text(employeessalariestomorrow+"€");
+      $(".costshirefire").text((variation * <%=@gamesession.hiring_cost%> )+"€");
+      $(".totalcoststomorrow").text((variation * <%=@gamesession.firing_cost%>)+employeessalariestomorrow+"€");
     });
 
     $("#buttonsminus").click(function(e){
@@ -148,6 +150,8 @@ var employeessalaries = <%= @current_number_of_employees %> * <%= @gamesession.s
       $(".employee_variation").text(variation - 1);
       var employeessalariestomorrow = (employeescount + variation - 1) * <%= @gamesession.salary_per_employee %>
       $(".employeessalariestomorrow").text(employeessalariestomorrow+"€");
+      $(".costshirefire").text((variation * -<%=@gamesession.firing_cost%> )+"€");
+      $(".totalcoststomorrow").text((variation * -<%=@gamesession.firing_cost%>)+employeessalariestomorrow+"€");
     });
   });
 //////////////////////////////////////////
