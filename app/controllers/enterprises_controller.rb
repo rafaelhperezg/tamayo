@@ -14,9 +14,10 @@ class EnterprisesController < ApplicationController
 
     # Next 3 lines will be DELETED when current_day will be managed by worker
     @enterprise.current_day = @enterprise.update_current_day #=>Now this is made by RT
-    unless @enterprise.current_day == @gamesession.virtual_duration
+    unless @enterprise.current_day >= @gamesession.virtual_duration
       @enterprise.hyper_method
     end
+
     @current_day = @enterprise.current_day
 
     # @enterprise.hyper_method
