@@ -32,10 +32,12 @@
           <h3><%= @enterprise.current_to_produce%> items</h3>
           <span>Total to produce</span>
         </div>
+
       </div>
     </div>
   </div>
   <!-- SALES -->
+  <div class="row">
     <div class="col-xs-12 col-sm-6">
       <h2 class="text-center">Sales</h2>
       <div class="dashboard-box">
@@ -44,12 +46,12 @@
           <span>Current Contract</span>
         </div>
         <div class="dashboard-box-item">
-          <h3><%= @enterprise.est_total_sales_today %> €</h3>
-          <span>Payments received today</span>
+          <h3><%= Contract.find(@enterprise.current_contract_id).price %></h3>
+          <span>Price per item</span>
         </div>
         <div class="dashboard-box-item">
-          <h3></h3>
-          <span></span>
+          <h3>Sales</h3>
+          <span><%= @enterprise.est_total_sales_today %> €</span>
         </div>
       </div>
     </div>
