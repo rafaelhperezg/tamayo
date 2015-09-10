@@ -1,8 +1,4 @@
 
-#require './lib/tamayo/tamayocompute.rb'
-
-ORDERS = [20, 20, 20, 20, 20, 10, 20, 10, 20, 30, 30, 10, 30, 20, 10, 30, 10, 10, 10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30, 20,10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30 , 50, 10, 10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10, 30, 20,10, 10, 10, 10, 10, 20, 30, 20, 10, 20, 10, 10]
-
 class EnterprisesController < ApplicationController
   before_action :find_enterprise, :find_game_session, :get_game_decisions
   # todo gamedecisions, current_day
@@ -21,7 +17,7 @@ class EnterprisesController < ApplicationController
     @enterprise.hyper_method
 
 # PRODUCTION VARIABLES
-    @today_orders_received              = ORDERS[@current_day -1] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]
+    @today_orders_received              = @gamesession.orders[@current_day - 1] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]
 
     @current_number_of_employees        = @enterprise.current_employees
     @today_workshop_production_capacity = @enterprise.current_prod_capacity

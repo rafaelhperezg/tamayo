@@ -5,6 +5,7 @@
     <script type="text/javascript" src="http://www.chartjs.org/assets/Chart.min.js"></script>
     <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -14,6 +15,8 @@
   <body>
     <%= render "shared/navbar" %>
     <%= yield %>
-        <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "application" %>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+    <%= yield(:js) %>
   </body>
 </html>

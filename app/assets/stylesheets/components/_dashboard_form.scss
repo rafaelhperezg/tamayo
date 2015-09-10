@@ -1,0 +1,36 @@
+.dashboard-form {
+  background: rgb(244, 244, 244);
+  margin-top: 55px;
+  padding: 20px 80px;
+  border-radius: 3px;
+  border-left: 2px solid rgb(232, 232, 232);
+  h3 {
+    margin: 0;
+    font-size: 17px;
+  }
+  .toggle.btn {
+    width: 85px !important;
+  }
+  li {
+    padding-right: 0 !important;
+  }
+}
+.dashboard-control {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  &:first-child {
+    border-bottom: 1px solid rgb(234, 234, 234);
+    .dashboard-control-input {
+      font-size: 18px;
+      font-weight: bolder;
+      color: $red;
+    }
+  }
+}
+.dashboard-control-label {
+  flex: 0 0 150px;
+}
+.dashboard-control-input {
+  flex: 1 1 auto;
+}

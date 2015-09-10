@@ -14,6 +14,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+
 gem 'sidekiq'
 gem 'sinatra'  # Dependency of sidekiq
 gem 'sidekiq-failures'

@@ -1,70 +1,76 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <!-- Nav tabs -->
-      <ul class="nav nav-tabs nav-pills" role="tablist">
-        <li role="presentation" class="active">
-          <a href="#overview" role="tab" data-toggle="tab">
-            Overview
-            <i class="fa fa-dashboard"></i>
-          </a>
-        </li>
-        <li role="presentation">
-          <a href="#stats" role="tab" data-toggle="tab">
-            Stats
-            <i class="fa fa-bar-chart"></i>
-          </a>
-        </li>
-        <li role="presentation">
-          <a href="#doc" role="tab" data-toggle="tab">
-            Game rules
-            <i class="fa fa-book"></i>
-          </a>
-        </li>
-        <li role="presentation" class="cta"><a href="#form" class="btn btn-danger pull-right" role="tab">Make a decision</a></li>
-      </ul>
-      <!-- Tab panes -->
-      <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="overview">
-          <%= render "overview" %>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="stats">
-          <%= render "stats" %>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="doc">
-          <%= render "doc" %>
+<%= simple_form_for [@enterprise, @gamedecision], url: enterprise_game_decisions_path(@enterprise), method: :post do |f| %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-pills" role="tablist">
+          <li role="presentation" class="active">
+            <a href="#overview" role="tab" data-toggle="tab">
+              Overview
+              <i class="fa fa-dashboard"></i>
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="#stats" role="tab" data-toggle="tab">
+              Stats
+              <i class="fa fa-bar-chart"></i>
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="#doc" role="tab" data-toggle="tab">
+              Game rules
+              <i class="fa fa-book"></i>
+            </a>
+          </li>
+          <li role="presentation" class="cta">
+            <%= f.button :submit, "Make a decision", class: "btn btn-success pull-right" %>
+          </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="overview">
+            <%= render partial: "overview", locals: {f: f} %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="stats">
+            <%= render "stats" %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="doc">
+            <%= render "doc" %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title">Here's where you stand right now relative to other enterprises</h4>
-      </div>
-      <div class="modal-body">
-        <%  @all_enterprises_sorted.each do |other| %>
-          <div class="enterprise-card">
-            <div class="enterprise-card-name">
-              <h3><%= @all_enterprises_sorted.find_index(other) + 1 %>: <%= other.name %></h3>
+  <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Here's where you stand right now relative to other enterprises</h4>
+        </div>
+        <div class="modal-body">
+          <%  @all_enterprises_sorted.each do |other| %>
+            <div class="enterprise-card">
+              <div class="enterprise-card-name">
+                <h3><%= @all_enterprises_sorted.find_index(other) + 1 %>: <%= other.name %></h3>
+              </div>
+              <div class="enterprise-card-treasury">
+                <h5><%= other.current_cash %>€</h5>
+              </div>
             </div>
-            <div class="enterprise-card-treasury">
-              <h5><%= other.current_cash %>€</h5>
-            </div>
-          </div>
-        <% end %>
+          <% end %>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-        </div><!-- /.modal-footer -->
-      </div><!-- /.modal-body -->
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          </div><!-- /.modal-footer -->
+        </div><!-- /.modal-body -->
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+<% end %>
