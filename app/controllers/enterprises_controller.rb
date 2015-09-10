@@ -55,6 +55,7 @@ class EnterprisesController < ApplicationController
     end
     return cash_with_index
   end
+
   # ------Methods for before action---------
   def find_enterprise
     @enterprise     = Enterprise.find(params[:id])

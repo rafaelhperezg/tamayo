@@ -1,44 +1,58 @@
 <h2 class="text-center">Order history</h2>
 
 
-<div id="chart_div"></div>
+<!-- <div id="chart_div"></div> -->
+<% data = @gamesession.orders.take(@current_day).map {|order| [@gamesession.orders.index(order), order]} %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= line_chart @cash_array, id: "cash-chart"%>
+    </div>
+    <div class="col-md-6">
+      <%= line_chart data, id: "orders-chart"%>
+    </div>
+  </div>
+</div>
 
 
 
-<% content_for(:js) do %>
-  <script type="text/javascript">
-
-    google.load('visualization', '1', {packages: ['corechart', 'line']});
-    google.setOnLoadCallback(drawBackgroundColor);
-
-    function drawBackgroundColor() {
-          var data = new google.visualization.DataTable();
-          data.addColumn('number', 'X');
-          data.addColumn('number', 'Orders');
-
-          <% data = @gamesession.orders.take(@current_day).map {|order| [@gamesession.orders.index(order), order]} %>
-
-          data.addRows(<%= data.to_json %>);
-
-          var options = {
-            hAxis: {
-              title: 'Number of days elapsed'
-            },
-            vAxis: {
-              title: 'Orders (nb of items)'
-            },
-            backgroundColor: '#f1f8e9',
-            width: $(window).innerWidth() * 0.8,
-            height: 500,
-          };
 
 
 
-          var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-          chart.draw(data, options);
-        }
-  </script>
+<% if false %>
+  <% content_for(:js) do %>
+    <script type="text/javascript">
+
+      google.load('visualization', '1', {packages: ['corechart', 'line']});
+      google.setOnLoadCallback(drawBackgroundColor);
+
+      function drawBackgroundColor() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'X');
+            data.addColumn('number', 'Orders');
+
+            <% data = @gamesession.orders.take(@current_day).map {|order| [@gamesession.orders.index(order), order]} %>
+
+            data.addRows(<%= data.to_json %>);
+
+            var options = {
+              hAxis: {
+                title: 'Number of days elapsed'
+              },
+              vAxis: {
+                title: 'Orders (nb of items)'
+              },
+              backgroundColor: '#f1f8e9',
+              width: $(window).innerWidth() * 0.8,
+              height: 500,
+            };
 
 
 
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+          }
+    </script>
+  <% end %>
 <% end %>
