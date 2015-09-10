@@ -1,3 +1,4 @@
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -21,7 +22,7 @@ end
 
 gamesessions = [
   {
-    virtual_duration: 6,
+    virtual_duration: 250,
     real_duration: 3,
     initial_amount_of_cash: 10000,
     initial_number_of_employees: 1,
