@@ -1,136 +1,164 @@
-<%= simple_form_for [@enterprise, @gamedecision], url: enterprise_game_decisions_path(@enterprise), method: :post do |f| %>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <h2 class="text-center">Cash</h2>
-        <div class="dashboard-box">
-          <div class="dashboard-box-item">
-            <h3><%= @enterprise.current_cash %>€</h3>
-            <span>Beginning of the day</span>
-          </div>
-          <div class="dashboard-box-item">
-            <h3 class="<%= (-500 > 0) ? 'green' : 'red'%>"><%= @net_result_today %>€</h3>
-            <span>Net results today</span>
-          </div>
-          <div class="dashboard-box-item">
-            <h3><%= @enterprise.est_new_cash %>€</h3>
-            <span>Estimated treasury</span>
-          </div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <h2 class="text-center">Cash</h2>
+      <div class="dashboard-box">
+        <div class="dashboard-box-item">
+          <h3><%= @enterprise.current_cash %>€</h3>
+          <span>Beginning of the day</span>
         </div>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <h2 class="text-center">Production</h2>
-        <div class="dashboard-box">
-          <div class="dashboard-box-item">
-            <h3 data-toggle="tooltip" data-placement="top" title="<%= @previous_backlog%> unproduced items from yesterday."><%= @previous_backlog%> items</h3>
-            <span>orders backlog</span>
-          </div>
-          <div class="dashboard-box-item">
-            <h3><%= @today_orders_received %> items</h3>
-            <span>orders today</span>
-          </div>
-          <div class="dashboard-box-item">
-            <h3><%= @total_to_produce_today%> items</h3>
-            <span>total</span>
-          </div>
+        <div class="dashboard-box-item">
+          <h3 class="<%= (-500 > 0) ? 'green' : 'red'%>"><%= @net_result_today %>€</h3>
+          <span>Net results today</span>
+        </div>
+        <div class="dashboard-box-item">
+          <h3><%= @enterprise.est_new_cash %>€</h3>
+          <span>Estimated treasury</span>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <h2 class="text-center">Costs</h2>
-
-        <div class="resource-card">
-          <div class="resource-card-item resource-card-number">
-            <span class="employeecount" data-toggle="tooltip" data-placement="top" title="<%= print_number_of_employees(@current_number_of_employees) %>"><%= @current_number_of_employees %></span> x <i class="fa fa-users"></i>
-          </div>
-          <div class="resource-card-item">
-            <p><%= @cost_of_salaries_for_today %>€</p>
-            <span>(100€ / day)</span>
-          </div>
+    <div class="col-xs-12 col-sm-6">
+      <h2 class="text-center">Production</h2>
+      <div class="dashboard-box">
+        <div class="dashboard-box-item">
+          <h3 data-toggle="tooltip" data-placement="top" title="<%= @previous_backlog%> unproduced items from yesterday."><%= @previous_backlog%> items</h3>
+          <span>orders backlog</span>
         </div>
-        <div class="resource-card">
-          <div class="resource-card-item resource-card-number">
-            <p data-toggle="tooltip" data-placement="top" title="You need to buy <%= @today_orders_received %> items"><%= @today_orders_received %> X <i class="fa fa-industry"></i></p>
-          </div>
-          <div class="resource-card-item">
-            <p><%= @cost_of_raw_materials_for_today %>€</p>
-            <span>(<%= @gamesession.material_cost %>€ / item)</span>
-          </div>
+        <div class="dashboard-box-item">
+          <h3><%= @today_orders_received %> items</h3>
+          <span>orders today</span>
         </div>
-
-        <div class="resource-card">
-          <div class="resource-card-item resource-card-number">
-            <p data-toggle="tooltip" data-placement="top" title="Costs for hirings and layoffs">Hire/Layoffs</p>
-          </div>
-          <div class="resource-card-item">
-            <p><%= @cost_of_hiring_and_firing_for_today %>€</p>
-            <span data-toggle="tooltip" data-placement="right" title="Hiring 1 employee costs <%=@gamesession.hiring_cost%>€; firing one costs <%=@gamesession.firing_cost%>€"><%=@gamesession.hiring_cost%>€/<%=@gamesession.firing_cost%>€</span>
-          </div>
-        </div>
-        <div class="resource-card">
-          <div class="resource-card-item resource-card-number">
-            <p>Total</p>
-          </div>
-          <div class="resource-card-item">
-            <p><%= @total_money_spent_today %>€</p>
-          </div>
+        <div class="dashboard-box-item">
+          <h3><%= @total_to_produce_today%> items</h3>
+          <span>total</span>
         </div>
       </div>
-  <!-- ORDERS -->
-      <div class="col-xs-12 col-sm-6">
-        <h2 class="text-center">Orders</h2>
-        <div class="orders">
-          <div class="detail">
-            <p>Days until today's order delivery
-              <span><%= @when_can_todays_orders_be_delivered %></span>
-            </p>
-          </div>
-          <div class="detail">
-            <h2 class="text-center">Contract</h2>
-            <input type="checkbox" id="toggle" data-toggle="toggle" data-on="Short</br>(1 day)" data-onstyle="danger" data-off="Long</br>(4 days)" data-offstyle="success" name="enterprise[contract]">
-            <div id="buttonsplus" class="btn btn-success">Hire</div>
-            <div id="buttonsminus" class="btn btn-danger">Fire</div></br>
-            <% if false %>
-              <p>Currently selected contract:</p>
-              <span><%= @contract.name %></span>
-              <p>(delivery within <%= @contract.timeframe %> days)</p>
-            <% end %>
-<%#= f.button :submit, class: "btn btn-success margined" %>
-          </div>
-        </div>
-      </div>
-  <!-- /ORDERS -->
     </div>
   </div>
-<% end %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <h2 class="text-center">Costs</h2>
+
+      <div class="resource-card">
+        <div class="resource-card-item resource-card-number">
+          <p data-toggle="tooltip" data-placement="top" title="You have <%= pluralize(@current_number_of_employees, 'employee') %>"><%= @current_number_of_employees %> X <i class="fa fa-users"></i></p>
+        </div>
+        <div class="resource-card-item">
+          <p><%= @cost_of_salaries_for_today %>€</p>
+          <span>(100€ / day)</span>
+        </div>
+      </div>
+      <div class="resource-card">
+        <div class="resource-card-item resource-card-number">
+          <p data-toggle="tooltip" data-placement="top" title="You need to buy <%= @today_orders_received %> items"><%= @today_orders_received %> X <i class="fa fa-industry"></i></p>
+        </div>
+        <div class="resource-card-item">
+          <p><%= @cost_of_raw_materials_for_today %>€</p>
+          <span>(<%= @gamesession.material_cost %>€ / item)</span>
+        </div>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-card-item resource-card-number">
+          <p data-toggle="tooltip" data-placement="top" title="Costs for hirings and layoffs">Hire/Layoffs</p>
+        </div>
+        <div class="resource-card-item">
+          <p><%= @cost_of_hiring_and_firing_for_today %>€</p>
+          <span data-toggle="tooltip" data-placement="right" title="Hiring 1 employee costs <%=@gamesession.hiring_cost%>€; firing one costs <%=@gamesession.firing_cost%>€"><%=@gamesession.hiring_cost%>€/<%=@gamesession.firing_cost%>€</span>
+        </div>
+      </div>
+      <div class="resource-card">
+        <div class="resource-card-item resource-card-number">
+          <p>Total</p>
+        </div>
+        <div class="resource-card-item">
+          <p><%= @total_money_spent_today %>€</p>
+        </div>
+      </div>
+    </div>
+<!-- ORDERS -->
+    <div class="col-xs-12 col-sm-6">
+      <div class="dashboard-form">
+        <div class="dashboard-control">
+          <div class="dashboard-control-label">
+            <h3>Delay <i class="fa fa-clock-o pull-right"></i></h3>
+          </div>
+          <div class="dashboard-control-input text-right">
+            <%= @when_can_todays_orders_be_delivered %> days
+          </div>
+        </div>
+        <div class="dashboard-control">
+          <div class="dashboard-control-label">
+           <h3> Contract <i class="fa fa-book pull-right"></i></h3>
+          </div>
+          <div class="dashboard-control-input text-right">
+            <input type="checkbox" id="toggle" data-toggle="toggle" data-on="Short" data-onstyle="danger" data-off="Long" data-offstyle="success" name="enterprise[contract]">
+          </div>
+          <%= f.input :new_contract_id, as: :hidden, input_html: {value: @contract.name}  %>
+        </div>
+        <div class="dashboard-control">
+          <div class="dashboard-control-label">
+            <h3><span class="employee_variation label label-default">0</span> X Employee <i class="fa fa-users pull-right"></i></h3>
+          </div>
+          <div class="dashboard-control-input text-right">
+            <ul class="list-inline">
+              <li><a href="" class="btn btn-default" id="buttonsplus"><i class="fa fa-plus"></i></a></li>
+              <li><a href="" class="btn btn-default" id="buttonsminus"><i class="fa fa-minus"></i></a></li>
+              <%= f.input :employees_variation, as: :hidden, input_html: {value: '0'} %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <% if false %>
+        <p>Currently selected contract:</p>
+        <span><%= @contract.name %></span>
+        <p>(delivery within <%= @contract.timeframe %> days)</p>
+      <% end %>
+<%#= f.button :submit, class: "btn btn-success margined" %>
+    </div>
+<!-- /ORDERS -->
+  </div>
+</div>
+
 
 
 
 <%= content_for(:js) do %>
   <script>
   $(document).ready(function() {
-      $("body").tooltip({ selector: '[data-toggle=tooltip]' });
-      $('#toggle').bootstrapToggle({
-        on: 'Long',
-        off: 'Short'
-      });
+    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+    $('#toggle').bootstrapToggle({
+      on: 'Long',
+      off: 'Short'
+    });
+
+    $('#toggle').change(function() {
+      var contractType = $("#game_decision_new_contract_id").val();
+      if (contractType == "long") {
+        $("#game_decision_new_contract_id").val("court");
+      } else {
+        $("#game_decision_new_contract_id").val("long");
+      }
+    });
+
+
+    $("#buttonsplus").click(function(e){
+      e.preventDefault();
+      var variation = parseInt($("#game_decision_employees_variation").val());
+      $("#game_decision_employees_variation").val( variation + 1);
+      $(".employee_variation").text(variation + 1);
+    });
+    $("#buttonsminus").click(function(e){
+      e.preventDefault();
+      var variation = parseInt($("#game_decision_employees_variation").val());
+      $("#game_decision_employees_variation").val( variation - 1);
+      $(".employee_variation").text(variation - 1);
+    });
   });
 
 
-  var employeecount = <%= @current_number_of_employees %>;
-    $("#buttonsplus").click(function(){
-      employeecount ++;
-      $(".employeecount").text(employeecount);
-      salaries = counter * <%= @gamesession.hiring_cost %>;
-      $("#totalcost").text(salaries + "€");
-    });
-    $("#buttonsminus").click(function(){
-      employeecount --;
-      $(".employeecount").text(employeecount);
-      salaries = counter * <%= @gamesession.firing_cost %>;
-      $("#totalcost").text(salaries + "€");
-    });
+  // [["long", Contract.find_by(name: "long").id], ["court", Contract.find_by(name: "court").id]]
+
   </script>
 <% end %>
 
