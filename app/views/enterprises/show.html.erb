@@ -74,3 +74,13 @@
   </div><!-- /.modal -->
 
 <% end %>
+
+<%= content_for :js  do %>
+  <%= javascript_tag do %>
+    var today = <%= @enterprise.current_day %>;
+    var endDay = <%= @gamesession.virtual_duration %>;
+    if (today == endDay) {
+      $('#myModal').modal();
+    }
+  <% end %>
+<% end %>
