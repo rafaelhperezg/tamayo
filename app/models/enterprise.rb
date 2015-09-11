@@ -129,7 +129,7 @@ class Enterprise < ActiveRecord::Base
     current_day = self.current_day
 
      # PRODUCTION VARIABLES
-     today_orders_received           = game_session.orders[current_day -1] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]
+     today_orders_received           = game_session.orders[current_day] #as current_day at start will be updated to 1, the -1 allow as to get ORDERS[0]
      self.current_employees         = self.current_number_of_employees #method
      self.current_prod_capacity     = self.today_workshop_production_capacity #method
      self.current_backlog           = self.est_new_backlog # column

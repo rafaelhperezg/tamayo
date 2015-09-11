@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-6">
-      <h2 class="text-center">Production</h2>
+      <h2 class="text-center">Production (actual status)</h2>
       <div class="dashboard-box">
         <div class="dashboard-box-item">
           <h3 data-toggle="tooltip" data-placement="top" title="<%= @previous_backlog%> unproduced items from yesterday."><%= @enterprise.current_backlog%> items</h3>
@@ -32,9 +32,51 @@
           <h3><%= @enterprise.current_to_produce%> items</h3>
           <span>Total to produce</span>
         </div>
+
       </div>
     </div>
   </div>
+
+  <div class="row">
+  <!-- SALES -->
+    <div class="col-xs-12 col-sm-6">
+      <h2 class="text-center">Sales</h2>
+      <div class="dashboard-box">
+        <div class="dashboard-box-item">
+          <h3 data-toggle="tooltip" data-placement="top" title="<%= @previous_backlog%> unproduced items from yesterday."><%= Contract.find(@enterprise.current_contract_id).name.capitalize%> </h3>
+          <span>Current Contract</span>
+        </div>
+        <div class="dashboard-box-item">
+          <h3><%= Contract.find(@enterprise.current_contract_id).price %> €/item</h3>
+          <span>Price per item</span>
+        </div>
+        <div class="dashboard-box-item">
+          <h3><%= @enterprise.est_total_sales_today %> €</h3>
+          <span>Sales</span>
+        </div>
+      </div>
+    </div>
+    <!-- CONT PROD -->
+    <div class="col-xs-12 col-sm-6">
+      <h2 class="text-center">Production (estimations for today)</h2>
+      <div class="dashboard-box">
+        <div class="dashboard-box-item">
+          <h3 data-toggle="tooltip" data-placement="top" title="<%= @enterprise.current_employees%>people x <%= @gamesession.productivity_per_employee%>.items/emp/day"><%= @enterprise.current_prod_capacity%> items</h3>
+          <span>Production Capacity</span>
+        </div>
+        <div class="dashboard-box-item">
+          <h3><%= @enterprise.est_manufactured_today %> items</h3>
+          <span>Est prod Today</span>
+        </div>
+        <div class="dashboard-box-item">
+          <h3><%= @enterprise.est_new_backlog %> items</h3>
+          <span>Est.backlog for today</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTION 2 -->
   <div class="row">
     <div class="col-xs-12 col-sm-6">
 
@@ -49,7 +91,7 @@
             <h3>Delay <i class="fa fa-clock-o pull-right"></i></h3>
           </div>
           <div class="dashboard-control-input text-right">
-            <%= @when_can_todays_orders_be_delivered + 1 %> days
+            <%= @enterprise.est_delivery_time + 1 %> days
           </div>
         </div>
 <% if false %>
