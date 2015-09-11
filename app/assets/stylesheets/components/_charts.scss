@@ -1,6 +1,9 @@
 #cash-chart {
   width: 100% !important;
   height: 100% !important;
+  // div > div:nth-child(1) > div > svg > g:nth-child(3) > g:nth-child(4) {
+  //   visibility: hidden;
+  // }
 }
 
 #orders-chart {
@@ -9,3 +12,4 @@
 }
 
 // #cash-chart > div > div:nth-child(1) > div > svg > g:nth-child(3) > g:nth-child(4)
+//#orders-chart > div > div:nth-child(1) > div > svg > g:nth-child(3) > g:nth-child(4) > g:nth-child(9)
