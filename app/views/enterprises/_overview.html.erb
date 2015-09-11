@@ -122,6 +122,25 @@
             </ul>
           </div>
         </div>
+        <div class="dashboard-control">
+          <div class="dashboard-control-label">
+            <span href="" class="navbar-wagon-date">
+              <i class="fa fa-calendar"></i> Day <%= @current_day %>
+              <br>
+              <% if (@gamesession.virtual_duration -  @current_day) >= 0 %>
+                (<%= @gamesession.virtual_duration -  @current_day %>
+                Days Left)
+              <% else%>
+                Simulation Finished
+              <% end%>
+            </span>
+          </div>
+          <div class="dashboard-control-input text-right">
+            <h3>
+              <%= f.button :submit, "Make a decision", class: "btn btn-success pull-right" %>
+            </h3>
+          </div>
+        </div>
       </div>
       <% if false %>
         <p>Currently selected contract:</p>
