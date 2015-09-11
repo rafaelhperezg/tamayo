@@ -47,12 +47,12 @@
           <span>Current Contract</span>
         </div>
         <div class="dashboard-box-item">
-          <h3><%= Contract.find(@enterprise.current_contract_id).price %></h3>
+          <h3><%= Contract.find(@enterprise.current_contract_id).price %> €/item</h3>
           <span>Price per item</span>
         </div>
         <div class="dashboard-box-item">
-          <h3>Sales</h3>
-          <span><%= @enterprise.est_total_sales_today %> €</span>
+          <h3><%= @enterprise.est_total_sales_today %> €</h3>
+          <span>Sales</span>
         </div>
       </div>
     </div>
@@ -61,7 +61,7 @@
       <h2 class="text-center">Production (estimations for today)</h2>
       <div class="dashboard-box">
         <div class="dashboard-box-item">
-          <h3 data-toggle="tooltip" data-placement="top" title="<%= @previous_backlog%> unproduced items from yesterday."><%= @enterprise.current_prod_capacity%> items</h3>
+          <h3 data-toggle="tooltip" data-placement="top" title="<%= @enterprise.current_employees%>people x <%= @gamesession.productivity_per_employee%>.items/emp/day"><%= @enterprise.current_prod_capacity%> items</h3>
           <span>Production Capacity</span>
         </div>
         <div class="dashboard-box-item">
@@ -69,8 +69,8 @@
           <span>Est prod Today</span>
         </div>
         <div class="dashboard-box-item">
-          <h3>Est.backlog for today</h3>
-          <span><%= @enterprise.est_new_backlog %> items</span>
+          <h3><%= @enterprise.est_new_backlog %> items</h3>
+          <span>Est.backlog for today</span>
         </div>
       </div>
     </div>
