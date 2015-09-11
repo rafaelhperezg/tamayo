@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :game_decisions, only: [:new, :create]
   end
 
-  root to: 'pages#home'
+  root to: 'enterprises#show', id: 1
 
 
   require "sidekiq/web"
