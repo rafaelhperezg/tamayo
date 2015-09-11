@@ -43,12 +43,12 @@
       <h2 class="text-center">Sales</h2>
       <div class="dashboard-box">
         <div class="dashboard-box-item">
-          <h3 data-toggle="tooltip" data-placement="top" title="<%= @previous_backlog%> unproduced items from yesterday."><%= Contract.find(@enterprise.current_contract_id).name.capitalize%> </h3>
+          <h3><%= Contract.find(@enterprise.current_contract_id).name.capitalize%> </h3>
           <span>Current Contract</span>
         </div>
         <div class="dashboard-box-item">
           <h3><%= Contract.find(@enterprise.current_contract_id).price %> €/item</h3>
-          <span>Price paid/item</span>
+          <span>Price paid / item</span>
         </div>
         <div class="dashboard-box-item">
           <h3><%= @enterprise.est_total_sales_today %> €</h3>
@@ -61,7 +61,7 @@
       <h2 class="text-center">Production</h2>
       <div class="dashboard-box">
         <div class="dashboard-box-item">
-          <h3 data-toggle="tooltip" data-placement="top" title="<%= @enterprise.current_employees%>people x <%= @gamesession.productivity_per_employee%>.items/emp/day"><%= @enterprise.current_prod_capacity%> items</h3>
+          <h3 data-toggle="tooltip" data-placement="top" title="<%= @enterprise.current_employees%> emp. x <%= @gamesession.productivity_per_employee%> items/emp./day"><%= @enterprise.current_prod_capacity%> items</h3>
           <span>Production Capacity</span>
         </div>
         <div class="dashboard-box-item">
