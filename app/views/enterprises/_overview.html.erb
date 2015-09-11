@@ -43,12 +43,12 @@
       <h2 class="text-center">Sales</h2>
       <div class="dashboard-box">
         <div class="dashboard-box-item">
-          <h3 data-toggle="tooltip" data-placement="top" title="<%= @previous_backlog%> unproduced items from yesterday."><%= Contract.find(@enterprise.current_contract_id).name.capitalize%> </h3>
+          <h3><%= Contract.find(@enterprise.current_contract_id).name.capitalize%> </h3>
           <span>Current Contract</span>
         </div>
         <div class="dashboard-box-item">
           <h3><%= Contract.find(@enterprise.current_contract_id).price %> €/item</h3>
-          <span>Price paid/item</span>
+          <span>Price paid / item</span>
         </div>
         <div class="dashboard-box-item">
           <h3><%= @enterprise.est_total_sales_today %> €</h3>
@@ -61,7 +61,7 @@
       <h2 class="text-center">Production</h2>
       <div class="dashboard-box">
         <div class="dashboard-box-item">
-          <h3 data-toggle="tooltip" data-placement="top" title="<%= @enterprise.current_employees%>people x <%= @gamesession.productivity_per_employee%>.items/emp/day"><%= @enterprise.current_prod_capacity%> items</h3>
+          <h3 data-toggle="tooltip" data-placement="top" title="<%= @enterprise.current_employees%> emp. x <%= @gamesession.productivity_per_employee%> items/emp./day"><%= @enterprise.current_prod_capacity%> items</h3>
           <span>Production Capacity</span>
         </div>
         <div class="dashboard-box-item">
@@ -120,6 +120,25 @@
               <li><a href="" class="btn btn-default" id="buttonsminus"><i class="fa fa-minus"></i></a></li>
               <%= f.input :employees_variation, as: :hidden, input_html: {value: '0'} %>
             </ul>
+          </div>
+        </div>
+        <div class="dashboard-control">
+          <div class="dashboard-control-label">
+            <span href="" class="navbar-wagon-date">
+              <i class="fa fa-calendar"></i> Day <%= @current_day %>
+              <br>
+              <% if (@gamesession.virtual_duration -  @current_day) >= 0 %>
+                (<%= @gamesession.virtual_duration -  @current_day %>
+                Days Left)
+              <% else%>
+                Simulation Finished
+              <% end%>
+            </span>
+          </div>
+          <div class="dashboard-control-input text-right">
+            <h3>
+              <%= f.button :submit, "Make a decision", class: "btn btn-success pull-right" %>
+            </h3>
           </div>
         </div>
       </div>
