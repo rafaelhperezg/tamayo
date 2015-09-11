@@ -20,8 +20,8 @@
         <span class="dropdown-toggle navbar-wagon-link" data-toggle="dropdown"><%= @enterprise.name %></span>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
-            <%= link_to "#" do %>
-              <i class="fa fa-user"></i> <%= t ".profile", default: "Dashboard" %>
+            <%= link_to enterprise_path(1) do %>
+                <i class="fa fa-user"></i><%= " Dashboard" %>
             <% end %>
           </li>
           <li>
