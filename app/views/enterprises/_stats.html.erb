@@ -4,19 +4,16 @@
 <!-- <div id="chart_div"></div> -->
 <% data = @gamesession.orders.take(@current_day).map {|order| [@gamesession.orders.index(order), order]} %>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <%= line_chart @cash_array, id: "cash-chart"%>
-    </div>
-    <div class="col-md-6">
-      <%= line_chart data, id: "orders-chart"%>
-    </div>
+<div class="row">
+  <div class="col-md-6">
+    <%= line_chart @cash_array, id: "cash-chart"%>
+  </div>
+  <div class="col-md-6">
+    <%= line_chart data, id: "orders-chart"%>
   </div>
 </div>
 
-
-<div id="chart_div"></div>
+<!-- <div id="chart_div"></div> -->
 
 
 
